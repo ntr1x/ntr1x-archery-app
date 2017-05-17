@@ -1,0 +1,61 @@
+@import "~@/styles/mixins";
+
+.dock {
+
+  display: flex;
+  flex-direction: column;
+
+  .dock-row {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: stretch;
+  }
+
+  .dock-row.top {
+    flex: 0 0 auto;
+  }
+
+  .dock-row.middle {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .dock-row.bottom {
+    flex: 0 0 auto;
+  }
+
+  .dock-col {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: stretch;
+  }
+
+  .dock-col.left {
+    flex: 0 0 auto;
+  }
+
+  .dock-col.center {
+    @include position(absolute);
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .dock-col.center-column {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .dock-col.center-row {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+  }
+
+  .dock-col.right {
+    flex: 0 0 auto;
+  }
+}

@@ -1,0 +1,44 @@
+@import "~@/styles/colors";
+@import "~@/styles/mixins";
+
+@import '~material-colors-scss/classes';
+@import '~material-colors-scss/function';
+@import '~material-colors-scss/placeholders';
+
+* {
+  color: #FFFFFF;
+}
+
+.palette {
+  padding: 0px 0px;
+}
+
+ul {
+
+  position: relative;
+  display: table;
+  padding: 0;
+  list-style: none;
+
+  li.item {
+
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: block;
+    float: left;
+    clear: both;
+    cursor: pointer;
+    font-size: 12px;
+
+    .item-heading {
+      .heading-icon {
+        display: inline-block;
+        margin: 0px 4px 0px 0px;
+      }
+    }
+
+    &:hover {
+      background-color: $color-primary-1;
+    }
+  }
+}

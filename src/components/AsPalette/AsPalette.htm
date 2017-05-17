@@ -1,0 +1,14 @@
+<section class="palette">
+  <ul>
+    <li class="item" v-for="item in items">
+      <span class="item-heading">
+        <span class="heading-icon">
+          <i :class="item.icon"></i>
+        </span>
+        <span class="heading-title">
+          {{ item.title }}
+        </span>
+      </span>
+    </li>
+  </ul>
+</section>

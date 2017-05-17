@@ -1,0 +1,42 @@
+@import "~@/styles/colors";
+@import "~@/styles/mixins";
+
+@import '~material-colors-scss/classes';
+@import '~material-colors-scss/function';
+@import '~material-colors-scss/placeholders';
+
+* {
+  color: #FFFFFF;
+}
+
+.outline {
+  padding: 0px 0px;
+  display: table;
+}
+
+.item {
+
+  .item-heading {
+
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: block;
+    float: left;
+    clear: both;
+    cursor: pointer;
+    font-size: 12px;
+
+    .heading-icon {
+      display: inline-block;
+      margin: 0px 4px 0px 0px;
+    }
+
+    &:hover {
+      background-color: $color-primary-1;
+    }
+  }
+
+  .item-children {
+    margin-left: 15px;
+  }
+}

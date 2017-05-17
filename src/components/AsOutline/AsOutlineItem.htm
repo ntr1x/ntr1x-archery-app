@@ -1,0 +1,13 @@
+<section class="item">
+  <div class="item-heading">
+    <span class="heading-icon">
+      <i :class="descriptor.icon"></i>
+    </span>
+    <span class="heading-title">
+      {{ descriptor.title }}
+    </span>
+  </div>
+  <div class="item-children">
+    <as-outline-item v-for="child in item.children" :item="child" :key="child"></as-outline-item>
+  </div>
+</section>
