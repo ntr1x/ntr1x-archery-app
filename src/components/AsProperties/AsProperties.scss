@@ -27,10 +27,8 @@
     display: block;
     overflow: auto;
     width: 100%;
-    margin: 15px 0px 10px 0px;
-    // margin: 5px -5px;
-    // padding: 5px 5px;
-    // border-radius: 4px;
+    margin: 0px;
+    padding: 15px 0px 10px 0px;
     cursor: pointer;
 
     .head-title {
@@ -49,14 +47,16 @@
     // }
   }
 
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   border-bottom: 1px solid $color-primary-0;
   box-shadow: 0 1px 0 $color-primary-1;
 
   .body {
+
+    margin-bottom: 10px;
+
     * {
-      color: #{material-color('grey', '500')};
+      color: #{material-color('grey', '400')};
       font-weight: 100;
       font-size: 11px;
     }
@@ -66,7 +66,7 @@
 .properties-path {
 
   padding-bottom: 10px;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   border-bottom: 1px solid $color-primary-0;
   box-shadow: 0 1px 0 $color-primary-1;
 }
@@ -121,14 +121,35 @@
       }
     }
 
+    .property-drag {
+      display: table-cell;
+      vertical-align: middle;
+      cursor: crosshair;
+      width: 5%;
+      font-size: 14px;
+      color: #{material-color('blue-grey', '800')};
+
+      .dotted {
+        background-image: -webkit-repeating-radial-gradient(center center, rgba(255,255,255,.2), rgba(255,255,255,.2) 1px, transparent 1px, transparent 100%);
+        background-image: -moz-repeating-radial-gradient(center center, rgba(255,255,255,.2), rgba(255,255,255,.2) 1px, transparent 1px, transparent 100%);
+        background-image: -ms-repeating-radial-gradient(center center, rgba(255,255,255,.2), rgba(255,255,255,.2) 1px, transparent 1px, transparent 100%);
+        background-image: repeating-radial-gradient(center center, rgba(255,255,255,.2), rgba(255,255,255,.2) 1px, transparent 1px, transparent 100%);
+        -webkit-background-size: 3px 3px;
+        -moz-background-size: 3px 3px;
+        background-size: 3px 3px;
+        width: 12px;
+        height: 26px;
+        display: block;
+      }
+    }
+
     .property-value {
       display: table-cell;
       width: 65%;
 
-      input, textarea {
+      .control {
 
         background-color: #{material-color('blue-grey', '800')};
-        // border: 1px solid transparent;
 
         border: 1px solid transparent;
         display: block;
@@ -137,21 +158,26 @@
         margin: 0;
         vertical-align: bottom;
         font-size: 12px;
+        padding: 0px 5px;
+        display: block;
+        line-height: 22px;
+
         &:focus {
           border: 1px solid #{material-color('grey', '700')};
         }
       }
 
-      input {
-        height: 24px;
-        // display: inline-block;
-        width: 100%;
-        line-height: 24px;
-        padding: 0px 5px;
+      span.control {
+        background-color: #{material-color('blue-grey', '900')};
+        color: #{material-color('blue-grey', '600')};
       }
 
-      textarea {
-        padding: 0px 5px;
+      input.control {
+      }
+
+      textarea.control {
+        line-height: 14px;
+        padding: 5px 5px;
         resize: vertical;
       }
 
@@ -160,7 +186,7 @@
         display: table;
         border: 1px solid #{material-color('blue-grey', '800')};
         border-radius: 4px;
-        margin: 2px 0px;
+        margin: 3px 0px;
         width: 100%;
         overflow: hidden;
 

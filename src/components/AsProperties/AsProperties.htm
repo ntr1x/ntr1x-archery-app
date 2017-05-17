@@ -16,7 +16,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -30,7 +30,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -44,7 +44,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -60,7 +60,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -74,7 +74,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -92,7 +92,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -106,7 +106,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -120,7 +120,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -134,7 +134,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -152,7 +152,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -166,7 +166,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
@@ -180,12 +180,96 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <input type="text" />
+              <input type="text" class="control" />
             </span>
             <span class="group-edit">...</span>
           </span>
         </div>
       </div>
+    </div>
+  </as-properties-category>
+  <as-properties-category title="Items">
+    <div class="properties-table">
+      <div class="property">
+        <label class="property-title">
+          <span class="path-item">Items</span>
+          <span class="glyphicon" :class="{
+            'glyphicon-triangle-bottom': true,
+            'glyphicon-triangle-right': false
+          }" style="font-size: 9px; color: #FFFFFF; margin-left: 5px;"></span>
+        </label>
+        <div class="property-mode">●</div>
+        <div class="property-value">
+          <span class="value-group">
+            <span class="group-input">
+              <span class="control">Array[Item]</span>
+            </span>
+            <span class="group-edit">...</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="properties-table">
+      <template v-for="i in [0,1,2,3]">
+        <div class="property" key="i">
+          <label class="property-title">
+            <span class="path-item">Item[{{ i }}]</span>
+          </label>
+          <div class="property-drag">
+            <span class="dotted"></span>
+          </div>
+          <div class="property-value">
+            <span class="value-group">
+              <span class="group-input">
+                <span class="control">Item {{ i }}</span>
+              </span>
+              <span class="group-edit">...</span>
+            </span>
+          </div>
+        </div>
+      </template>
+    </div>
+  </as-properties-category>
+  <as-properties-category title="Tags">
+    <div class="properties-table">
+      <div class="property">
+        <label class="property-title">
+          <span class="path-item">Tags</span>
+          <span class="glyphicon" :class="{
+            'glyphicon-triangle-bottom': true,
+            'glyphicon-triangle-right': false
+          }" style="font-size: 9px; color: #FFFFFF; margin-left: 5px;"></span>
+        </label>
+        <div class="property-mode">●</div>
+        <div class="property-value">
+          <span class="value-group">
+            <span class="group-input">
+              <span class="control">Array[String]</span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="properties-table">
+      <template v-for="(s, i) in ['One','Two']">
+        <div class="property" key="i">
+          <label class="property-title">
+            <span class="path-item">Item[{{ i }}]</span>
+          </label>
+          <div class="property-mode">●</div>
+          <div class="property-drag">
+            <span class="dotted"></span>
+          </div>
+          <div class="property-value">
+            <span class="value-group">
+              <span class="group-input">
+                <input type="text" class="control" :value="s" />
+              </span>
+              <span class="group-edit">...</span>
+            </span>
+          </div>
+        </div>
+      </template>
     </div>
   </as-properties-category>
   <as-properties-category title="Content">
@@ -198,7 +282,7 @@
         <div class="property-value">
           <span class="value-group">
             <span class="group-input">
-              <textarea></textarea>
+              <textarea class="control"></textarea>
             </span>
             <span class="group-edit">...</span>
           </span>

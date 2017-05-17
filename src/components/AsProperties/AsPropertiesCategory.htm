@@ -1,9 +1,14 @@
 <section class="category">
-  <div class="head uppercase-title">
+  <div class="head uppercase-title" @click="toggle()">
     <span class="head-title">{{ title }}</span>
-    <span class="head-caret"><span class="glyphicon glyphicon-triangle-bottom"></span></span>
+    <span class="head-caret">
+      <span class="glyphicon" :class="{
+        'glyphicon-triangle-bottom': open,
+        'glyphicon-triangle-right': !open
+      }"></span>
+    </span>
   </div>
-  <div class="body">
+  <div class="body" v-if="open">
     <slot></slot>
   </div>
 </section>
