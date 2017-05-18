@@ -3,11 +3,13 @@ import Vue from 'vue'
 export default {
   name: 'as-outline-item',
   props: {
-    item: Object
+    item: Object,
+    level: Number
   },
   data () {
     return {
-      descriptor: null
+      descriptor: null,
+      open: this.level < 3
     }
   },
   created () {
@@ -15,6 +17,11 @@ export default {
     this.descriptor = {
       title: (component && component.options.title) || `<${this.item.name} />`,
       icon: (component && component.options.icon) || 'fa fa-cube'
+    }
+  },
+  methods: {
+    toggle () {
+      this.open = !this.open
     }
   }
 }

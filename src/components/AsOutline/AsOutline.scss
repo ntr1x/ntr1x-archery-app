@@ -5,26 +5,40 @@
 @import '~material-colors-scss/function';
 @import '~material-colors-scss/placeholders';
 
-* {
-  color: #FFFFFF;
-}
 
 .outline {
   padding: 0px 0px;
   display: table;
+  color: #FFFFFF;
 }
 
 .item {
 
+  position: relative;
+  display: table;
+  width: 100%;
+
+  .item-arrow {
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    vertical-align: top;
+    padding: 4px 4px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
   .item-heading {
 
-    padding: 3px 6px;
-    border-radius: 4px;
+    padding: 2px 6px;
+    // border-radius: 4px;
     display: block;
     float: left;
     clear: both;
     cursor: pointer;
     font-size: 12px;
+    margin: 2px 4px 2px 20px;
 
     .heading-icon {
       display: inline-block;
@@ -34,9 +48,14 @@
     &:hover {
       background-color: $color-primary-1;
     }
+
+    &.selected {
+      background: #{material-color('blue', '700')};
+      cursor: auto;
+    }
   }
 
   .item-children {
-    margin-left: 15px;
+    margin-left: 20px;
   }
 }

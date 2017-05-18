@@ -1,5 +1,5 @@
 <section class="outline">
   <template v-if="$store.state.designer.page.children">
-    <as-outline-item v-for="child in $store.state.designer.page.children" :item="child" :key="child"></as-outline-item>
+    <as-outline-item v-for="child in $store.state.designer.page.children" :item="child" :level="1" :key="child"></as-outline-item>
   </template>
 </section>

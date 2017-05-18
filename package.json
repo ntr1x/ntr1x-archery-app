@@ -16,6 +16,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
+    "lodash": "^4.17.4",
     "material-colors-scss": "^0.2.2",
     "roboto-fontface": "^0.7.0",
     "vue": "^2.2.6",

@@ -2,19 +2,35 @@
   <div slot="top" class="outer-frame outer-top">
     <div class="group" style="margin-left: 26px">
       <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
-        <span class="icon"><i class="material-icons">file_upload</i></span>
+        <span class="icon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
         <span class="title">Push</span>
       </button>
       <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
-        <span class="icon"><i class="material-icons">file_download</i></span>
+        <span class="icon"><i class="glyphicon glyphicon-cloud-download"></i></span>
         <span class="title">Pull</span>
       </button>
       <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
-        <span class="icon"><i class="material-icons">photo_library</i></span>
+        <span class="icon"><i class="glyphicon glyphicon-file"></i></span>
+        <span class="title">Create</span>
+      </button>
+      <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
+        <span class="icon"><i class="glyphicon glyphicon-duplicate"></i></span>
+        <span class="title">Clone</span>
+      </button>
+      <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
+        <span class="icon"><i class="glyphicon glyphicon-import"></i></span>
+        <span class="title">Import</span>
+      </button>
+      <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
+        <span class="icon"><i class="glyphicon glyphicon-share-alt"></i></span>
+        <span class="title">View</span>
+      </button>
+      <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
+        <span class="icon"><i class="glyphicon glyphicon-picture"></i></span>
         <span class="title">Images</span>
       </button>
       <button class="action" @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
-        <span class="icon"><i class="material-icons">library_books</i></span>
+        <span class="icon"><i class="glyphicon glyphicon-paperclip"></i></span>
         <span class="title">Files</span>
       </button>
     </div>
@@ -97,7 +113,7 @@
         <as-properties></as-properties>
       </as-pane>
       <as-pane title="Structure" v-if="$store.state.designer.panels.right.structure">
-        
+
       </as-pane>
     </div>
   </as-dock>

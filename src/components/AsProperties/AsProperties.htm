@@ -1,10 +1,10 @@
 <section class="properties">
-  <div class="properties-path">
-    <span class="uppercase-title">Path</span>
-    <span class="path-item">Canvas</span>
-    <span class="path-item">Stack</span>
-    <span class="path-item">Text</span>
-    <span class="path-item selected">Margin</span>
+  <div class="properties-path" v-if="selection">
+    <span class="uppercase-title">Path</span
+    ><span class="path-item" v-for="s in selectionPath" :key="s"
+      @click="$store.commit('designer/select', s.widget)"
+    >{{ s.title }}</span
+    ><span class="path-item selected" :key="selection">{{ selection.title }}</span>
   </div>
   <as-properties-category title="Layout">
     <div class="properties-table">

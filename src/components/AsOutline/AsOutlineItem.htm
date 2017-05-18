@@ -1,5 +1,13 @@
 <section class="item">
-  <div class="item-heading">
+  <div class="item-arrow" @click="toggle()" v-if="item.children && item.children.length">
+    <i class="glyphicon" :class="{
+      'glyphicon-triangle-bottom': open,
+      'glyphicon-triangle-right': !open
+    }"></i>
+  </div>
+  <div class="item-heading" :class="{
+    'selected': $store.state.designer.selection == item
+  }" @click="$store.commit('designer/select', item)">
     <span class="heading-icon">
       <i :class="descriptor.icon"></i>
     </span>
@@ -7,7 +15,7 @@
       {{ descriptor.title }}
     </span>
   </div>
-  <div class="item-children">
-    <as-outline-item v-for="child in item.children" :item="child" :key="child"></as-outline-item>
+  <div class="item-children" v-if="item.children && item.children.length && open">
+    <as-outline-item v-for="child in item.children" :item="child" :level="level+1" :key="child"></as-outline-item>
   </div>
 </section>

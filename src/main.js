@@ -26,10 +26,15 @@ Vue.use(ArcheryShell)
 
 Vue.config.productionTip = false
 
+let store = StoreFactory()
+let router = RouterFactory()
+
+store.dispatch('designer/setup')
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router: RouterFactory(),
-  store: StoreFactory(),
+  router,
+  store,
   template: '<as-app/>'
 })
