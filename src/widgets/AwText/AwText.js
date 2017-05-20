@@ -1,5 +1,8 @@
+import Vue from 'vue'
+
 const FontDescriptor = {
   title: 'Font',
+  category: 'Font',
   type: Object,
   props: {
     family: {
@@ -13,7 +16,8 @@ const FontDescriptor = {
     size: {
       type: String,
       title: 'Font Size'
-    }
+    },
+    bla: Number
   }
 }
 
@@ -23,40 +27,75 @@ const BoxDescriptor = {
   props: {
     margin: {
       type: String,
-      title: 'Margin'
+      title: 'Margin',
+      category: 'Layout'
     },
     padding: {
       type: String,
-      title: 'Padding'
+      title: 'Padding',
+      category: 'Layout'
     },
     background: {
       type: String,
-      title: 'Background'
+      title: 'Background',
+      category: 'Appearance'
     },
     border: {
       type: String,
-      title: 'Border'
+      title: 'Border',
+      category: 'Appearance'
     }
   }
+}
+
+let FooMixin = {
+  props: {
+    fooDemo1: String,
+    fooDemo2: {
+      type: Number
+    }
+  }
+}
+
+let BarMixin = {
+  props: {
+    barDemo1: String,
+    barDemo2: {
+      type: Number
+    }
+  }
+}
+
+let BuzMixin = {
+  props: [
+    'helloProp', 'goodby-prop'
+  ]
 }
 
 export default {
   name: 'aw-text',
   icon: 'fa fa-align-left',
   title: 'Text',
+  mixins: [ FooMixin, BarMixin, BuzMixin ],
   props: {
-    font: FontDescriptor,
+    font: {
+      type: Object,
+      descriptor: FontDescriptor
+    },
     text: {
       type: String,
-      title: 'Text'
+      title: 'Text',
+      category: 'Content'
     },
     width: {
       type: String,
-      title: 'Width'
+      title: 'Width',
+      category: 'Layout'
     },
     height: {
       type: String,
-      title: 'Height'
+      title: 'Height',
+      category: 'Layout'
     },
     outer: {
       ...BoxDescriptor,

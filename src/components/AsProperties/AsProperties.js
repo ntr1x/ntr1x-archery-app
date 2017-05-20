@@ -1,54 +1,21 @@
-import Vue from 'vue'
-import { mapState } from 'vuex'
+// import Vue from 'vue'
 
-import AsPropertiesCategory from './AsPropertiesCategory.vue'
+import { mapState } from 'vuex'
+import { getDescription, getPath, getCategories } from '@/engine/model'
+
+import AsCategory from './AsCategory.vue'
 
 export default {
   name: 'as-properties',
   components: {
-    'as-properties-category': AsPropertiesCategory
+    AsCategory
   },
-  data: () => ({
-    path: null
-  }),
   computed: {
     ...mapState({
-      selection: state => {
-        let selection = state.designer.selection
-        if (!selection) return null
-        let widget = selection
-        let name = widget.name
-        let component = Vue.component(name) || null
-        let title = component == null
-          ? `<${name} />`
-          : ('title' in component.options ? component.options.title : `<${name} />`)
-        return {
-          widget,
-          component,
-          name,
-          title
-        }
-      },
-      selectionPath: state => {
-        let selection = state.designer.selection
-        if (!selection) return null
-        let path = []
-        for (let p = selection.parent; p.parent != null; p = p.parent) {
-          let widget = p
-          let name = widget.name
-          let component = Vue.component(name) || null
-          let title = component == null
-            ? `<${name} />`
-            : ('title' in component.options ? component.options.title : `<${name} />`)
-          path.unshift({
-            widget,
-            component,
-            name,
-            title
-          })
-        }
-        return path
-      }
+      model: state => state.designer.selection,
+      description: state => getDescription(state.designer.selection),
+      path: state => getPath(state.designer.selection).map(el => getDescription(el)),
+      categories: state => getCategories(state.designer.selection)
     })
   }
 }
