@@ -1,12 +1,10 @@
 import VueRouter from 'vue-router'
 
-import AsShell from '@/components/AsShell/AsShell.vue'
-
 export default () => new VueRouter({
   routes: [
-    {
-      path: '/',
-      component: AsShell
-    }
+    // {
+    //   path: '/',
+    //   component: require('@/components/shell/lib/Shell.vue')
+    // }
   ]
 })

@@ -1,0 +1,40 @@
+@mixin dock-column($top: '.top', $middle: '.middle', $bottom: '.bottom') {
+
+  display: flex;
+  flex-direction: column;
+
+  >#{$top} {
+    flex: 0 0 auto;
+    position: relative;
+  }
+
+  >#{$middle} {
+    flex: 1 1 auto;
+    position: relative;
+  }
+
+  >#{$bottom} {
+    flex: 0 0 auto;
+    position: relative;
+  }
+}
+
+@mixin dock-row($left: '.left', $content: '.content', $right: '.right') {
+
+  display: flex;
+
+  >#{$left} {
+    flex: 0 0 auto;
+    position: relative;
+  }
+
+  >#{$content} {
+    flex: 1 1 auto;
+    position: relative;
+  }
+
+  >#{$right} {
+    flex: 0 0 auto;
+    position: relative;
+  }
+}

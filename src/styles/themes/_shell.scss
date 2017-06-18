@@ -1,0 +1,44 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/themes/shell/buttons";
+@import "~@/styles/themes/shell/controls";
+@import "~@/styles/themes/shell/tabs";
+
+
+.modal-dialog {
+
+  margin: 0px auto;
+
+  .modal-content {
+
+    position: relative;
+    border-radius: 0px;
+    color: $color-white;
+    background: $background-0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .modal-header {
+      position: relative;
+      flex: 0 0 auto;
+      border-bottom-color: $border-0;
+
+      .close {
+        color: $color-white;
+      }
+    }
+
+    .modal-body {
+      position: relative;
+      flex: 1 1 auto;
+      border-bottom-color: $border-0;
+      overflow: auto;
+    }
+
+    .modal-footer {
+      position: relative;
+      flex: 0 0 auto;
+      border-top-color: $border-0;
+    }
+  }
+}

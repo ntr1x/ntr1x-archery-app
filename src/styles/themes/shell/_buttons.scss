@@ -1,0 +1,61 @@
+@import '~material-colors-scss/function';
+
+.btn.btn-default {
+  background-color: #{material-color('blue-grey', '700')};
+  color: #FFFFFF;
+  border: #{material-color('blue-grey', '800')};
+
+  &:hover {
+    background-color: #{material-color('blue-grey', '600')};
+  }
+}
+
+.btn.btn-primary {
+  background-color: #{material-color('indigo', '700')};
+  color: #FFFFFF;
+  border: #{material-color('indigo', '800')};
+
+  &:hover {
+    background-color: #{material-color('indigo', '600')};
+  }
+}
+
+.btn.btn-success {
+  background-color: #{material-color('green', '700')};
+  color: #FFFFFF;
+  border: #{material-color('green', '800')};
+
+  &:hover {
+    background-color: #{material-color('green', '600')};
+  }
+}
+
+.btn.btn-danger {
+  background-color: #{material-color('red', '700')};
+  color: #FFFFFF;
+  border: #{material-color('red', '800')};
+
+  &:hover {
+    background-color: #{material-color('red', '600')};
+  }
+}
+
+.btn.btn-warning {
+  background-color: #{material-color('orange', '700')};
+  color: #FFFFFF;
+  border: #{material-color('orange', '800')};
+
+  &:hover {
+    background-color: #{material-color('orange', '600')};
+  }
+}
+
+.btn.btn-info {
+  background-color: #{material-color('blue', '700')};
+  color: #FFFFFF;
+  border: #{material-color('blue', '800')};
+
+  &:hover {
+    background-color: #{material-color('blue', '600')};
+  }
+}

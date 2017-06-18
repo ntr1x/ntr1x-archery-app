@@ -8,9 +8,15 @@ module.exports = {
   },
   env: {
     browser: true,
+    mocha: true
+  },
+  globals: {
+    sinon: true
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  extends: [
+    'standard'
+  ],
   // required to lint *.vue files
   plugins: [
     'html'

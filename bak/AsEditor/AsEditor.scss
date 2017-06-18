@@ -1,0 +1,21 @@
+@import "~@/styles/partials/all";
+@import "~@/styles/themes/shell";
+
+.editor {
+  @include position(absolute);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #{material-color('blue-grey', '800')};
+  z-index: 300;
+  // padding: 20px;
+
+  .frame {
+    // position: relative;
+    margin: 20px auto;
+    background-color: #{material-color('blue-grey', '400')};
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 960px;
+    height: 2000px;
+  }
+}

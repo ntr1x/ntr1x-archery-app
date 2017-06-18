@@ -1,0 +1,53 @@
+// .nav.nav-tabs {
+//
+//   background: $color-primary-0;
+//   // padding-top: 5px;
+//   border-bottom: 1px solid $color-primary-2;
+//
+//   >li {
+//     margin-bottom: 0px;
+//   }
+//
+//   >li >a {
+//     display: inline-block;
+//     background: $outline-0;
+//     border: none;
+//     border-radius: 0px;
+//     color: $color-primary-8;
+//     font-size: 14px;
+//     line-height: 30px;
+//     padding: 2px 15px;
+//     white-space: nowrap;
+//     margin: 0px;
+//
+//     .dismiss {
+//       color: #FFFFFF;
+//       display: inline-block;
+//       text-align: center;
+//       line-height: 18px;
+//       height: 18px;
+//       width: 18px;
+//       vertical-align: middle;
+//       margin: 0px -5px 0px 5px;
+//       background: $color-primary-1;
+//       border-radius: 50%;
+//
+//       &:hover {
+//         background: $color-primary-2;
+//       }
+//     }
+//
+//     &:hover {
+//       background: $color-primary-4;
+//       color: #FFFFFF;
+//       border: none;
+//       outline: none;
+//     }
+//   }
+//
+//   >li.active > a {
+//     color: #FFFFFF;
+//     background: $color-primary-2;
+//     border: none;
+//   }
+// }

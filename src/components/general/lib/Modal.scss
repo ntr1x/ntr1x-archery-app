@@ -1,0 +1,29 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+@import "~@/styles/themes/shell";
+
+.stack {
+  position: relative;
+  overflow: visible;
+  z-index: 100;
+
+  .backdrop {
+    @include position(fixed);
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal {
+      position: relative;
+      flex: 0 0 auto;
+      display: block;
+      max-height: 90%;
+      max-width: 90%;
+
+      >* {
+        display: table;
+      }
+    }
+  }
+}

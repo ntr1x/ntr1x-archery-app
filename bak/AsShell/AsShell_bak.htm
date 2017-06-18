@@ -1,0 +1,121 @@
+<as-dock class="outer">
+  <div slot="top" class="outer-frame outer-top">
+    <as-actions />
+  </div>
+  <as-dock slot="left" class="outer-frame outer-left">
+    <div slot="left" class="strip strip-left">
+      <div class="group group-rotate-270">
+        <button
+            class="toggle"
+            :class="{ 'active': $store.state.designer.panels.left.outline }"
+            @click="$store.commit('designer/panel/toggle', { name: 'left', pane: 'outline' })"
+        >
+          Outline
+        </button>
+        <button
+            class="toggle"
+            :class="{ 'active': $store.state.designer.panels.left.palette }"
+            @click="$store.commit('designer/panel/toggle', { name: 'left', pane: 'palette' })"
+        >
+          Palette
+        </button>
+      </div>
+    </div>
+    <div slot="center-column" class="frame frame-left" v-if="$store.state.designer.panels.left.palette || $store.state.designer.panels.left.outline">
+      <as-pane title="Palette" v-if="$store.state.designer.panels.left.palette">
+        <as-palette></as-palette>
+      </as-pane>
+      <as-pane title="Outline" v-if="$store.state.designer.panels.left.outline">
+        <as-outline></as-outline>
+      </as-pane>
+    </div>
+  </as-dock>
+  <as-dock slot="center-row" class="outer-frame outer-center inner">
+    <as-dock slot="top" class="inner-frame inner-top">
+      <div slot="center-column" class="frame frame-top">
+        <div v-if="$store.state.designer.panels.top.actions">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#">
+                Default
+                <span class="dismiss">&times;</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Profile
+                <span class="dismiss">&times;</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Messages
+                <span class="dismiss">&times;</span>
+              </a>
+            </li>
+          </ul>
+          <button @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
+            <span class="icon"><i class="glyphicon glyphicon-zoom-in"></i></span>
+          </button>
+          <button @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })">
+            <span class="icon"><i class="glyphicon glyphicon-zoom-out"></i></span>
+          </button>
+          <div class="btn-group btn-group-lg pull-right">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+          </div>
+        </div>
+      </div>
+    </as-dock>
+    <div slot="center-column" class="inner-frame inner-center">
+      <as-editor></as-editor>
+      <template v-for="w in children">
+        <as-widget :name="w.name" :props="w.props"></as-widget>
+      </template>
+    </div>
+    <as-dock slot="bottom" class="inner-frame inner-bottom">
+      <div slot="center-column" class="frame frame-bottom" v-if="$store.state.designer.panels.bottom.console">
+      </div>
+      <div slot="bottom" class="strip strip-bottom">
+        <div class="group">
+          <button class="toggle" :class="{ 'active': $store.state.designer.panels.bottom.console }"
+              @click="$store.commit('designer/panel/toggle', { name: 'bottom', pane: 'console' })"
+          >
+            Console
+          </button>
+        </div>
+      </div>
+    </as-dock>
+  </as-dock>
+  <as-dock slot="right" class="outer-frame outer-right">
+    <div slot="right" class="strip strip-right">
+      <div class="group group-rotate-90">
+        <button
+            class="toggle"
+            :class="{ 'active': $store.state.designer.panels.right.properties }"
+            @click="$store.commit('designer/panel/toggle', { name: 'right', pane: 'properties' })"
+        >
+          Properties
+        </button>
+        <button
+            class="toggle"
+            :class="{ 'active': $store.state.designer.panels.right.structure }"
+            @click="$store.commit('designer/panel/toggle', { name: 'right', pane: 'structure' })"
+        >
+          Structure
+        </button>
+      </div>
+    </div>
+    <div slot="center-column" class="frame frame-right"
+        v-if="$store.state.designer.panels.right.properties || $store.state.designer.panels.right.structure"
+      >
+      <as-pane title="Properties" v-if="$store.state.designer.panels.right.properties">
+        <as-properties></as-properties>
+      </as-pane>
+      <as-pane title="Structure" v-if="$store.state.designer.panels.right.structure">
+
+      </as-pane>
+    </div>
+  </as-dock>
+</as-dock>
