@@ -10,7 +10,7 @@ export function buildContext (parent, actual) {
   }
 }
 
-export function buildExpression (expression, context) {
+export function buildValue (expression, context) {
   try {
     // eslint-disable-next-line no-new-func
     const f = new Function(Object.keys(context || {}).join(','), `return ${expression}`)
@@ -23,7 +23,7 @@ export function buildExpression (expression, context) {
 
 export function buildData (propsData, context) {
   return Object.entries(propsData).reduce((result, [name, value]) => {
-    result[name] = buildExpression(value, context)
+    result[name] = buildValue(value, context)
     return result
   }, {})
 }
@@ -50,11 +50,12 @@ export function buildSlots (slots, registry, context) {
 }
 
 export function buildWidget (widget, registry, context) {
+  const component = registry.component(widget.component)
   return _.omitBy({
     id: uniqid(),
-    component: registry.component(widget.component),
-    propsData: widget.propsExpr ? buildData(widget.propsExpr, context) : undefined,
-    eventsData: widget.eventsExpr ? buildData(widget.eventsExpr, context) : undefined,
+    component,
+    propsData: component.options.props ? buildData(buildExpr(component.options.props, widget.propsExpr), context) : undefined,
+    eventsData: component.options.events ? buildData(buildExpr(component.options.events, widget.eventsExpr), context) : undefined,
     context: context || undefined,
     slots: widget.slots == null
       ? undefined
@@ -66,150 +67,55 @@ export function buildWidget (widget, registry, context) {
   }, _.isUndefined)
 }
 
+export function buildExpr (defs, overrides) {
+  return _.omitBy(
+    Object.entries(defs).reduce((expr, [name, item]) => {
+      expr[name] = (overrides != null && overrides[name]) || item.default || undefined
+      return expr
+    }, {})
+    , _.isUndefined
+  )
+}
+
 export function buildPage (page, registry, context) {
 
   const store = new Vuex.Store({
     modules: {
-      //    context.store.dispatch('modals/show')
-      //    Модалки должны быт в $portal
-      // modals: ModalStore({ ... })
-      //    All Swagger connectors (store each factory in state, dispatch by name with overrides),
-      //    context.store.dispatch('remotes/execute', { id: 234 })
-      // remotes: RemoteStore({ ... })
     }
   })
 
-  // const route = {}
-  // {
-  //   $store: store,
-  //   // $route: route,
-  //   // $router: router,
-  //   $props: {}
-  // }
+  const pageContext = buildContext(
+    context,
+    { $page: store }
+  )
 
   return _.omitBy({
     id: uniqid(),
     path: page.path,
-    root: buildWidget(
-      page.root,
-      registry,
-      buildContext(
-        context,
-        { $page: store }
-      )
-    )
+    propsData: page.props ? buildData(buildExpr(page.props, page.propsExpr), context) : undefined,
+    eventsData: page.events ? buildData(buildExpr(page.events, page.eventsExpr), context) : undefined,
+    context: context || undefined,
+    root: page.root != null ? buildWidget(page.root, registry, pageContext) : undefined
   }, _.isUndefined)
 }
 
-// export function buildWidget (widget: Widget, context: Object): {
-//   return {
-//
-//   }
-// }
+export function buildPortal (portal, registry, context) {
 
-// export default buildWidget () {
-//
-// }
+  const store = new Vuex.Store({
+    modules: {
+    }
+  })
 
-// import _ from 'lodash'
+  const portalContext = buildContext(
+    context,
+    { $portal: store }
+  )
 
-// export class Builder {
-//
-//   build ({ pages }, context: Object) {
-//     let result = {}
-//     if (pages != null) {
-//       result.pages = pages.map(page => this.buildPage(page, context))
-//     }
-//     return result
-//   }
-//
-//   buildPage ({ path, root }, context) {
-//     let result = { path }
-//     if (root != null) {
-//       result.root = this.buildWidget(root)
-//     }
-//     return result
-//   }
-//
-//   buildWidget ({ component, container, propsData, eventsData, children }, context) {
-//     let result = { component }
-//     if (container != null) {
-//       result.container = this.buildContainer(container, context)
-//     }
-//     if (propsData != null) {
-//       result.propsData = this.buildPropsData(propsData, context)
-//     }
-//     if (eventsData != null) {
-//       result.eventsData = this.buildEventsData(eventsData, context)
-//     }
-//     if (children != null) {
-//       result.children = children.map((child) => this.buildWidget(child, context))
-//     }
-//     return result
-//   }
-//
-//   buildContainer ({ component, propsData, eventsData }, context) {
-//     let result = { component }
-//     if (propsData != null) {
-//       result.propsData = this.buildPropsData(propsData, context)
-//     }
-//     if (eventsData != null) {
-//       result.eventsData = this.buildEventsData(eventsData, context)
-//     }
-//     return result
-//   }
-//
-//   buildPropsData (propsData, context) {
-//
-//     let data = {}
-//
-//     for (let prop in propsData) {
-//       let value = this.buildValue({ expression: propsData[prop] }, context)
-//       if (typeof value !== 'undefined') {
-//         data[prop] = value
-//       }
-//     }
-//
-//     return data
-//   }
-//
-//   buildEventsData (eventsData, context) {
-//
-//     let data = {}
-//
-//     for (let prop in eventsData) {
-//       let value = this.buildValue({ expression: eventsData[prop] }, context)
-//       if (typeof value !== 'undefined') {
-//         data[prop] = value
-//       }
-//     }
-//
-//     return data
-//   }
-//
-//   buildValue ({ expression }, context) {
-//
-//     try {
-//
-//       let keys = []
-//       let values = []
-//
-//       if (context != null) {
-//         for (let k in context) {
-//           keys.push(k)
-//           values.push(context[k])
-//         }
-//       }
-//
-//       // eslint-disable-next-line no-new-func
-//       let f = new Function(keys.join(','), `return ${expression}`)
-//       let value = f.apply(this, values)
-//
-//       return value
-//
-//     } catch (e) {
-//
-//       console.log(e)
-//     }
-//   }
-// }
+  return _.omitBy({
+    id: uniqid(),
+    name: portal.name,
+    title: portal.title,
+    context: context || undefined,
+    pages: (portal.pages || []).map((page) => buildPage(page, registry, portalContext))
+  }, _.isUndefined)
+}

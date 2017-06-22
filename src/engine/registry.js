@@ -1,24 +1,22 @@
 export class Registry {
 
-  constructor ({ components, stub } = {}) {
+  constructor ({ components, specials } = {}) {
     this._components = components || {}
-    this._stub = stub
+    this._specials = specials || {}
   }
 
   component (name, component) {
     if (component !== undefined) {
-      this._components[name] = component
+      this._components[name] = () => component
     }
-    return name in this._components
-      ? this._components[name]
-      : this._stub
+    return this._components[name]
   }
 
-  stub (stub) {
-    if (stub !== undefined) {
-      this._stub = stub
+  special (name, component) {
+    if (component !== undefined) {
+      this._specials[name] = () => component
     }
-    return this._stub
+    return this._specials[name]
   }
 }
 

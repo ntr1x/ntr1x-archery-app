@@ -1,17 +1,42 @@
+import Vue from 'vue'
 import { Registry } from './registry'
 
 export const registry = new Registry({
   components: {
-    'component-a': function () {},
-    'component-b': function () {},
-    'component-c': function () {},
-    'component-d': function () {},
-    'component-e': function () {},
-    'component-f': function () {}
+    'component-a': Vue.extend({}),
+    'component-b': Vue.extend({}),
+    'component-c': Vue.extend({
+      props: {
+        foo: {
+          type: String,
+          default: 'Foo String'
+        },
+        bar: String,
+        baz: String
+      }
+    }),
+    'component-d': Vue.extend({
+      props: {
+        one: Number,
+        two: Number,
+        foo: String,
+        bar: String
+      }
+    }),
+    'component-e': Vue.extend({
+      events: {
+        render: Function,
+        click: {
+          type: Function,
+          default: console.log
+        }
+      }
+    }),
+    'component-f': Vue.extend({})
   }
 })
 
-export const A = {
+export const WidgetA = {
   widget: {
     component: 'component-a'
   },
@@ -20,7 +45,7 @@ export const A = {
   }
 }
 
-export const B = {
+export const WidgetB = {
   widget: {
     component: 'component-b'
   },
@@ -37,7 +62,7 @@ export const B = {
   }
 }
 
-export const C = {
+export const WidgetC = {
   widget: {
     component: 'component-c',
     propsExpr: {
@@ -56,7 +81,7 @@ export const C = {
   }
 }
 
-export const D = {
+export const WidgetD = {
   widget: {
     component: 'component-d',
     propsExpr: {
@@ -85,7 +110,7 @@ export const D = {
   }
 }
 
-export const E = {
+export const WidgetE = {
   widget: {
     component: 'component-e',
     eventsExpr: {
@@ -108,15 +133,15 @@ export const E = {
   }
 }
 
-export const ABCDE = {
-  context: [A, B, C, D, E].reduce((result, s) => Object.assign(result, s.context), {})
+const ABCDE = {
+  context: [WidgetA, WidgetB, WidgetC, WidgetD, WidgetE].reduce((result, s) => Object.assign(result, s.context), {})
 }
 
-export const F = {
+export const WidgetF = {
   widget: {
     component: 'component-f',
     slots: {
-      default: [A, B, C, D, E].map(s => s.widget)
+      default: [WidgetA, WidgetB, WidgetC, WidgetD, WidgetE].map(s => s.widget)
     }
   },
   context: ABCDE.context,
@@ -124,7 +149,7 @@ export const F = {
     component: registry.component('component-f'),
     context: ABCDE.context,
     slots: (renderContext) => ({
-      default: [A, B, C, D, E].map(s => ({
+      default: [WidgetA, WidgetB, WidgetC, WidgetD, WidgetE].map(s => ({
         ...s.expected,
         context: {
           ...ABCDE.context,
@@ -140,8 +165,97 @@ export const F = {
 
 export const PageA = {
   page: {
-    path: 'default',
-    root: A.widget
+    path: 'page-a',
+    root: WidgetA.widget
   },
-  context: A.context
+  context: WidgetA.context,
+  expected: {
+    path: 'page-a',
+    root: WidgetA.expected
+  }
+}
+
+export const PageB = {
+  page: {
+    path: 'page-b',
+    root: WidgetB.widget
+  },
+  context: WidgetB.context,
+  expected: {
+    path: 'page-b',
+    root: WidgetB.expected
+  }
+}
+
+export const PageC = {
+  page: {
+    path: 'page-c',
+    root: WidgetC.widget
+  },
+  context: WidgetC.context,
+  expected: {
+    path: 'page-c',
+    root: WidgetC.expected
+  }
+}
+
+export const PageD = {
+  page: {
+    path: 'page-d',
+    root: WidgetD.widget
+  },
+  context: WidgetD.context,
+  expected: {
+    path: 'page-d',
+    root: WidgetD.expected
+  }
+}
+
+export const PageE = {
+  page: {
+    path: 'page-e',
+    root: WidgetE.widget
+  },
+  context: WidgetE.context,
+  expected: {
+    path: 'page-e',
+    root: WidgetE.expected
+  }
+}
+
+export const PageF = {
+  page: {
+    path: 'page-f',
+    root: WidgetF.widget
+  },
+  context: WidgetF.context,
+  expected: {
+    path: 'page-f',
+    root: WidgetF.expected
+  }
+}
+
+export const PortalA = {
+  portal: {
+    name: 'portal-a',
+    title: 'Demo Portal A'
+  },
+  expected: {
+    name: 'portal-a',
+    title: 'Demo Portal A',
+    pages: []
+  }
+}
+
+export const PortalB = {
+  portal: {
+    name: 'portal-a',
+    title: 'Demo Portal A',
+    pages: [PageA, PageB, PageC, PageD, PageE, PageF].map((page) => page.page)
+  },
+  expected: {
+    name: 'portal-a',
+    title: 'Demo Portal A',
+    pages: [PageA, PageB, PageC, PageD, PageE, PageF].map((page) => page.expected)
+  }
 }
