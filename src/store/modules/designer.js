@@ -1,4 +1,4 @@
-import { randomUID, fixModel } from '@/engine/model.js'
+// import { randomUID, fixModel } from '@/engine/model.js'
 
 export default () => ({
   state: {
@@ -31,12 +31,12 @@ export default () => ({
       state.selection = element
     },
     'designer/widgets/create': (state, { parent, widget }) => {
-      widget.uid = randomUID()
+      // widget.uid = randomUID()
       widget.parent = parent
-      parent.children.push(fixModel(widget))
+      // parent.children.push(fixModel(widget))
     },
     'designer/widgets/property': (state, { widget, model, name, property: { strategy, value, expression } }) => {
-      widget.uid = randomUID()
+      // widget.uid = randomUID()
       Object.assign(model.props[name], model[name], { strategy, value, expression })
     }
   },

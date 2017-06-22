@@ -16,8 +16,9 @@ export function buildValue (expression, context) {
     const f = new Function(Object.keys(context || {}).join(','), `return ${expression}`)
     return f.apply(this, Object.values(context || {}))
   } catch (e) {
-    console.log(e)
-    throw new Error(`Cannot evaluate expression: ${expression}`)
+    return undefined
+    // console.log(e)
+    // throw new Error(`Cannot evaluate expression: ${expression}`)
   }
 }
 
@@ -28,43 +29,58 @@ export function buildData (propsData, context) {
   }, {})
 }
 
-export function buildChildren (children, registry, context) {
+export function buildChildren (children, registry, context, parent) {
   return children.map((child) => buildWidget(
     child,
     registry,
-    context
+    context,
+    parent
   ))
 }
 
-export function buildSlots (slots, registry, context) {
+export function buildSlots (slots, registry, context, parent) {
   return Object.entries(slots).reduce((result, [slot, children]) => {
     result[slot] = children == null
       ? undefined
       : buildChildren(
         children,
         registry,
-        context
+        context,
+        parent
       )
     return result
   }, {})
 }
 
-export function buildWidget (widget, registry, context) {
-  const component = registry.component(widget.component)
-  return _.omitBy({
+export function buildWidget (widget, registry, context, parent) {
+
+  const ref = registry.component(widget.name)
+  const component = ref()
+
+  let instance = _.omitBy({
     id: uniqid(),
-    component,
-    propsData: component.options.props ? buildData(buildExpr(component.options.props, widget.propsExpr), context) : undefined,
-    eventsData: component.options.events ? buildData(buildExpr(component.options.events, widget.eventsExpr), context) : undefined,
-    context: context || undefined,
-    slots: widget.slots == null
-      ? undefined
-      : (renderContext) => buildSlots(
-        widget.slots,
-        registry,
-        buildContext(context, { $render: renderContext })
-    )
+    ref,
+    name: widget.name,
+    parent,
+    propsCategories: component.options.props
+      ? () => buildCategories(component.options.props)
+      : undefined,
+    eventsCategories: component.options.events
+      ? () => buildCategories(component.options.events)
+      : undefined,
+    propsData: component.options.props
+      ? () => buildData(buildExpr(component.options.props, widget.propsExpr), context)
+      : undefined,
+    eventsData: component.options.events
+      ? () => buildData(buildExpr(component.options.events, widget.eventsExpr), context)
+      : undefined,
+    slots: widget.slots
+      ? ($render) => buildSlots(widget.slots, registry, buildContext(context, { $render }), instance)
+      : undefined,
+    context: context || undefined
   }, _.isUndefined)
+
+  return instance
 }
 
 export function buildExpr (defs, overrides) {
@@ -118,4 +134,20 @@ export function buildPortal (portal, registry, context) {
     context: context || undefined,
     pages: (portal.pages || []).map((page) => buildPage(page, registry, portalContext))
   }, _.isUndefined)
+}
+
+export function buildPath (widget) {
+  return widget.parent != null
+    ? [ ...buildPath(widget.parent), widget ]
+    : [ widget ]
+}
+
+export function buildCategories (defs) {
+  const categories = {}
+  Object.entries(defs).forEach(([name, def]) => {
+    const categoryName = def.category != null ? def.category.toUpperCase() : ''
+    const category = categories[categoryName] = categories[categoryName] || { name: categoryName, defs: [] }
+    category.defs.push({ name, def })
+  }, {})
+  return Object.values(categories).sort((a, b) => a.name < b.name ? -1 : a.name > b.name)
 }

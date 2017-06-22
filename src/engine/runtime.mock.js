@@ -3,19 +3,20 @@ import { Registry } from './registry'
 
 export const registry = new Registry({
   components: {
-    'component-a': Vue.extend({}),
-    'component-b': Vue.extend({}),
-    'component-c': Vue.extend({
+    'component-a': () => Vue.extend({}),
+    'component-b': () => Vue.extend({}),
+    'component-c': () => Vue.extend({
       props: {
         foo: {
           type: String,
-          default: 'Foo String'
+          default: 'Foo String',
+          category: 'Advanced'
         },
         bar: String,
         baz: String
       }
     }),
-    'component-d': Vue.extend({
+    'component-d': () => Vue.extend({
       props: {
         one: Number,
         two: Number,
@@ -23,38 +24,41 @@ export const registry = new Registry({
         bar: String
       }
     }),
-    'component-e': Vue.extend({
+    'component-e': () => Vue.extend({
       events: {
         render: Function,
         click: {
           type: Function,
-          default: console.log
+          default: console.log,
+          category: 'Actions'
         }
       }
     }),
-    'component-f': Vue.extend({})
+    'component-f': () => Vue.extend({})
   }
 })
 
 export const WidgetA = {
   widget: {
-    component: 'component-a'
+    name: 'component-a'
   },
   expected: {
-    component: registry.component('component-a')
+    name: 'component-a',
+    ref: registry.component('component-a')
   }
 }
 
 export const WidgetB = {
   widget: {
-    component: 'component-b'
+    name: 'component-b'
   },
   context: {
     one: 1,
     two: 2
   },
   expected: {
-    component: registry.component('component-b'),
+    name: 'component-b',
+    ref: registry.component('component-b'),
     context: {
       one: 1,
       two: 2
@@ -64,7 +68,7 @@ export const WidgetB = {
 
 export const WidgetC = {
   widget: {
-    component: 'component-c',
+    name: 'component-c',
     propsExpr: {
       foo: '"ab" + 1 + 2',
       bar: '1 == 2',
@@ -72,7 +76,8 @@ export const WidgetC = {
     }
   },
   expected: {
-    component: registry.component('component-c'),
+    name: 'component-c',
+    ref: registry.component('component-c'),
     propsData: {
       foo: 'ab12',
       bar: false,
@@ -83,7 +88,7 @@ export const WidgetC = {
 
 export const WidgetD = {
   widget: {
-    component: 'component-d',
+    name: 'component-d',
     propsExpr: {
       foo: 'one + two',
       bar: 'foo.alfa + foo.omega + bar.beta + bar.gamma'
@@ -96,7 +101,8 @@ export const WidgetD = {
     bar: { beta: 'b', gamma: 'g' }
   },
   expected: {
-    component: registry.component('component-d'),
+    name: 'component-d',
+    ref: registry.component('component-d'),
     propsData: {
       foo: 3,
       bar: 'aobg'
@@ -112,7 +118,7 @@ export const WidgetD = {
 
 export const WidgetE = {
   widget: {
-    component: 'component-e',
+    name: 'component-e',
     eventsExpr: {
       render: 'console.log',
       click: 'clickHandler'
@@ -122,7 +128,8 @@ export const WidgetE = {
     clickHandler: console.info
   },
   expected: {
-    component: registry.component('component-e'),
+    name: 'component-e',
+    ref: registry.component('component-e'),
     eventsData: {
       render: console.log,
       click: console.info
@@ -139,14 +146,14 @@ const ABCDE = {
 
 export const WidgetF = {
   widget: {
-    component: 'component-f',
+    name: 'component-f',
     slots: {
       default: [WidgetA, WidgetB, WidgetC, WidgetD, WidgetE].map(s => s.widget)
     }
   },
   context: ABCDE.context,
   expected: {
-    component: registry.component('component-f'),
+    ref: registry.component('component-f'),
     context: ABCDE.context,
     slots: (renderContext) => ({
       default: [WidgetA, WidgetB, WidgetC, WidgetD, WidgetE].map(s => ({
