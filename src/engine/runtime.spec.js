@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { buildContext, buildExpression, buildData, buildWidget, buildChildren, buildSlots } from './runtime'
+import * as runtime from './runtime'
 import * as mock from './runtime.mock'
 
 describe('engine/runtime', () => {
@@ -9,7 +9,7 @@ describe('engine/runtime', () => {
     const context = { foo: 1, bar: 'this is a bar' }
     const extra = { bar: 'another bar', baz: 'boo!!' }
 
-    let result = buildContext(context, extra)
+    let result = runtime.buildContext(context, extra)
 
     expect(result).to.deep.equal({
       foo: 1,
@@ -23,27 +23,27 @@ describe('engine/runtime', () => {
   })
 
   it('should buildExpression', () => {
-    expect(buildExpression(mock.C.widget.propsExpr.foo)).to.deep.equal(mock.C.expected.propsData.foo)
-    expect(buildExpression(mock.C.widget.propsExpr.bar)).to.deep.equal(mock.C.expected.propsData.bar)
-    expect(buildExpression(mock.C.widget.propsExpr.baz)).to.deep.equal(mock.C.expected.propsData.baz)
+    expect(runtime.buildExpression(mock.C.widget.propsExpr.foo)).to.deep.equal(mock.C.expected.propsData.foo)
+    expect(runtime.buildExpression(mock.C.widget.propsExpr.bar)).to.deep.equal(mock.C.expected.propsData.bar)
+    expect(runtime.buildExpression(mock.C.widget.propsExpr.baz)).to.deep.equal(mock.C.expected.propsData.baz)
   })
 
   it('should buildExpression with context', () => {
-    expect(buildExpression(mock.D.widget.propsExpr.foo, mock.D.context)).to.deep.equal(mock.D.expected.propsData.foo)
-    expect(buildExpression(mock.D.widget.propsExpr.bar, mock.D.context)).to.deep.equal(mock.D.expected.propsData.bar)
+    expect(runtime.buildExpression(mock.D.widget.propsExpr.foo, mock.D.context)).to.deep.equal(mock.D.expected.propsData.foo)
+    expect(runtime.buildExpression(mock.D.widget.propsExpr.bar, mock.D.context)).to.deep.equal(mock.D.expected.propsData.bar)
   })
 
   it('should buildData', () => {
-    expect(buildData(mock.C.widget.propsExpr)).to.deep.equal(mock.C.expected.propsData)
+    expect(runtime.buildData(mock.C.widget.propsExpr)).to.deep.equal(mock.C.expected.propsData)
   })
 
   it('should buildData with context', () => {
-    expect(buildData(mock.D.widget.propsExpr, mock.D.context)).to.deep.equal(mock.D.expected.propsData)
+    expect(runtime.buildData(mock.D.widget.propsExpr, mock.D.context)).to.deep.equal(mock.D.expected.propsData)
   })
 
   it('should buildWidget', () => {
 
-    const result = buildWidget(mock.A.widget, mock.registry)
+    const result = runtime.buildWidget(mock.A.widget, mock.registry)
 
     expect(result).to.have.property('id')
     expect(result).to.have.property('component').that.equal(mock.A.expected.component)
@@ -55,7 +55,7 @@ describe('engine/runtime', () => {
 
   it('should buildWidget with context', () => {
 
-    const result = buildWidget(mock.B.widget, mock.registry, mock.B.context)
+    const result = runtime.buildWidget(mock.B.widget, mock.registry, mock.B.context)
 
     expect(result).to.have.property('id')
     expect(result).to.have.property('component').that.equal(mock.B.expected.component)
@@ -68,7 +68,7 @@ describe('engine/runtime', () => {
   it('should buildWidget with propsData', () => {
 
     {
-      const result = buildWidget(mock.C.widget, mock.registry, mock.C.context)
+      const result = runtime.buildWidget(mock.C.widget, mock.registry, mock.C.context)
 
       expect(result).to.have.property('id')
       expect(result).to.have.property('component').that.equal(mock.C.expected.component)
@@ -79,7 +79,7 @@ describe('engine/runtime', () => {
     }
 
     {
-      const result = buildWidget(mock.D.widget, mock.registry, mock.D.context)
+      const result = runtime.buildWidget(mock.D.widget, mock.registry, mock.D.context)
 
       expect(result).to.have.property('id')
       expect(result).to.have.property('component').that.equal(mock.D.expected.component)
@@ -92,7 +92,7 @@ describe('engine/runtime', () => {
 
   it('should buildWidget with eventsData', () => {
 
-    const result = buildWidget(mock.E.widget, mock.registry, mock.E.context)
+    const result = runtime.buildWidget(mock.E.widget, mock.registry, mock.E.context)
 
     expect(result).to.have.property('id')
     expect(result).to.have.property('component').that.equal(mock.E.expected.component)
@@ -138,7 +138,7 @@ describe('engine/runtime', () => {
 
     for (let { children, context, expected } of tests) {
 
-      const result = buildChildren(children, mock.registry, context)
+      const result = runtime.buildChildren(children, mock.registry, context)
 
       expect(result.length).to.equal(expected.length)
       expect(result.length).to.equal(children.length)
@@ -173,7 +173,7 @@ describe('engine/runtime', () => {
   it('should buildSlots', () => {
 
     const original = mock.F.widget.slots
-    const result = buildSlots(original, mock.registry, mock.ABCDE.context)
+    const result = runtime.buildSlots(original, mock.registry, mock.ABCDE.context)
     const expected = mock.F.expected.slots({ i: 5, j: 7 })
 
     expect(result).to.have.property('default')
@@ -197,7 +197,7 @@ describe('engine/runtime', () => {
 
   it('should buildWidget with slots', () => {
 
-    const result = buildWidget(mock.F.widget, mock.registry, mock.F.context)
+    const result = runtime.buildWidget(mock.F.widget, mock.registry, mock.F.context)
 
     expect(result).to.have.property('id')
     expect(result).to.have.property('component').that.equal(mock.F.expected.component)
@@ -227,5 +227,21 @@ describe('engine/runtime', () => {
         expect(resultItem).to.have.property('context').that.deep.equal(expectedItem.context)
       }
     }
+  })
+
+  it('should buildPage', () => {
+
+    const result = runtime.buildPage(mock.PageA.page, mock.registry, mock.PageA.context)
+
+    expect(result).to.have.property('id')
+    expect(result).to.have.property('path').that.equal('default')
+    expect(result).to.have.property('root')
+
+    expect(result.root).to.have.property('id')
+    expect(result.root).to.have.property('component').that.equal(mock.A.expected.component)
+    expect(result.root).to.have.property('context')
+    expect(result.root).to.not.have.property('propsData')
+    expect(result.root).to.not.have.property('eventsData')
+    expect(result.root).to.not.have.property('slots')
   })
 })

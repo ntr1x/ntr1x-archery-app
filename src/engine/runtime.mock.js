@@ -137,3 +137,11 @@ export const F = {
     })
   }
 }
+
+export const PageA = {
+  page: {
+    path: 'default',
+    root: A.widget
+  },
+  context: A.context
+}
