@@ -1,5 +1,5 @@
 <template>
-  <section class="modal-stack">
+  <section class="root">
     <modal v-for="modal in stack" :modal="modal" :key="modal"></modal>
   </section>
 </template>
@@ -9,13 +9,16 @@ export default {
   props: {
     stack: Array
   },
-  events: {
-    close: Function
-  },
   components: {
     Modal: require('./Modal')
   }
 }
 </script>
 
-<style scoped lang="scss" src="./Modal.scss"></style>
+<style scoped lang="scss">
+  .root {
+    position: relative;
+    overflow: visible;
+    z-index: 100;
+  }
+</style>

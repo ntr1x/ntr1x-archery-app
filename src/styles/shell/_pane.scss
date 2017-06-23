@@ -1,0 +1,42 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+
+@mixin shell-pane() {
+
+  @include dock-column();
+  @include with-highlights();
+  @include with-icons(icon, 22, 18);
+  background: $background-1;
+
+  >.top {
+    @include paper(1,10)
+    padding: 6px 12px;
+    overflow: hidden;
+
+    >h3 {
+      float: left;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: 24px;
+      color: $color-2;
+      text-shadow: $text-shadow-0;
+    }
+
+    >.actions {
+      float: right;
+      >.highlight {
+        padding: 0px;
+        opacity: 0.5;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  >.middle {
+
+  }
+}

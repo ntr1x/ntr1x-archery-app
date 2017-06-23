@@ -10,6 +10,7 @@
 
   >#{$middle} {
     flex: 1 1 auto;
+    width: 100%;
     position: relative;
   }
 
@@ -19,7 +20,7 @@
   }
 }
 
-@mixin dock-row($left: '.left', $content: '.content', $right: '.right') {
+@mixin dock-row($left: '.left', $content: '.center', $right: '.right') {
 
   display: flex;
 
@@ -30,6 +31,7 @@
 
   >#{$content} {
     flex: 1 1 auto;
+    width: 100%;
     position: relative;
   }
 

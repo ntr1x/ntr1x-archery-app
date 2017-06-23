@@ -10,7 +10,7 @@
 <script>
 export default {
   components: {
-    ModalStack: require('@/components/general/lib/ModalStack')
+    ModalStack: require('@/components/general/ModalStack')
   }
 }
 </script>

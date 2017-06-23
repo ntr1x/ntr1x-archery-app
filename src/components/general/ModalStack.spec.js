@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { expect } from 'chai'
 import { ModalStack, ModalStub } from '@/components/general'
 
-describe('components/general/lib/ModalStack', () => {
+describe('components/general/ModalStack', () => {
 
   it('should render correct contents when empty', () => {
     const Constructor = Vue.extend(ModalStack)

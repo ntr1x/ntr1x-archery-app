@@ -1,0 +1,9 @@
+@import "~@/styles/partials/mixins";
+
+.root.canvas {
+  @include paper(2, 5);
+  flex: 0 0 auto;
+  background-color: #FFFFFF;
+  min-width: 400px;
+  min-height: 600px;
+}

@@ -1,0 +1,9 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+
+.root.footer {
+  @include with-icons(icon, 24, 18);
+  @include with-buttons();
+  @include with-highlights();
+  padding: 6px 12px;
+}

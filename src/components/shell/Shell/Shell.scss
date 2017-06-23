@@ -1,0 +1,73 @@
+@import '~@/styles/partials/variables';
+@import '~@/styles/partials/mixins';
+
+$width-left: 270px;
+$width-right: 270px;
+
+$height-bottom: 120px;
+
+.root.shell {
+  @include position(absolute, 0, 0, 0, 0);
+  @include dock-column();
+  background-color: $background-0;
+
+  >.top {
+    border-bottom: $border-1;
+  }
+
+  >.middle {
+
+    position: relative;
+    @include dock-row();
+
+    >.left {
+      width: $width-left;
+      border-right: $border-1;
+      @include flex-column();
+    }
+
+    >.center {
+      position: relative;
+      overflow: hidden;
+      @include dock-column();
+
+      >.top {
+        background: $background-3;
+        border-bottom: $border-2;
+      }
+
+      >.middle {
+        position: relative;
+        @include dock-row();
+        @include scrollable();
+        justify-content: center;
+        align-items: center;
+        background: $background-0;
+      }
+
+      >.bottom {
+        border-top: $border-1;
+        height: $height-bottom;
+        @include dock-column();
+      }
+    }
+
+    >.right {
+      width: $width-right;
+      border-left: $border-1;
+      @include flex-column();
+    }
+  }
+
+  >.bottom {
+    border-top: $border-1;
+  }
+
+  .pane {
+    flex: 1 1 auto;
+    border-bottom: $border-1;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

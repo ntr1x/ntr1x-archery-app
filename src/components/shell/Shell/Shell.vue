@@ -1,3 +1,3 @@
 <template src="./Shell.htm"></template>
-<style scoped lang="scss" src="./Shell.scss"></style>
+<style src="./Shell.scss" lang="scss" scoped></style>
 <script src="./Shell.js"></script>
