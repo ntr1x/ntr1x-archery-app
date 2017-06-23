@@ -1,0 +1,57 @@
+@import '~material-colors-scss/function';
+@import '~@/styles/partials/variables';
+
+$input-themes: (
+  default: (
+    color: $color-white,
+    border: $border-1,
+    background: $background-2,
+    focus-background: #{material-color('grey', '700')}
+  ),
+  error: (
+    color: $color-white,
+    border: 1px solid #{material-color('indigo', '900')},
+    background: linear-gradient(to top, #{material-color('indigo', '700')}, #{material-color('indigo', '500')}),
+    hover-background: #{material-color('indigo', '700')}
+  )
+);
+
+@mixin input($type: 'default') {
+
+  $theme: map-get($input-themes, $type);
+
+  display: inline-block;
+  width: 100%;
+  background: #{map-get($theme, background)};
+  border: #{map-get($theme, border)};
+  color: #{map-get($theme, color)};
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 22px;
+  padding: 0px 6px;
+  // text-shadow: $text-shadow-0;
+  // box-shadow: $box-shadow-inset-0;
+  cursor: pointer;
+  // border-image-width: 1;
+  // outline: none;
+
+  // &:hover {
+  //   background: #{map-get($theme, hover-background)};
+  // }
+
+  &:focus {
+    background: #{map-get($theme, focus-background)};
+    box-shadow: rgba(255, 255, 255, 0.360784) 0px 1px 0px 0px inset, #{material-color('light-blue', '500')} 0px 0px 0px 2px;
+  }
+}
+
+@mixin with-inputs($class: 'input') {
+  .#{$class} {
+    @each $type in (default error) {
+      &.#{$class}-#{$type} {
+        @include input($type);
+      }
+    }
+  }
+}

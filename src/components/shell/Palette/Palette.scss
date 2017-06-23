@@ -3,5 +3,38 @@
 @import "~@/styles/shell/pane";
 
 .root.palette {
+
   @include shell-pane();
+  @include with-highlights();
+  @include with-icons(icon, 22, 14);
+
+  >.top {
+    color: $color-2;
+  }
+
+  >.middle {
+
+    >.section {
+
+      @include shell-pane();
+      @include flex-column();
+
+      >.top {
+        border-bottom: $border-2;
+      }
+
+      >.middle {
+        padding: 6px 6px;
+        border-bottom: $border-2;
+        >ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          >li {
+
+          }
+        }
+      }
+    }
+  }
 }

@@ -3,5 +3,49 @@
 @import "~@/styles/shell/pane";
 
 .root.properties {
+
   @include shell-pane();
+  @include with-highlights();
+  @include with-icons(icon, 22, 14);
+  @include with-tables(fixed);
+  @include with-inputs(input);
+
+  >.top {
+    color: $color-2;
+  }
+
+  >.middle {
+
+    >.section {
+
+      @include shell-pane();
+      @include flex-column();
+
+      >.top {
+        border-bottom: $border-2;
+      }
+
+      >.middle {
+        padding: 6px 12px;
+        border-bottom: $border-2;
+        color: $color-2;
+        font-size: 12px;
+
+        .cell {
+
+          // padding:
+
+          &.cell-1 {
+            width: 30%;
+          }
+
+          &.cell-2 {
+            position: relative;
+            width: 70%;
+            padding: 2px 0px;
+          }
+        }
+      }
+    }
+  }
 }
