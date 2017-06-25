@@ -32,8 +32,8 @@ $height-bottom: 120px;
       @include dock-column();
 
       >.top {
-        background: $background-3;
-        border-bottom: $border-2;
+        background: $background-1;
+        border-bottom: $border-1;
       }
 
       >.middle {
