@@ -9,6 +9,7 @@
   @include with-icons(icon, 22, 14);
   @include with-tables(fixed);
   @include with-inputs(input);
+  @include with-input-groups(input-group);
 
   >.top {
     color: $color-2;

@@ -38,10 +38,6 @@ $height-bottom: 140px;
 
       >.middle {
         position: relative;
-        @include dock-row();
-        @include scrollable();
-        justify-content: center;
-        align-items: center;
         background: $background-0;
       }
 

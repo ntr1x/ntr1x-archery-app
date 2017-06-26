@@ -10,7 +10,8 @@ export default () => ({
       structure: { open: true },
       console: { open: true }
     },
-    dimensions: { name: 'pc', position: 'absolute', width: '100%', height: '100%' }
+    dimensions: { name: 'pc', position: 'absolute', width: '100%', height: '100%' },
+    scale: 1
     // page: {
     //   children: []
     // },
@@ -22,6 +23,11 @@ export default () => ({
     },
     'viewport/dimensions': (state, dimensions) => {
       state.dimensions = dimensions
+    },
+    'viewport/zoom': (state, scale) => {
+      if (scale > 0.2) {
+        state.scale = scale
+      }
     }
     // 'designer/select': (state, element) => {
     //   state.selection = element

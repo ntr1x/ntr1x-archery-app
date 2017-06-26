@@ -9,7 +9,7 @@
   @include with-highlights();
   @include dock-row();
 
-  >.left {
+  .padding {
     padding: 10px 12px;
     .highlight {
       padding: 0px;

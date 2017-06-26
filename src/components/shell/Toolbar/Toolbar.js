@@ -6,13 +6,15 @@ export default {
       pc: { name: 'pc', position: 'absolute', width: '100%', height: '100%' },
       tablet: { name: 'tablet', position: 'relative', width: '768px', height: '1024px' },
       phone: { name: 'phone', position: 'relative', width: '414px', height: '736px' },
-      custom: { name: 'custom', position: 'relative', width: '1280px', height: '800px' }
+      custom: { name: 'custom', position: 'relative', width: '1280px', height: '780px' }
     }),
     ...mapState({
-      active: state => state.designer.dimensions
+      active: state => state.designer.dimensions,
+      scale: state => state.designer.scale
     })
   },
   methods: mapMutations({
-    viewport: 'designer/viewport/dimensions'
+    viewport: 'designer/viewport/dimensions',
+    zoom: 'designer/viewport/zoom'
   })
 }

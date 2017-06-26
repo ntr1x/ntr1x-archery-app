@@ -1,7 +1,21 @@
 @import "~@/styles/partials/mixins";
 
 .root.canvas {
-  @include paper(2, 5);
-  flex: 0 1 auto;
-  background-color: #FFFFFF;
+
+  @include position(absolute, 0, 0, 0, 0);
+
+  .outer {
+
+    @include position(absolute, 20px, 20px, 20px, 20px);
+    @include dock-row();
+    @include scrollable();
+    justify-content: center;
+    align-items: center;
+
+    .inner {
+      @include paper(2, 5);
+      flex: 0 1 auto;
+      background-color: #FFFFFF;
+    }
+  }
 }

@@ -1,15 +1,15 @@
 <div class="root toolbar">
-  <div class="left">
+  <div class="left padding">
     <button class="highlight highlight-default" title="New page"><i class="material-icons icon icon-24-18">insert_drive_file</i></button>
     <button class="highlight highlight-default" title="Clone page"><i class="material-icons icon icon-24-18">content_copy</i></button>
     <button class="highlight highlight-default" title="Import page"><i class="material-icons icon icon-24-18">file_download</i></button>
   </div>
-  <div class="left">
-    <button class="highlight highlight-default" title="New page"><i class="material-icons icon icon-24-18">zoom_out</i></button>
-    <button class="highlight highlight-default" title="Clone page">100%</button>
-    <button class="highlight highlight-default" title="Import page"><i class="material-icons icon icon-24-18">zoom_in</i></button>
-  </div>
   <div class="center">
+  </div>
+  <div class="right padding">
+    <button class="highlight highlight-default" title="New page" @click="zoom(scale - 0.2)"><i class="material-icons icon icon-24-18">zoom_out</i></button>
+    <button class="highlight highlight-default" title="Clone page" @click="zoom(1)">{{ (scale * 100).toFixed(0) }}%</button>
+    <button class="highlight highlight-default" title="Import page" @click="zoom(scale + 0.2)"><i class="material-icons icon icon-24-18">zoom_in</i></button>
   </div>
   <div class="right">
     <div class="buttons screen">
