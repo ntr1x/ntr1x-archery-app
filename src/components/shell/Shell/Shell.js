@@ -1,3 +1,5 @@
+import { mapState } from 'vuex'
+
 import ShellHeader from '../Header/Header.vue'
 import ShellFooter from '../Footer/Footer.vue'
 import ShellProperties from '../Properties/Properties.vue'
@@ -19,5 +21,12 @@ export default {
     ShellOutline,
     ShellConsole,
     ShellCanvas
-  }
+  },
+  computed: mapState({
+    palette: state => state.designer.panels.palette,
+    outline: state => state.designer.panels.outline,
+    properties: state => state.designer.panels.properties,
+    structure: state => state.designer.panels.structure,
+    console: state => state.designer.panels.console
+  })
 }

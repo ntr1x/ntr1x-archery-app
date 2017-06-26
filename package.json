@@ -20,6 +20,7 @@
     "lodash": "^4.17.4",
     "material-colors-scss": "^0.2.2",
     "material-design-icons": "^3.0.1",
+    "pluralize": "^5.0.0",
     "roboto-fontface": "^0.7.0",
     "source-sans-pro": "^2.0.10",
     "uniqid": "^4.1.1",

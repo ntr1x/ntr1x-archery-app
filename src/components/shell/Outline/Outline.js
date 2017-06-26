@@ -1,3 +1,5 @@
+import { mapMutations } from 'vuex'
+
 import OutlineItem from './OutlineItem.vue'
 
 export default {
@@ -61,6 +63,9 @@ export default {
       ]
     }
   },
+  methods: mapMutations({
+    toggle: 'designer/panels/toggle'
+  }),
   components: {
     OutlineItem
   }

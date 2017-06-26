@@ -15,11 +15,26 @@
   </div>
 
   <div class="right">
-    <button class="highlight highlight-default"><i class="material-icons icon icon-24-18">widgets</i> Palette</button>
-    <button class="highlight highlight-default"><i class="material-icons icon icon-24-18">web_asset</i> Outline</button>
-    <button class="highlight highlight-default"><i class="material-icons icon icon-24-18">details</i> Properties</button>
-    <button class="highlight highlight-default"><i class="material-icons icon icon-24-18">web</i> Structure</button>
-    <button class="highlight highlight-default"><i class="material-icons icon icon-24-18">dvr</i> Console</button>
+    <button class="highlight highlight-default"
+      :class="{ active: palette.open }"
+      @click="toggle({ name: 'palette' })"
+    ><i class="material-icons icon icon-24-18">widgets</i> Palette</button>
+    <button class="highlight highlight-default"
+      :class="{ active: outline.open }"
+      @click="toggle({ name: 'outline'
+    })"><i class="material-icons icon icon-24-18">web_asset</i> Outline</button>
+    <button class="highlight highlight-default"
+      :class="{ active: properties.open }"
+      @click="toggle({ name: 'properties' })"
+    ><i class="material-icons icon icon-24-18">details</i> Properties</button>
+    <button class="highlight highlight-default"
+      :class="{ active: structure.open }"
+      @click="toggle({ name: 'structure' })"
+    ><i class="material-icons icon icon-24-18">web</i> Structure</button>
+    <button class="highlight highlight-default"
+      :class="{ active: console.open }"
+      @click="toggle({ name: 'console' })"
+    ><i class="material-icons icon icon-24-18">dvr</i> Console</button>
   </div>
 
 </div>

@@ -13,10 +13,22 @@
   </div>
   <div class="right">
     <div class="buttons screen">
-      <button class="button">320&nbsp;x&nbsp;480</button>
-      <button class="button icon"><i class="material-icons icon icon-48-24">phone_iphone</i></button>
-      <button class="button icon active"><i class="material-icons icon icon-48-24">tablet_mac</i></button>
-      <button class="button icon"><i class="material-icons icon icon-48-24">computer</i></button>
+      <button class="button"
+        :class="{ active: active.name === dimensions.custom.name }"
+        @click="viewport(dimensions.custom)"
+      >{{ dimensions.custom.width || 'auto' }}&nbsp;x&nbsp;{{ dimensions.custom.height || 'auto' }}</button>
+      <button class="button icon"
+        :class="{ active: active.name === dimensions.phone.name }"
+        @click="viewport(dimensions.phone)"
+      ><i class="material-icons icon icon-48-24">phone_iphone</i></button>
+      <button class="button icon"
+        :class="{ active: active.name === dimensions.tablet.name }"
+        @click="viewport(dimensions.tablet)"
+      ><i class="material-icons icon icon-48-24">tablet_mac</i></button>
+      <button class="button icon"
+        :class="{ active: active.name === dimensions.pc.name }"
+        @click="viewport(dimensions.pc)"
+      ><i class="material-icons icon icon-48-24">computer</i></button>
     </div>
   </div>
 </div>

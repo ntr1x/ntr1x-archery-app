@@ -3,9 +3,9 @@
     <shell-header />
   </div>
   <div class="middle">
-    <div class="left">
-      <shell-palette class="pane" />
-      <shell-outline class="pane" />
+    <div class="left" v-if="palette.open || outline.open">
+      <shell-palette class="pane" v-if="palette.open" />
+      <shell-outline class="pane" v-if="outline.open" />
     </div>
     <div class="center">
       <div class="top">
@@ -14,13 +14,13 @@
       <div class="middle">
         <shell-canvas />
       </div>
-      <div class="bottom">
+      <div class="bottom" v-if="console.open">
         <shell-console class="pane" />
       </div>
     </div>
-    <div class="right">
-      <shell-properties class="pane" />
-      <shell-structure class="pane" />
+    <div class="right" v-if="properties.open || structure.open">
+      <shell-properties class="pane" v-if="properties.open" />
+      <shell-structure class="pane" v-if="structure.open" />
     </div>
   </div>
   <div class="bottom">
