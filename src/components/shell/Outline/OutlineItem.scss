@@ -1,0 +1,54 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+@import "~@/styles/shell/pane";
+
+.root.outline-item {
+  @include dock-column();
+  @include with-icons(icon, 22, 14);
+  @include with-highlights();
+  position: relative;
+
+  >.top {
+    @include dock-row();
+
+    >.right {
+      opacity: 0;
+      >.action {
+        padding: 0px;
+      }
+    }
+
+    .center {
+      >.label {
+        padding-left: 0px;
+      }
+    }
+
+    >.left {
+      opacity: 0.4;
+      width: 24px;
+      >.expand {
+        padding: 0px;
+        transform: rotate(-90deg);
+        transition: transform 0.2s ease-in-out;
+        &.open {
+          transform: rotate(0);
+        }
+      }
+    }
+
+    &:hover {
+      >.right {
+        opacity: 1;
+      }
+      >.left {
+        opacity: 1;
+      }
+    }
+  }
+
+  >.middle {
+    position: relative;
+    padding-left: 16px;
+  }
+}

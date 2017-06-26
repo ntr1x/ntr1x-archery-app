@@ -4,4 +4,39 @@
 
 .root.console {
   @include shell-pane();
+  >.middle {
+    @include scrollable();
+    padding: 6px 6px;
+    >.table {
+      @include table(auto);
+
+      .row {
+        >.cell {
+          vertical-align: top;
+          &.cell-scope {
+          }
+          &.cell-error {
+          }
+          &.cell-message {
+            width: 100%;
+            color: $color-white;
+            font-size: 12px;
+            opacity: 0.5;
+            vertical-align: middle;
+            padding: 0px 6px;
+            font-weight: 300;
+            letter-spacing: 1px;
+          }
+        }
+
+        &:hover {
+          >.cell {
+            &.cell-message {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
 }

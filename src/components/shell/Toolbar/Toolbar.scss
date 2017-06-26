@@ -11,18 +11,24 @@
 
   >.left {
     padding: 10px 12px;
+    .highlight {
+      padding: 0px;
+      margin: 0px 6px;
+    }
   }
 
   .center {
-
+    display: flex;
+    justify-content: center;
   }
 
   .buttons {
 
+    flex: 0 0 auto;
     display: flex;
     flex-direction: row;
 
-    .button {
+    >.button {
       position: relative;
       flex: 0 0 auto;
       // width: 48px;

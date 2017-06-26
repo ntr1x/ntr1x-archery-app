@@ -13,6 +13,7 @@
   }
 
   >.middle {
+    @include scrollable();
 
     >.section {
 

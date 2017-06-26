@@ -1,6 +1,7 @@
 @mixin with-icons($class: icon, $line-height: 24, $font-size: 12) {
   .#{$class} {
     vertical-align: bottom;
+    text-align: center;
     &.#{$class}-#{$line-height}-#{$font-size} {
       line-height: #{$line-height}px;
       width: #{$line-height}px;

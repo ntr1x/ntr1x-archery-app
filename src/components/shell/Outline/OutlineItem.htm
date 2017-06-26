@@ -1,0 +1,23 @@
+<div class="root outline-item">
+  <div class="top">
+    <div class="left">
+      <button v-if="item.children" class="highlight highlight-default expand" :class="{ 'open': open }" @click="toggle()">
+        <i class="material-icons icon icon-22-14">arrow_drop_down</i>
+      </button>
+    </div>
+    <div class="center">
+      <button class="highlight highlight-default label">
+        <i class="material-icons icon icon-22-14">bookmark</i>
+        <span>{{ item.title }}</span>
+      </button>
+    </div>
+    <div class="right">
+      <button class="highlight highlight-default action"><i class="material-icons icon icon-22-14">delete</i></button>
+    </div>
+  </div>
+  <div class="middle" :class="{ 'open': open }">
+    <div class="children" v-if="open && item.children">
+      <outline-item v-for="child in item.children" :key="child" :item="child" :level="level + 1" />
+    </div>
+  </div>
+</div>

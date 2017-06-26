@@ -14,6 +14,8 @@
 
   >.middle {
 
+    @include scrollable();
+
     >.section {
 
       @include shell-pane();

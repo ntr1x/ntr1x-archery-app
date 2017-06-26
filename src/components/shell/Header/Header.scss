@@ -2,8 +2,15 @@
 @import "~@/styles/partials/mixins";
 
 .root.header {
+  @include dock-row();
   @include with-icons(icon, 24, 18);
   @include with-buttons();
   @include with-highlights();
   padding: 12px;
+  justify-content: space-between;
+
+  >.center {
+    flex: 0 0 auto;
+    width: auto;
+  }
 }

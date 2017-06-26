@@ -1,20 +1,24 @@
-@mixin with-tables($table-layout: auto, $table-class: table, $table-body-class: tbody, $table-row-class: row, $table-cell-class: cell) {
-  .#{$table-class} {
-    display: table;
-    width: 100%;
+@mixin table($table-layout: auto, $table-body-class: tbody, $table-row-class: row, $table-cell-class: cell) {
+  display: table;
+  width: 100%;
+  position: relative;
+  table-layout: #{$table-layout};
+  >.#{$table-body-class} {
+    display: table-row-group;
     position: relative;
-    table-layout: #{$table-layout};
-    >.#{$table-body-class} {
-      display: table-row-group;
+    >.#{$table-row-class} {
+      display: table-row;
       position: relative;
-      >.#{$table-row-class} {
-        display: table-row;
+      >.#{$table-cell-class} {
+        display: table-cell;
         position: relative;
-        >.#{$table-cell-class} {
-          display: table-cell;
-          position: relative;
-        }
       }
     }
+  }
+}
+
+@mixin with-tables($table-layout: auto, $table-class: table, $table-body-class: tbody, $table-row-class: row, $table-cell-class: cell) {
+  .#{$table-class} {
+    @include table($table-layout, $table-body-class, $table-row-class, $table-cell-class);
   }
 }
