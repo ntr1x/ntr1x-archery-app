@@ -1,27 +1,6 @@
 @import '~material-colors-scss/function';
 @import '~@/styles/partials/variables';
 
-$highlight-themes: (
-  default: (
-    color: $color-white,
-  ),
-  primary: (
-    color: material-color('indigo', '300'),
-  ),
-  danger: (
-    color: material-color('red', '300'),
-  ),
-  warning: (
-    color: material-color('orange', '300'),
-  ),
-  success: (
-    color: material-color('green', '300'),
-  ),
-  info: (
-    color: material-color('light-blue', '300'),
-  )
-);
-
 @mixin highlight($type: 'default') {
 
   $theme: map-get($highlight-themes, $type);

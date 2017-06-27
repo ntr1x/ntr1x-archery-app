@@ -13,7 +13,8 @@
 
 <script>
 export default {
-  name: 'canvas',
+  name: 'column',
+  title: 'Column',
   props: {
     justifyContent: String,
     alignItems: String,

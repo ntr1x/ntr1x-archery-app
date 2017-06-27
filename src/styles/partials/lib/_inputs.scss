@@ -1,21 +1,6 @@
 @import '~material-colors-scss/function';
 @import '~@/styles/partials/variables';
 
-$input-themes: (
-  default: (
-    color: $color-white,
-    border: $border-1,
-    background: $background-2,
-    focus-background: #{material-color('grey', '700')}
-  ),
-  error: (
-    color: $color-white,
-    border: 1px solid #{material-color('indigo', '900')},
-    background: linear-gradient(to top, #{material-color('indigo', '700')}, #{material-color('indigo', '500')}),
-    hover-background: #{material-color('indigo', '700')}
-  )
-);
-
 @mixin input($type: 'default') {
 
   $theme: map-get($input-themes, $type);
@@ -37,56 +22,11 @@ $input-themes: (
   }
 }
 
-@mixin input-group($type: 'default', $class-input: 'input-control', $class-addon: 'input-addon') {
-
-  $theme: map-get($input-themes, $type);
-
-  display: flex;
-  width: 100%;
-  background: #{map-get($theme, background)};
-  border: #{map-get($theme, border)};
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 12px;
-  line-height: 22px;
-
-  &:focus {
-    background: #{map-get($theme, focus-background)};
-    box-shadow: #{material-color('light-blue', '500')} 0px 0px 0px 2px;
-  }
-
-  .#{$class-input} {
-    position: relative;
-    flex: 1 1 auto;
-    border: none;
-    width: 100%;
-    padding: 0px 6px;
-    background: transparent;
-    color: #{map-get($theme, color)};
-    outline: none;
-  }
-
-  .#{$class-addon} {
-    position: relative;
-    flex: 0 0 auto;
-  }
-}
-
 @mixin with-inputs($class: 'input') {
   .#{$class} {
-    @each $type in (default error) {
+    @each $type in (default danger) {
       &.#{$class}-#{$type} {
         @include input($type);
-      }
-    }
-  }
-}
-
-@mixin with-input-groups($class: 'input-group', $class-input: 'input-control', $class-addon: 'input-addon') {
-  .#{$class} {
-    @each $type in (default error) {
-      &.#{$class}-#{$type} {
-        @include input-group($type, $class-input, $class-addon);
       }
     }
   }

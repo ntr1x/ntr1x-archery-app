@@ -13,6 +13,7 @@
 <script>
 export default {
   name: 'row',
+  title: 'Row',
   props: {
     justifyContent: String,
     alignItems: String,

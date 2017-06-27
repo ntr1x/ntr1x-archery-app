@@ -6,17 +6,18 @@
 
 <style type="scss" scoped>
   .root {
-    display: flex;
-    flex-direction: column;
+    flex: 1 1 auto;
   }
 </style>
 
 <script>
 export default {
-  name: 'column',
+  name: 'box',
+  title: 'Box',
   props: {
-    justifyContent: String,
-    alignItems: String,
+    margin: String,
+    padding: String,
+    flex: String,
   }
 }
 </script>

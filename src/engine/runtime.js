@@ -151,3 +151,13 @@ export function buildCategories (defs) {
   }, {})
   return Object.values(categories).sort((a, b) => a.name < b.name ? -1 : a.name > b.name)
 }
+
+// export function buildFactory (component) {
+//   const categories = {}
+//   Object.entries(defs).forEach(([name, def]) => {
+//     const categoryName = def.category != null ? def.category.toUpperCase() : ''
+//     const category = categories[categoryName] = categories[categoryName] || { name: categoryName, defs: [] }
+//     category.defs.push({ name, def })
+//   }, {})
+//   return Object.values(categories).sort((a, b) => a.name < b.name ? -1 : a.name > b.name)
+// }

@@ -1,45 +1,6 @@
 @import '~material-colors-scss/function';
 @import '~@/styles/partials/variables';
 
-$button-themes: (
-  default: (
-    color: $color-white,
-    border: 1px solid #{material-color('grey', '900')},
-    background: #{material-color('grey', '800')},
-    hover-background: #{material-color('grey', '700')}
-  ),
-  primary: (
-    color: $color-white,
-    border: 1px solid #{material-color('indigo', '900')},
-    background: linear-gradient(to top, #{material-color('indigo', '700')}, #{material-color('indigo', '500')}),
-    hover-background: #{material-color('indigo', '700')}
-  ),
-  danger: (
-    color: $color-white,
-    border: 1px solid #{material-color('red', '900')},
-    background: linear-gradient(to top, #{material-color('red', '700')}, #{material-color('red', '500')}),
-    hover-background: #{material-color('red', '400')}
-  ),
-  warning: (
-    color: $color-white,
-    border: 1px solid #{material-color('orange', '900')},
-    background: linear-gradient(to top, #{material-color('orange', '700')}, #{material-color('orange', '500')}),
-    hover-background: #{material-color('orange', '400')}
-  ),
-  success: (
-    color: $color-white,
-    border: 1px solid #{material-color('green', '900')},
-    background: linear-gradient(to top, #{material-color('green', '700')}, #{material-color('green', '500')}),
-    hover-background: #{material-color('green', '400')}
-  ),
-  info: (
-    color: $color-white,
-    border: 1px solid #{material-color('light-blue', '900')},
-    background: linear-gradient(to top, #{material-color('light-blue', '700')}, #{material-color('light-blue', '500')}),
-    hover-background: #{material-color('light-blue', '400')}
-  )
-);
-
 @mixin button($type: 'default') {
 
   $theme: map-get($button-themes, $type);

@@ -6,17 +6,18 @@
 
 <style type="scss" scoped>
   .root {
-    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
   }
 </style>
 
 <script>
 export default {
-  name: 'box',
+  name: 'canvas',
+  title: 'Canvas',
   props: {
-    margin: String,
-    padding: String,
-    flex: String,
+    justifyContent: String,
+    alignItems: String,
   }
 }
 </script>
