@@ -1,11 +1,14 @@
-export class Palette {
+export default class Palette {
 
-  factory (name, factory) {
-    if (factory !== undefined) {
-      this._factories[name] = factory
-    }
-    return this._factories[name]
+  constructor () {
+    this._categories = {}
+  }
+
+  register (component) {
+    const category = this._categories[component.category] = category[component.category]
+    category.items.push({
+      name: component.name,
+      component: component
+    })
   }
 }
-
-export default new Palette()

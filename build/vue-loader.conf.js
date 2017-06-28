@@ -4,7 +4,7 @@ var isProduction = process.env.NODE_ENV === 'production'
 
 const customLoaders = {
   docs: require.resolve('./loaders/docs-loader.js'),
-  widget: require.resolve('./loaders/widget-loader.js'),
+  icon: require.resolve('./loaders/icon-loader.js'),
 }
 
 const cssLoaders = utils.cssLoaders({

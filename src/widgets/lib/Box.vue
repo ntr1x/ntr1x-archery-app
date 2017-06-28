@@ -21,3 +21,5 @@ export default {
   }
 }
 </script>
+
+<icon test="blabla" a-foo="bbb" src="material-design-icons/social/svg/production/ic_cake_24px.svg"></icon>

@@ -1,14 +1,21 @@
-import palette from '@/engine/palette'
+// import palette from '@/engine/palette'
 
 import Canvas from './lib/Canvas.vue'
 import Column from './lib/Column.vue'
 import Row from './lib/Row.vue'
 import Box from './lib/Box.vue'
 
-palette.factory('a-canvas', () => Canvas)
-palette.factory('a-column', () => Column)
-palette.factory('a-row', () => Row)
-palette.factory('a-box', () => Box)
+export {
+  Canvas,
+  Column,
+  Row,
+  Box
+}
+
+// palette.component('a-canvas', Canvas)
+// palette.component('a-column', Column)
+// palette.component('a-row', Row)
+// palette.component('a-box', Box)
 
 // registry.factory('a-title', () => Wrap(Title, {props}))
 // registry.factory('a-text', () => Column)

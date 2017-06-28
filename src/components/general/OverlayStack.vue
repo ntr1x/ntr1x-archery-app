@@ -1,6 +1,6 @@
 <template>
   <section class="modal-stack">
-    <overlay v-for="overlay in stack" :overlay="overlay" :key="overlay"></modal>
+    <overlay v-for="overlay in stack" :overlay="overlay" :key="overlay"></overlay>
   </section>
 </template>
 
