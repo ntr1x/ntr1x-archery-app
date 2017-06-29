@@ -1,0 +1,33 @@
+<div class="root expression">
+  <div class="top">
+    <h3 class="heading">Expression</h3>
+    <div class="actions">
+      <button class="highlight highlight-default" @click="close()"><i class="material-icons icon icon-22-18">close</i></button>
+    </div>
+  </div>
+  <div class="middle">
+    <div class="column">
+      <div><label>Expression</label></div>
+      <div>
+        <textarea class="input input-default" v-focus>
+        </textarea>
+      </div>
+      <div><label>Preview</label></div>
+      <div>
+        <textarea class="input input-default">
+        </textarea>
+      </div>
+    </div>
+    <div class="column">
+      <div><label>Context</label></div>
+      <div>
+        <textarea class="input input-default">
+        </textarea>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <button class="action action-default">Cancel</button>
+    <button class="action action-primary">Save</button>
+  </div>
+</div>

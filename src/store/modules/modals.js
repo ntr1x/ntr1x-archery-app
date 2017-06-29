@@ -1,12 +1,17 @@
 export default () => ({
+  namespaced: true,
   state: {
-    stack: []
+    stack: [
+      {
+        factory: () => require('@/modals/Expression/Expression.vue')
+      }
+    ]
   },
   mutations: {
-    'modals/open': (state, modal) => {
+    'open': (state, modal) => {
       state.stack.push(modal)
     },
-    'modals/close': (state) => {
+    'close': (state) => {
       state.stack.pop()
     }
   }

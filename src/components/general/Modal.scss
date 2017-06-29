@@ -7,19 +7,17 @@
   overflow: visible;
   z-index: 100;
 
-  .backdrop {
-    @include position(fixed);
-    background-color: rgba(0, 0, 0, 0.3);
+  .modal {
+    @include position(fixed, 0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .modal {
+    .content {
       position: relative;
       flex: 0 0 auto;
       display: block;
-      max-height: 90%;
-      max-width: 90%;
 
       >* {
         display: table;

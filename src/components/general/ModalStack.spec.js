@@ -20,7 +20,7 @@ describe('components/general/ModalStack', () => {
     const vm = new Constructor({
       propsData: {
         stack: [
-          { provider: () => ModalStub }
+          { factory: () => ModalStub }
         ]
       }
     }).$mount()
@@ -32,8 +32,8 @@ describe('components/general/ModalStack', () => {
     const vm = new Constructor({
       propsData: {
         stack: [
-          { provider: () => ModalStub },
-          { provider: () => ModalStub }
+          { factory: () => ModalStub },
+          { factory: () => ModalStub }
         ]
       }
     }).$mount()

@@ -1,9 +1,9 @@
 <template>
-  <section class="root" @click.self="$store.commit('modals/close')">
-    <div class="modal">
-      <proxy :component="modal.provider()" :pass="modal.data"></proxy>
+  <div class="root modal" @click.self="$store.commit('modals/close')">
+    <div class="content">
+      <proxy :component="modal.factory()" :pass="modal.data"></proxy>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -19,27 +19,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-@import "~@/styles/partials/mixins";
-
-.root {
-  @include position(fixed);
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .modal {
-    position: relative;
-    flex: 0 0 auto;
-    display: block;
-    max-height: 90%;
-    max-width: 90%;
-
-    >* {
-      display: table;
-    }
-  }
-}
-
-</style>
+<style scoped lang="scss" src="./Modal.scss"></style>

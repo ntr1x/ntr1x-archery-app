@@ -1,0 +1,19 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+@import "~@/styles/shell/modal";
+
+.root.expression {
+
+  @include shell-modal();
+  @include with-inputs('input');
+
+  >.middle {
+
+    @include flex-row('column');
+    padding: 6px;
+
+    >.column {
+      padding: 6px;
+    }
+  }
+}
