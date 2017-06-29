@@ -1,7 +1,15 @@
 @import '~material-colors-scss/function';
 @import '~@/styles/partials/variables';
 
-@mixin input-group($type: 'default', $class-input: 'input-control', $class-button: 'input-button') {
+@mixin input-group(
+  $type: 'default',
+  $class-input: 'input-control',
+  $class-button: 'input-button',
+  $line-height: 22px,
+  $font-size: 12px,
+  $input-padding: #{0px 6px},
+  $button-padding: #{0px 6px}
+) {
 
   $input-theme: map-get($input-themes, $type);
   $button-theme: map-get($button-themes, $type);
@@ -12,24 +20,24 @@
   border: #{map-get($input-theme, border)};
   box-sizing: border-box;
   border-radius: 4px;
-  font-size: 12px;
-  line-height: 22px;
 
   // &:focus-within {
   //   background: #{map-get($theme, focus-background)};
   //   box-shadow: #{material-color('light-blue', '500')} 0px 0px 0px 2px;
   // }
 
-  .#{$class-input} {
+  >.#{$class-input} {
 
     position: relative;
     flex: 1 1 auto;
     border: none;
-    width: 100%;
+    // width: 100%;
     min-width: 50px;
-    padding: 0px 6px;
-    background: transparent;
+    background: #{map-get($input-theme, background)};
     color: #{map-get($input-theme, color)};
+    font-size: $font-size;
+    line-height: $line-height;
+    padding: $input-padding;
     outline: none;
 
     &:first-child {
@@ -48,7 +56,7 @@
     }
   }
 
-  .#{$class-button} {
+  >.#{$class-button} {
 
     display: inline-block;
     background: #{map-get($button-theme, background)};
@@ -57,9 +65,9 @@
     color: #{map-get($button-theme, color)};
     box-sizing: border-box;
     // border-radius: 4px;
-    font-size: 12px;
-    line-height: 22px;
-    padding: 0px 6px;
+    font-size: $font-size;
+    line-height: $line-height;
+    padding: $button-padding;
     text-shadow: $text-shadow-0;
     box-shadow: $box-shadow-inset-0;
     cursor: pointer;
@@ -92,11 +100,19 @@
   }
 }
 
-@mixin with-input-groups($class: 'input-group', $class-input: 'input-control', $class-addon: 'input-button') {
+@mixin with-input-groups(
+  $class: 'input-group',
+  $class-input: 'input-control',
+  $class-addon: 'input-button',
+  $line-height: 22px,
+  $font-size: 12px,
+  $input-padding: #{0px 6px},
+  $button-padding: #{0px 6px}
+) {
   .#{$class} {
     @each $type in (default primary danger warning success info) {
       &.#{$class}-#{$type} {
-        @include input-group($type, $class-input, $class-addon);
+        @include input-group($type, $class-input, $class-addon, $line-height, $font-size, $input-padding, $button-padding);
       }
     }
   }

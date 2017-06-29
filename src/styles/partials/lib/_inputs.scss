@@ -1,7 +1,7 @@
 @import '~material-colors-scss/function';
 @import '~@/styles/partials/variables';
 
-@mixin input($type: 'default') {
+@mixin input($type: 'default', $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {
 
   $theme: map-get($input-themes, $type);
 
@@ -12,9 +12,9 @@
   color: #{map-get($theme, color)};
   box-sizing: border-box;
   border-radius: 4px;
-  font-size: 12px;
-  line-height: 22px;
-  padding: 0px 6px;
+  font-size: $font-size;
+  line-height: $line-height;
+  padding: $padding;
 
   &:focus {
     background: #{map-get($theme, focus-background)};
@@ -22,7 +22,7 @@
   }
 }
 
-@mixin with-inputs($class: 'input') {
+@mixin with-inputs($class: 'input', $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {
   .#{$class} {
     @each $type in (default danger) {
       &.#{$class}-#{$type} {

@@ -1,20 +1,20 @@
-@mixin flex-column($pane: '.pane') {
+@mixin flex-column($pane: 'pane', $flex: 1 1 auto) {
 
   display: flex;
   flex-direction: column;
 
-  >#{$pane} {
-    flex: 1 1 auto;
+  >.#{$pane} {
+    flex: $flex;
     position: relative;
   }
 }
 
-@mixin flex-row($pane: '.pane') {
+@mixin flex-row($pane: 'pane', $flex: 1 1 auto) {
 
   display: flex;
 
-  >#{$pane} {
-    flex: 1 1 auto;
+  >.#{$pane} {
+    flex: $flex;
     position: relative;
   }
 }

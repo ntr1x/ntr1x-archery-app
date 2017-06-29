@@ -1,13 +1,13 @@
 @import "~@/styles/partials/variables";
 @import "~@/styles/partials/mixins";
 
-@mixin shell-modal($width: 600px, $height: 400px) {
+@mixin shell-modal($width: auto, $height: auto) {
 
   @include paper(1);
   @include dock-column();
   @include with-highlights();
   @include with-buttons();
-  @include with-buttons(action, 28px, 14px, 0px 12px);
+  @include with-buttons(action, 32px, 14px, 0px 12px);
   @include with-icons(icon, 22, 18);
 
   background: $background-0;
@@ -15,7 +15,7 @@
   border-radius: 2px;
 
   width: $width;
-  max-height: $height;
+  height: $height;
   overflow: hidden;
 
   font-size: 14px;

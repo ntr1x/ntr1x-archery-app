@@ -20,5 +20,13 @@ export default {
     position: relative;
     overflow: visible;
     z-index: 100;
+
+    // >* {
+    //   opacity: 0.5;
+    //
+    //   &:last-child {
+    //     opacity: 1;
+    //   }
+    // }
   }
 </style>

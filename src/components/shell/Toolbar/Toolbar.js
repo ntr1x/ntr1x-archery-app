@@ -13,8 +13,17 @@ export default {
       scale: state => state.designer.scale
     })
   },
-  methods: mapMutations({
-    viewport: 'designer/viewport/dimensions',
-    zoom: 'designer/viewport/zoom'
-  })
+  methods: {
+    ...mapMutations({
+      viewport: 'designer/viewport/dimensions',
+      zoom: 'designer/viewport/zoom',
+      toggle: 'designer/panels/toggle',
+      modal: 'modals/open'
+    }),
+    newPage () {
+      this.modal({
+        factory: () => require('@/modals/Page/Page.vue')
+      })
+    }
+  }
 }

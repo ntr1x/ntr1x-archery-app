@@ -1,46 +1,46 @@
-@mixin dock-column($top: '.top', $middle: '.middle', $bottom: '.bottom') {
+@mixin dock-column($top: 'top', $middle: 'middle', $bottom: 'bottom') {
 
   display: flex;
   flex-direction: column;
 
-  >#{$top} {
+  >.#{$top} {
     flex: 0 0 auto;
     position: relative;
     box-sizing: border-box;
   }
 
-  >#{$middle} {
+  >.#{$middle} {
     flex: 1 1 auto;
     width: 100%;
     position: relative;
     box-sizing: border-box;
   }
 
-  >#{$bottom} {
+  >.#{$bottom} {
     flex: 0 0 auto;
     position: relative;
     box-sizing: border-box;
   }
 }
 
-@mixin dock-row($left: '.left', $content: '.center', $right: '.right') {
+@mixin dock-row($left: 'left', $content: 'center', $right: 'right') {
 
   display: flex;
 
-  >#{$left} {
+  >.#{$left} {
     flex: 0 0 auto;
     position: relative;
     box-sizing: border-box;
   }
 
-  >#{$content} {
+  >.#{$content} {
     flex: 1 1 auto;
     width: 100%;
     position: relative;
     box-sizing: border-box;
   }
 
-  >#{$right} {
+  >.#{$right} {
     flex: 0 0 auto;
     position: relative;
     box-sizing: border-box;

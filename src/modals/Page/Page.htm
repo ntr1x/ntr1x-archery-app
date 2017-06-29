@@ -1,0 +1,39 @@
+<form class="root page"
+  @submit="(e) => e.preventDefault()"
+  @reset="close()"
+>
+  <div class="top">
+    <h3 class="heading">Page</h3>
+    <div class="actions">
+      <button type="reset" class="highlight highlight-default" @click="close()"><i class="material-icons icon icon-22-18">close</i></button>
+    </div>
+  </div>
+  <div class="middle">
+    <div class="row">
+      <label>Title</label>
+      <div class="input-group input-group-default">
+        <input type="text" class="input-control" placeholder="Page Title" v-focus/>
+        <button type="button" class="input-button" @click="edit()">...</button>
+      </div>
+    </div>
+    <div class="row">
+      <label>Route</label>
+      <div class="input-group input-group-default">
+        <input type="text" class="input-control" placeholder="/route/to/your/:page" v-focus/>
+      </div>
+    </div>
+    <div class="templates">
+      <div class="pane" v-for="name in ['Empty','Landing','Gallery','Table','List','Details']">
+        <div class="heading">
+          {{name}}
+        </div>
+        <div class="content">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <button type="reset" class="action action-default">Cancel</button>
+    <button class="action action-primary">Save</button>
+  </div>
+</form>

@@ -1,8 +1,11 @@
-<div class="root expression">
+<form class="root expression"
+  @submit="(e) => e.preventDefault()"
+  @reset="close()"
+>
   <div class="top">
     <h3 class="heading">Expression</h3>
     <div class="actions">
-      <button class="highlight highlight-default" @click="close()"><i class="material-icons icon icon-22-18">close</i></button>
+      <button type="reset" class="highlight highlight-default" @click="close()"><i class="material-icons icon icon-22-18">close</i></button>
     </div>
   </div>
   <div class="middle">
@@ -27,7 +30,7 @@
     </div>
   </div>
   <div class="bottom">
-    <button class="action action-default">Cancel</button>
+    <button type="reset" class="action action-default">Cancel</button>
     <button class="action action-primary">Save</button>
   </div>
-</div>
+</form>
