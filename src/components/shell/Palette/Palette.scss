@@ -8,6 +8,8 @@
   @include with-highlights();
   @include with-icons(icon, 22, 14);
 
+  color: $color-white;
+
   >.top {
     color: $color-2;
   }
