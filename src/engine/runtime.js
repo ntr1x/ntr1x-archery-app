@@ -107,7 +107,7 @@ export function buildPage (page, registry, context) {
 
   return _.omitBy({
     id: uniqid(),
-    path: page.path,
+    route: page.route,
     propsData: page.props ? buildData(buildExpr(page.props, page.propsExpr), context) : undefined,
     eventsData: page.events ? buildData(buildExpr(page.events, page.eventsExpr), context) : undefined,
     context: context || undefined,

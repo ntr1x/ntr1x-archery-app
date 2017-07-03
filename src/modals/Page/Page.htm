@@ -1,39 +1,58 @@
 <form class="root page"
-  @submit="(e) => e.preventDefault()"
-  @reset="close()"
+  @submit.prevent="() => { $v.$touch(); !$v.$invalid && submit() }"
+  @reset.prevent="close()"
+  @keyup.esc="close()"
+  novalidate
 >
   <div class="top">
     <h3 class="heading">Page</h3>
     <div class="actions">
-      <button type="reset" class="highlight highlight-default" @click="close()"><i class="material-icons icon icon-22-18">close</i></button>
+      <button type="reset" class="highlight highlight-default"><i class="material-icons icon-action">close</i></button>
     </div>
   </div>
   <div class="middle">
     <div class="row">
       <label>Title</label>
-      <div class="input-group input-group-default">
-        <input type="text" class="input-control" placeholder="Page Title" v-focus/>
+      <div class="input-group input-group-default" :class="{
+        'input-group-danger': $v.title.$error
+      }">
+        <input type="text" class="input-control" placeholder="Page Title" v-focus v-model="title"
+          @input="$v.title.$touch()"
+        />
         <button type="button" class="input-button" @click="edit()">...</button>
       </div>
+      <template v-if="$v.route.$error">
+        <div v-if="!$v.title.required">Title is a required field</div>
+      </template>
     </div>
     <div class="row">
       <label>Route</label>
-      <div class="input-group input-group-default">
-        <input type="text" class="input-control" placeholder="/route/to/your/:page" v-focus/>
+      <div class="input-group input-group-default" :class="{
+        'input-group-danger': $v.route.$error
+      }">
+        <input type="text" class="input-control" placeholder="/route/to/your/:page" v-model="route"
+          @input="$v.route.$touch()"
+        />
       </div>
+      <template v-if="$v.route.$error">
+        <div v-if="!$v.route.required">Route is a required field</div>
+        <div v-else-if="!$v.route.pattern">Route should starts with '/'</div>
+      </template>
     </div>
-    <div class="templates">
-      <div class="pane" v-for="name in ['Empty','Landing','Gallery','Table','List','Details']">
-        <div class="heading">
-          {{name}}
-        </div>
-        <div class="content">
-        </div>
-      </div>
+    <div class="row" v-if="error">
+      {{error}}
     </div>
   </div>
   <div class="bottom">
-    <button type="reset" class="action action-default">Cancel</button>
-    <button class="action action-primary">Save</button>
+    <div class="left" v-if="page">
+      <button type="button" class="action-link action-link-danger" @click="remove()">Remove</button>
+    </div>
+    <div class="center">
+    </div>
+    <div class="right">
+      <button type="reset" class="action action-default">Cancel</button>
+      <button v-if="page" class="action action-primary">Update</button>
+      <button v-else class="action action-primary">Create</button>
+    </div>
   </div>
 </form>

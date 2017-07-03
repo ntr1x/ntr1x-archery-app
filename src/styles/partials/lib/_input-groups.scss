@@ -16,22 +16,15 @@
 
   display: flex;
   width: 100%;
-  // background: #{map-get($theme, background)};
   border: #{map-get($input-theme, border)};
   box-sizing: border-box;
   border-radius: 4px;
-
-  // &:focus-within {
-  //   background: #{map-get($theme, focus-background)};
-  //   box-shadow: #{material-color('light-blue', '500')} 0px 0px 0px 2px;
-  // }
 
   >.#{$class-input} {
 
     position: relative;
     flex: 1 1 auto;
     border: none;
-    // width: 100%;
     min-width: 50px;
     background: #{map-get($input-theme, background)};
     color: #{map-get($input-theme, color)};
@@ -64,7 +57,6 @@
     border-right: #{map-get($button-theme, border)};
     color: #{map-get($button-theme, color)};
     box-sizing: border-box;
-    // border-radius: 4px;
     font-size: $font-size;
     line-height: $line-height;
     padding: $button-padding;

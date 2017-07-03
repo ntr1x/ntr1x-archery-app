@@ -305,7 +305,7 @@ describe('engine/runtime', () => {
       const result = runtime.buildPage(page.page, mock.registry, page.context)
 
       expect(result).to.have.property('id')
-      expect(result).to.have.property('path').that.equal(page.expected.path)
+      expect(result).to.have.property('route').that.equal(page.expected.route)
       expect(result).to.have.property('root')
 
       expect(result.root).to.have.property('id')

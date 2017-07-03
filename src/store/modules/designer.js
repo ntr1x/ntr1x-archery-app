@@ -1,4 +1,4 @@
-// import { randomUID, fixModel } from '@/engine/model.js'
+import uniqid from 'uniqid'
 
 export default () => ({
   namespaced: true,
@@ -11,7 +11,14 @@ export default () => ({
       console: { open: true }
     },
     dimensions: { name: 'pc', position: 'absolute', width: '100%', height: '100%' },
-    scale: 1
+    scale: 1,
+    portal: {
+      pages: [
+        { id: uniqid(), route: '/', title: 'Default' },
+        { id: uniqid(), route: '/offers', title: 'Offers' },
+        { id: uniqid(), route: '/offer/:offer', title: 'Offer Details' }
+      ]
+    }
     // page: {
     //   children: []
     // },
@@ -28,6 +35,9 @@ export default () => ({
       if (scale > 0.2) {
         state.scale = scale
       }
+    },
+    'pages/update': (state, pages) => {
+      state.portal.pages = pages
     }
     // 'designer/select': (state, element) => {
     //   state.selection = element
@@ -43,6 +53,36 @@ export default () => ({
     // }
   },
   actions: {
+    'pages/create': async ({ state, commit }, { route, title }) => {
+      if (state.portal.pages.find((page) => page.route === route)) {
+        throw new Error('Cannot create page: duplicate route')
+      }
+      commit('pages/update', [
+        ...state.portal.pages, {
+          id: uniqid(),
+          route,
+          title
+        }
+      ])
+    },
+    'pages/update': async ({ state, commit }, { id, route, title }) => {
+      if (state.portal.pages.find((page) => page.route === route && page.id !== id)) {
+        throw new Error('Cannot update page: duplicate route')
+      }
+      commit('pages/update', state.portal.pages.map(page => page.id !== id ? page
+        : {
+          id: uniqid(),
+          route,
+          title
+        }
+      ))
+    },
+    'pages/remove': async ({ state, commit }, { id }) => {
+      if (!state.portal.pages.find((page) => page.id === id)) {
+        throw new Error('Cannot remove page: unknown page ID')
+      }
+      commit('pages/update', state.portal.pages.filter(page => page.id !== id))
+    }
     // 'designer/setup': ({ state, commit }) => {
     //   commit('designer/widgets/create', {
     //     parent: state.page,

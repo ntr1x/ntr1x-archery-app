@@ -172,72 +172,72 @@ export const WidgetF = {
 
 export const PageA = {
   page: {
-    path: 'page-a',
+    route: 'page-a',
     root: WidgetA.widget
   },
   context: WidgetA.context,
   expected: {
-    path: 'page-a',
+    route: 'page-a',
     root: WidgetA.expected
   }
 }
 
 export const PageB = {
   page: {
-    path: 'page-b',
+    route: 'page-b',
     root: WidgetB.widget
   },
   context: WidgetB.context,
   expected: {
-    path: 'page-b',
+    route: 'page-b',
     root: WidgetB.expected
   }
 }
 
 export const PageC = {
   page: {
-    path: 'page-c',
+    route: 'page-c',
     root: WidgetC.widget
   },
   context: WidgetC.context,
   expected: {
-    path: 'page-c',
+    route: 'page-c',
     root: WidgetC.expected
   }
 }
 
 export const PageD = {
   page: {
-    path: 'page-d',
+    route: 'page-d',
     root: WidgetD.widget
   },
   context: WidgetD.context,
   expected: {
-    path: 'page-d',
+    route: 'page-d',
     root: WidgetD.expected
   }
 }
 
 export const PageE = {
   page: {
-    path: 'page-e',
+    route: 'page-e',
     root: WidgetE.widget
   },
   context: WidgetE.context,
   expected: {
-    path: 'page-e',
+    route: 'page-e',
     root: WidgetE.expected
   }
 }
 
 export const PageF = {
   page: {
-    path: 'page-f',
+    route: 'page-f',
     root: WidgetF.widget
   },
   context: WidgetF.context,
   expected: {
-    path: 'page-f',
+    route: 'page-f',
     root: WidgetF.expected
   }
 }

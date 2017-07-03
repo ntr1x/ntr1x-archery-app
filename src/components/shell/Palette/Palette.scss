@@ -6,7 +6,13 @@
 
   @include shell-pane();
   @include with-highlights();
-  @include with-icons(icon, 22, 14);
+  @include with-icons(icon-item, 22, 14);
+
+  .icon-item {
+    >svg {
+      fill: $color-white;
+    }
+  }
 
   color: $color-white;
 

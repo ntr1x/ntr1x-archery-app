@@ -5,7 +5,7 @@
 
   @include dock-column();
   @include with-highlights();
-  @include with-icons(icon, 22, 18);
+  @include with-icons(icon-action, 22, 18);
   background: $background-1;
 
   >.top {

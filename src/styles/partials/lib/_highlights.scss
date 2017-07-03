@@ -1,7 +1,7 @@
 @import '~material-colors-scss/function';
 @import '~@/styles/partials/variables';
 
-@mixin highlight($type: 'default') {
+@mixin highlight($type: 'default', $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {
 
   $theme: map-get($highlight-themes, $type);
 
@@ -11,9 +11,9 @@
   color: #{map-get($theme, color)};
   box-sizing: border-box;
   border-radius: 4px;
-  font-size: 12px;
-  line-height: 22px;
-  padding: 0px 6px;
+  font-size: $font-size;
+  line-height: $line-height;
+  padding: $padding;
   text-shadow: $text-shadow-0;
   text-decoration: none;
   cursor: pointer;
@@ -24,15 +24,19 @@
   &:hover {
     background: material-color('grey', '700');
   }
+
+  &:focus {
+    box-shadow: #{material-color('light-blue', '500')} 0px 0px 0px 2px;
+  }
 }
 
-@mixin with-highlights($class: 'highlight') {
+@mixin with-highlights($class: 'highlight', $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {
 
   .#{$class} {
 
     @each $type in (default primary danger warning success info) {
       &.#{$class}-#{$type} {
-        @include highlight($type);
+        @include highlight($type, $line-height, $font-size, $padding);
       }
     }
   }

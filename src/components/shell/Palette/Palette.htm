@@ -2,7 +2,7 @@
   <div class="top">
     <h3 class="heading">Palette</h3>
     <div class="actions">
-      <button class="highlight highlight-default" @click="toggle({ name: 'palette' })"><i class="material-icons icon icon-22-18">close</i></button>
+      <button class="highlight highlight-default" @click="toggle({ name: 'palette' })"><i class="material-icons icon-action">close</i></button>
     </div>
   </div>
   <div class="middle">
@@ -10,14 +10,16 @@
       <div class="top">
         <h5 class="heading">{{category.title}}</h5>
         <div class="actions">
-          <button class="highlight highlight-default"><i class="material-icons icon icon-22-18">arrow_drop_down</i></button>
+          <button class="highlight highlight-default"><i class="material-icons icon-action">arrow_drop_down</i></button>
         </div>
       </div>
       <div class="middle">
         <ul>
           <li v-for="item in category.items" :key="item">
             <span class="highlight highlight-default">
-              <i class="material-icons icon icon-22-14">person</i>
+              <i class="icon-item" :class="item.icon.class"
+                :style="{ backgroundImage: item.icon.backgroundImage && `url(${item.icon.backgroundImage})` }"
+              >{{item.icon.content}}</i>
               <span>{{item.title}}</span>
             </span>
           </li>

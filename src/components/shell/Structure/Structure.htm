@@ -2,7 +2,7 @@
   <div class="top">
     <h3 class="heading">Structure</h3>
     <div class="actions">
-      <button class="highlight highlight-default" @click="toggle({ name: 'structure' })"><i class="material-icons icon icon-22-18">close</i></button>
+      <button class="highlight highlight-default" @click="toggle({ name: 'structure' })"><i class="material-icons icon-action">close</i></button>
     </div>
   </div>
   <div class="middle">
@@ -10,15 +10,19 @@
       <div class="top">
         <h5 class="heading">Pages</h5>
         <div class="actions">
-          <button class="highlight highlight-default"><i class="material-icons icon icon-22-18">add</i></button>
-          <button class="highlight highlight-default"><i class="material-icons icon icon-22-18">arrow_drop_down</i></button>
+          <button class="highlight highlight-default" @click="newPage()"><i class="material-icons icon-action">add</i></button>
+          <button class="highlight highlight-default"><i class="material-icons icon-action">arrow_drop_down</i></button>
         </div>
       </div>
       <div class="middle">
         <ul>
-          <li><span class="highlight highlight-default"><i class="material-icons icon icon-22-14">web_asset</i> / (Default)</span></li>
-          <li><span class="highlight highlight-default"><i class="material-icons icon icon-22-14">web_asset</i> /details (Details)</span></li>
-          <li><span class="highlight highlight-default"><i class="material-icons icon icon-22-14">web_asset</i> /about (About)</span></li>
+          <li v-for="page in pages">
+            <span class="highlight highlight-default">
+              <i class="material-icons icon icon-22-14">web_asset</i>
+              <span>{{page.route}}</span>
+              <span v-if="page.title !== ''">({{page.title}})</span>
+            </span>
+          </li>
         </ul>
       </div>
     </div>
@@ -26,8 +30,8 @@
       <div class="top">
         <h5 class="heading">Remotes</h5>
         <div class="actions">
-          <button class="highlight highlight-default"><i class="material-icons icon icon-22-18">add</i></button>
-          <button class="highlight highlight-default"><i class="material-icons icon icon-22-18">arrow_drop_down</i></button>
+          <button class="highlight highlight-default"><i class="material-icons icon-action">add</i></button>
+          <button class="highlight highlight-default"><i class="material-icons icon-action">arrow_drop_down</i></button>
         </div>
       </div>
       <div class="middle">
@@ -41,8 +45,8 @@
       <div class="top">
         <h5 class="heading">Params</h5>
         <div class="actions">
-          <button class="highlight highlight-default"><i class="material-icons icon icon-22-18">add</i></button>
-          <button class="highlight highlight-default"><i class="material-icons icon icon-22-18">arrow_drop_down</i></button>
+          <button class="highlight highlight-default"><i class="material-icons icon-action">add</i></button>
+          <button class="highlight highlight-default"><i class="material-icons icon-action">arrow_drop_down</i></button>
         </div>
       </div>
       <div class="middle">

@@ -27,6 +27,11 @@
   &:focus {
     box-shadow: rgba(255, 255, 255, 0.360784) 0px 1px 0px 0px inset, #{material-color('light-blue', '500')} 0px 0px 0px 2px;
   }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 @mixin with-buttons($class: 'button', $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {

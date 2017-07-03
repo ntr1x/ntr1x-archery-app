@@ -1,36 +1,36 @@
 export const MicrosTitle = {
   title: 'Title',
-  icon: require('material-design-icons/editor/svg/production/ic_title_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'title' },
   factory: () => null
 }
 
 export const MicrosText = {
   title: 'Text',
-  icon: require('material-design-icons/editor/svg/production/ic_short_text_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'short_text' },
   factory: () => null
 }
 
 export const MicrosLink = {
   title: 'Link',
-  icon: require('material-design-icons/editor/svg/production/ic_insert_link_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'insert_link' },
   factory: () => null
 }
 
 export const MicrosButton = {
   title: 'Button',
-  icon: require('material-design-icons/action/svg/production/ic_code_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'code' },
   factory: () => null
 }
 
 export const MicrosImage = {
   title: 'Image',
-  icon: require('material-design-icons/image/svg/production/ic_image_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'image' },
   factory: () => null
 }
 
 export const MicrosIcon = {
   title: 'Icon',
-  icon: require('material-design-icons/action/svg/production/ic_alarm_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'alarm' },
   factory: () => null
 }
 

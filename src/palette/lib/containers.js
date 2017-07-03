@@ -1,36 +1,36 @@
 export const HorizontalStack = {
   title: 'Horizontal Stack',
-  icon: require('material-design-icons/action/svg/production/ic_view_column_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'view_column' },
   factory: () => null
 }
 
 export const HorizontalRepeater = {
   title: 'Horizontal Repeater',
-  icon: require('material-design-icons/action/svg/production/ic_view_column_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'view_column' },
   factory: () => null
 }
 
 export const VerticalStack = {
   title: 'Vertical Stack',
-  icon: require('material-design-icons/action/svg/production/ic_view_stream_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'view_stream' },
   factory: () => null
 }
 
 export const VerticalRepeater = {
   title: 'Vertical Repeater',
-  icon: require('material-design-icons/action/svg/production/ic_view_stream_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'view_stream' },
   factory: () => null
 }
 
 export const LayersStack = {
   title: 'Layers Stack',
-  icon: require('material-design-icons/maps/svg/production/ic_layers_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'layers' },
   factory: () => null
 }
 
 export const LayersRepeater = {
   title: 'Layers Repeater',
-  icon: require('material-design-icons/maps/svg/production/ic_layers_24px.svg'),
+  icon: { 'class': 'material-icons', content: 'layers' },
   factory: () => null
 }
 

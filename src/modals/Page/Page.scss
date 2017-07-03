@@ -6,7 +6,7 @@
 .root.page {
 
   @include shell-modal();
-  // @include with-input-groups('input-group');
+  width: 480px;
 
   >.middle {
     @include shell-form();
@@ -15,31 +15,7 @@
     }
   }
 
-  .templates {
-    @include flex-row(pane, 0 0 auto);
-    margin: 8px 0px;
-    >.pane {
-      position: relative;
-      display: table;
-      padding: 6px 8px;
-      >.heading {
-        position: absolute;
-        top: 10px;
-        left: 15px;
-      }
-      >.content {
-        @include paper(1);
-        display: table;
-        width: 100px;
-        height: 120px;
-        border-radius: 8px;
-        background: $background-3;
-        cursor: pointer;
-
-        &:hover {
-          @include paper(2);
-        }
-      }
-    }
+  >.bottom {
+    @include dock-row();
   }
 }
