@@ -6,11 +6,11 @@ export default {
     component: {
       type: [ String, Object, Function ]
     },
-    model: Object
+    pass: Object
   },
   render (createElement) {
     return createElement(this.component, {
-      props: this.model
+      props: this.pass
     })
   }
 }

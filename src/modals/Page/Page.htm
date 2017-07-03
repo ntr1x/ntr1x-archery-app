@@ -21,7 +21,7 @@
         />
         <button type="button" class="input-button" @click="edit()">...</button>
       </div>
-      <template v-if="$v.route.$error">
+      <template v-if="$v.title.$error">
         <div v-if="!$v.title.required">Title is a required field</div>
       </template>
     </div>

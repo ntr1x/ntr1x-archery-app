@@ -1,4 +1,4 @@
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   computed: mapState({
@@ -8,6 +8,9 @@ export default {
     ...mapMutations({
       toggle: 'designer/panels/toggle',
       modal: 'modals/open'
+    }),
+    ...mapActions({
+      removePage: 'designer/pages/remove'
     }),
     newPage () {
       this.modal({

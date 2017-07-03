@@ -5,7 +5,7 @@
 .root.structure {
 
   @include shell-pane();
-  @include with-highlights();
+  @include with-highlights(highlight);
   @include with-icons(icon, 22, 14);
 
   >.top {
@@ -20,20 +20,32 @@
 
       @include shell-pane();
       @include flex-column();
+      @include with-highlights(highlight, 22px, 12px, 0px 6px 0px 0px);
 
       >.top {
         border-bottom: $border-2;
       }
 
       >.middle {
-        padding: 6px 6px;
+        padding: 6px 12px;
         border-bottom: $border-2;
         >ul {
           margin: 0;
           padding: 0;
           list-style: none;
           >li {
-
+            @include dock-row();
+            >.right {
+              opacity: 0;
+              >.action {
+                padding: 0px;
+              }
+            }
+            &:hover {
+              >.right {
+                opacity: 1;
+              }
+            }
           }
         }
       }

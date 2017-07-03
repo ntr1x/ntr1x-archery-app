@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import { mapMutations, mapActions } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
 import Focus from '@/directives/Focus'
@@ -10,7 +9,7 @@ export default {
   data () {
     return {
       title: this.page && this.page.title,
-      route: this.route && this.route.title,
+      route: this.page && this.page.route,
       error: null
     }
   },

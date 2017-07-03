@@ -17,11 +17,17 @@
       <div class="middle">
         <ul>
           <li v-for="page in pages">
-            <span class="highlight highlight-default">
-              <i class="material-icons icon icon-22-14">web_asset</i>
-              <span>{{page.route}}</span>
-              <span v-if="page.title !== ''">({{page.title}})</span>
-            </span>
+            <div class="center">
+              <span class="highlight highlight-default">
+                <i class="material-icons icon icon-22-14">web_asset</i>
+                <span>{{page.route}}</span>
+                <span v-if="page.title !== ''">({{page.title}})</span>
+              </span>
+            </div>
+            <div class="right">
+              <button class="highlight highlight-default action"><i class="material-icons icon-action" @click="editPage(page)">edit</i></button>
+              <button class="highlight highlight-default action"><i class="material-icons icon-action" @click="removePage(page)">delete</i></button>
+            </div>
           </li>
         </ul>
       </div>
