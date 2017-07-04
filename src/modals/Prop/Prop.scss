@@ -1,0 +1,21 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+@import "~@/styles/shell/modal";
+@import "~@/styles/shell/form";
+
+.root.prop {
+
+  @include shell-modal();
+  width: 480px;
+
+  >.middle {
+    @include shell-form();
+
+    >.row {
+    }
+  }
+
+  >.bottom {
+    @include dock-row();
+  }
+}

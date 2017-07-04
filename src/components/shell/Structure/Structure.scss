@@ -27,6 +27,8 @@
       }
 
       >.middle {
+        color: $color-white;
+        font-size: 12px;
         padding: 6px 12px;
         border-bottom: $border-2;
         >ul {
@@ -44,6 +46,13 @@
             &:hover {
               >.right {
                 opacity: 1;
+              }
+            }
+
+            .selected {
+              background-color: $background-selection-0;
+              &:hover {
+                background-color: $background-selection-1;
               }
             }
           }

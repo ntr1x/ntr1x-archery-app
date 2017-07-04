@@ -1,4 +1,28 @@
 import uniqid from 'uniqid'
+import * as pages from './designer-pages.js'
+import * as props from './designer-props.js'
+
+const pagesStub = [
+  {
+    id: uniqid(),
+    route: '/',
+    title: 'Default',
+    props: [
+      {
+        name: 'fontSize',
+        title: 'Font Size',
+        type: 'String'
+      },
+      {
+        name: 'fontWeight',
+        title: 'Font Weight',
+        type: 'String'
+      }
+    ]
+  },
+  { id: uniqid(), route: '/offers', title: 'Offers' },
+  { id: uniqid(), route: '/offer/:offer', title: 'Offer Details' }
+]
 
 export default () => ({
   namespaced: true,
@@ -13,11 +37,10 @@ export default () => ({
     dimensions: { name: 'pc', position: 'absolute', width: '100%', height: '100%' },
     scale: 1,
     portal: {
-      pages: [
-        { id: uniqid(), route: '/', title: 'Default' },
-        { id: uniqid(), route: '/offers', title: 'Offers' },
-        { id: uniqid(), route: '/offer/:offer', title: 'Offer Details' }
-      ]
+      pages: pagesStub
+    },
+    selected: {
+      page: pagesStub[0]
     }
     // page: {
     //   children: []
@@ -38,6 +61,10 @@ export default () => ({
     },
     'pages/update': (state, pages) => {
       state.portal.pages = pages
+      state.selected.page = pages.find((page) => page.route === state.selected.page && state.selected.page.route) || null
+    },
+    'pages/select': (state, page) => {
+      state.selected.page = page
     }
     // 'designer/select': (state, element) => {
     //   state.selection = element
@@ -53,36 +80,15 @@ export default () => ({
     // }
   },
   actions: {
-    'pages/create': async ({ state, commit }, { route, title }) => {
-      if (state.portal.pages.find((page) => page.route === route)) {
-        throw new Error('Cannot create page: duplicate route')
-      }
-      commit('pages/update', [
-        ...state.portal.pages, {
-          id: uniqid(),
-          route,
-          title
-        }
-      ])
-    },
-    'pages/update': async ({ state, commit }, { id, route, title }) => {
-      if (state.portal.pages.find((page) => page.route === route && page.id !== id)) {
-        throw new Error('Cannot update page: duplicate route')
-      }
-      commit('pages/update', state.portal.pages.map(page => page.id !== id ? page
-        : {
-          id: uniqid(),
-          route,
-          title
-        }
-      ))
-    },
-    'pages/remove': async ({ state, commit }, { id }) => {
-      if (!state.portal.pages.find((page) => page.id === id)) {
-        throw new Error('Cannot remove page: unknown page ID')
-      }
-      commit('pages/update', state.portal.pages.filter(page => page.id !== id))
-    }
+
+    'pages/create': pages.create,
+    'pages/update': pages.update,
+    'pages/remove': pages.remove,
+
+    'props/create': props.create,
+    'props/update': props.update,
+    'props/remove': props.remove
+
     // 'designer/setup': ({ state, commit }) => {
     //   commit('designer/widgets/create', {
     //     parent: state.page,

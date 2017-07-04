@@ -15,10 +15,12 @@
         </div>
       </div>
       <div class="middle">
-        <ul>
-          <li v-for="page in pages">
+        <ul v-if="pages && pages.length">
+          <li v-for="page in pages" :key="page.id">
             <div class="center">
-              <span class="highlight highlight-default">
+              <span class="highlight highlight-default" @click="selectPage(page)" :class="{
+                'selected': page === selectedPage
+              }">
                 <i class="material-icons icon icon-22-14">web_asset</i>
                 <span>{{page.route}}</span>
                 <span v-if="page.title !== ''">({{page.title}})</span>
@@ -30,6 +32,7 @@
             </div>
           </li>
         </ul>
+        <div v-else><i>No pages</i></div>
       </div>
     </div>
     <div class="section">
@@ -47,19 +50,31 @@
         </ul>
       </div>
     </div>
-    <div class="section">
+    <div class="section" v-if="selectedPage !== null">
       <div class="top">
-        <h5 class="heading">Params</h5>
+        <h5 class="heading">Props</h5>
         <div class="actions">
-          <button class="highlight highlight-default"><i class="material-icons icon-action">add</i></button>
+          <button class="highlight highlight-default" @click="newProp()"><i class="material-icons icon-action">add</i></button>
           <button class="highlight highlight-default"><i class="material-icons icon-action">arrow_drop_down</i></button>
         </div>
       </div>
       <div class="middle">
-        <ul>
-          <li><span class="highlight highlight-default"><i class="material-icons icon icon-22-14">label_outline</i> offer</span></li>
-          <li><span class="highlight highlight-default"><i class="material-icons icon icon-22-14">label_outline</i> mode</span></li>
+        <ul v-if="props && props.length">
+          <li v-for="prop in props" :key="prop.id">
+            <div class="center">
+              <span class="highlight highlight-default">
+                <i class="material-icons icon icon-22-14">label_outline</i>
+                <span>{{prop.name}}</span>
+                <span v-if="prop.name !== ''">({{prop.title}})</span>
+              </span>
+            </div>
+            <div class="right">
+              <button class="highlight highlight-default action"><i class="material-icons icon-action" @click="editProp(prop)">edit</i></button>
+              <button class="highlight highlight-default action"><i class="material-icons icon-action" @click="removeProp(prop)">delete</i></button>
+            </div>
+          </li>
         </ul>
+        <div v-else><i>No props</i></div>
       </div>
     </div>
   </div>
