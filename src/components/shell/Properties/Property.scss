@@ -4,4 +4,7 @@
 .root.property {
   @include with-groups(group);
   @include with-icons(icon, 22, 14);
+  @include with-inputs(input);
+  @include with-buttons(button);
+  @include with-dropdowns(dropdown);
 }

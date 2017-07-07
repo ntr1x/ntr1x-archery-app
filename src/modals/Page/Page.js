@@ -1,6 +1,7 @@
 import { mapMutations, mapActions } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
 import Focus from '@/directives/Focus'
+import * as controls from '@/components/controls'
 
 export default {
   props: {
@@ -12,6 +13,9 @@ export default {
       route: this.page && this.page.route,
       error: null
     }
+  },
+  components: {
+    ...controls
   },
   validations: {
     title: {

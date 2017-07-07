@@ -1,6 +1,7 @@
 import { mapMutations, mapActions } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
 import Focus from '@/directives/Focus'
+import * as controls from '@/components/controls'
 
 export default {
   props: {
@@ -13,6 +14,20 @@ export default {
       type: this.prop && this.prop.type,
       error: null
     }
+  },
+  computed: {
+    types: () => ([
+      'String',
+      'Number',
+      'Boolean',
+      'Function',
+      'Object',
+      'Array',
+      'Symbol'
+    ])
+  },
+  components: {
+    ...controls
   },
   validations: {
     name: {
@@ -33,6 +48,9 @@ export default {
       updatePage: 'designer/pages/update',
       removePage: 'designer/pages/remove'
     }),
+    handleTypeChange (type) {
+      this.type = type
+    },
     async create () {
       try {
         await this.createProp({

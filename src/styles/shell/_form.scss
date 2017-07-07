@@ -3,7 +3,10 @@
 
 @mixin shell-form($row: row) {
 
-  @include with-inputs(input, 32px, 14px, 0px 6px);
+  @include with-inputs(input, 32px, 14px, 0px 8px);
+  @include with-buttons(button, 32px, 14px, 0px 12px);
+  @include with-dropdowns(dropdown, 32px, 14px, 0px 8px);
+  @include with-icons(icon, 32, 24);
   @include with-groups(group);
 
   >.#{$row} {

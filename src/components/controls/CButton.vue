@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick"><slot></slot></button>
+  <button type="button" @click="handleClick"><slot></slot></button>
 </template>
 
 <script>
@@ -11,12 +11,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import "~@/styles/partials/variables";
-@import "~@/styles/partials/mixins";
-
-button {
-  @include button();
-}
-</style>

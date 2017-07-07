@@ -13,13 +13,17 @@
   <div class="middle">
     <div class="row">
       <label>Title</label>
-      <div class="input-group input-group-default" :class="{
-        'input-group-danger': $v.title.$error
-      }">
-        <input type="text" class="input-control" placeholder="Page Title" v-focus v-model="title"
+      <div class="group">
+        <c-text
+          v-model="title"
+          v-focus
+          placeholder="Page Title"
+          class="input input-default group-item group-item-fill"
           @input="$v.title.$touch()"
+          :class="{
+            'input-danger': $v.title.$error
+          }"
         />
-        <button type="button" class="input-button" @click="edit()">...</button>
       </div>
       <template v-if="$v.title.$error">
         <div v-if="!$v.title.required">Title is a required field</div>
@@ -27,11 +31,16 @@
     </div>
     <div class="row">
       <label>Route</label>
-      <div class="input-group input-group-default" :class="{
-        'input-group-danger': $v.route.$error
-      }">
-        <input type="text" class="input-control" placeholder="/route/to/your/:page" v-model="route"
+      <div class="group">
+        <c-text
+          v-model="route"
+          v-focus
+          placeholder="/route/to/your/:page"
+          class="input input-default group-item group-item-fill"
           @input="$v.route.$touch()"
+          :class="{
+            'input-danger': $v.route.$error
+          }"
         />
       </div>
       <template v-if="$v.route.$error">

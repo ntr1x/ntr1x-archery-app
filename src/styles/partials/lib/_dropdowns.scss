@@ -11,7 +11,7 @@
   right: 0;
   z-index: 200;
 
-  display: block;
+  display: none;
   background: #{map-get($theme, focus-background)};
   box-shadow: #{material-color('light-blue', '500')} 0px 0px 0px 2px;
   border: #{map-get($theme, border)};
@@ -64,8 +64,18 @@
   }
 }
 
-@mixin with-dropdowns($class: 'dropdown', $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {
+@mixin with-dropdowns($class: dropdown, $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {
   .#{$class} {
+
+    &.#{$class}-open {
+      display: block;
+    }
+
+    &.#{$class}-up {
+      top: auto;
+      bottom: 0px;
+    }
+
     @each $type in (default danger) {
       &.#{$class}-#{$type} {
         @include dropdown($type);

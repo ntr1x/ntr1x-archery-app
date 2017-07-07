@@ -28,7 +28,7 @@
   .#{$class} {
     @each $type in (default danger) {
       &.#{$class}-#{$type} {
-        @include input($type);
+        @include input($type, $line-height, $font-size, $padding);
       }
     }
   }

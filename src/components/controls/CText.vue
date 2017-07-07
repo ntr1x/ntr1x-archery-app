@@ -11,6 +11,7 @@
 export default {
   props: {
     value: String,
+    validation: Object,
     placeholder: String
   },
   methods: {
@@ -20,12 +21,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import "~@/styles/partials/variables";
-@import "~@/styles/partials/mixins";
-
-input {
-  @include input();
-}
-</style>

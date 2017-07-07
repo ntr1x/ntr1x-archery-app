@@ -1,8 +1,7 @@
 <template>
   <ul
-    class="dropdown dropdown-default"
     :class="{
-      'dropdown-open': open
+      [activeClass]: open
     }"
   >
     <li v-for="option in options" :class="{ active : option.value === value }">
@@ -14,6 +13,7 @@
 <script>
 export default {
   props: {
+    activeClass: String,
     value: String,
     options: Array
   },
@@ -50,9 +50,5 @@ export default {
 
 ul {
   @include dropdown();
-  display: none;
-  &.dropdown-open {
-    display: block;
-  }
 }
 </style>
