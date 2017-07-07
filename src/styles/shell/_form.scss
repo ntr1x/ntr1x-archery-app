@@ -3,8 +3,8 @@
 
 @mixin shell-form($row: row) {
 
-  @include with-inputs('input', 32px, 14px, 0px 6px);
-  @include with-input-groups('input-group', 'input-control', 'input-button', 32px, 14px, 0px 9px, 0px 9px);
+  @include with-inputs(input, 32px, 14px, 0px 6px);
+  @include with-groups(group);
 
   >.#{$row} {
 

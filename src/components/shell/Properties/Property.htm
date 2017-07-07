@@ -1,0 +1,22 @@
+<div class="root property">
+  <div class="group">
+    <c-text class="input input-default group-item group-item-fill"
+      :value="value"
+      :placeholder="property.default"
+      @input="(value) => { handleInput(value) }"
+    />
+    <template v-if="property.options">
+      <c-button class="button button-default group-item no-padding"
+        @click.stop="$refs.options.toggle(true)"
+      >
+        <i class="material-icons icon">arrow_drop_down</i>
+      </c-button>
+      <c-options ref="options"
+        :options="property.options.map((p) => ({ value: `'${p}'`, label: p }))"
+        :value="value"
+        @input="(value) => { handleInput(value) }"
+      />
+    </template>
+    <c-button class="button button-default group-item" @click="edit()">...</c-button>
+  </div>
+</div>

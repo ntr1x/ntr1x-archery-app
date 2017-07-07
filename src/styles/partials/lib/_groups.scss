@@ -1,0 +1,45 @@
+@import '~material-colors-scss/function';
+@import '~@/styles/partials/variables';
+
+@mixin group(
+  $class-item: group-item
+) {
+
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  >.#{$class-item}:not(:last-child) {
+    border-right: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  >.#{$class-item}:not(:first-child) {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  >.#{$class-item} {
+
+    flex: 0 0 auto;
+
+    &.#{$class-item}-fill {
+      flex: 1 1 auto;
+      width: 100%;
+    }
+
+    &:focus {
+      z-index: 100;
+    }
+  }
+}
+
+@mixin with-groups(
+  $class: group,
+  $class-item: group-item
+) {
+  .#{$class} {
+    @include group($class-item);
+  }
+}

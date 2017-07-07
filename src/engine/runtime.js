@@ -62,17 +62,17 @@ export function buildWidget (widget, registry, context, parent) {
     ref,
     name: widget.name,
     parent,
-    propsCategories: component.options.props
-      ? () => buildCategories(component.options.props)
+    propsCategories: component.props
+      ? () => buildCategories(component.props)
       : undefined,
-    eventsCategories: component.options.events
-      ? () => buildCategories(component.options.events)
+    eventsCategories: component.events
+      ? () => buildCategories(component.events)
       : undefined,
-    propsData: component.options.props
-      ? () => buildData(buildExpr(component.options.props, widget.propsExpr), context)
+    propsData: component.props
+      ? () => buildData(buildExpr(component.props, widget.propsExpr), context)
       : undefined,
-    eventsData: component.options.events
-      ? () => buildData(buildExpr(component.options.events, widget.eventsExpr), context)
+    eventsData: component.events
+      ? () => buildData(buildExpr(component.events, widget.eventsExpr), context)
       : undefined,
     slots: widget.slots
       ? ($render) => buildSlots(widget.slots, registry, buildContext(context, { $render }), instance)
@@ -102,12 +102,13 @@ export function buildPage (page, registry, context) {
 
   const pageContext = buildContext(
     context,
-    { $page: store }
+    { $page: () => store }
   )
 
   return _.omitBy({
     id: uniqid(),
     route: page.route,
+    title: page.title,
     propsData: page.props ? buildData(buildExpr(page.props, page.propsExpr), context) : undefined,
     eventsData: page.events ? buildData(buildExpr(page.events, page.eventsExpr), context) : undefined,
     context: context || undefined,
@@ -124,7 +125,7 @@ export function buildPortal (portal, registry, context) {
 
   const portalContext = buildContext(
     context,
-    { $portal: store }
+    { $portal: () => store }
   )
 
   return _.omitBy({
@@ -145,7 +146,7 @@ export function buildPath (widget) {
 export function buildCategories (defs) {
   const categories = {}
   Object.entries(defs).forEach(([name, def]) => {
-    const categoryName = def.category != null ? def.category.toUpperCase() : ''
+    const categoryName = def.category != null ? def.category.toLowerCase() : ''
     const category = categories[categoryName] = categories[categoryName] || { name: categoryName, defs: [] }
     category.defs.push({ name, def })
   }, {})
@@ -155,7 +156,7 @@ export function buildCategories (defs) {
 // export function buildFactory (component) {
 //   const categories = {}
 //   Object.entries(defs).forEach(([name, def]) => {
-//     const categoryName = def.category != null ? def.category.toUpperCase() : ''
+//     const categoryName = def.category != null ? def.category.toLowerCase() : ''
 //     const category = categories[categoryName] = categories[categoryName] || { name: categoryName, defs: [] }
 //     category.defs.push({ name, def })
 //   }, {})

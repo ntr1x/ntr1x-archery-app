@@ -32,6 +32,10 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  &.no-padding {
+    padding: 0;
+  }
 }
 
 @mixin with-buttons($class: 'button', $line-height: 22px, $font-size: 12px, $padding: 0px 6px) {

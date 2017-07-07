@@ -1,0 +1,7 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+
+.root.property {
+  @include with-groups(group);
+  @include with-icons(icon, 22, 14);
+}

@@ -8,8 +8,10 @@
   @include with-highlights();
   @include with-icons(icon, 22, 14);
   @include with-tables(fixed);
-  @include with-inputs(input);
-  @include with-input-groups(input-group);
+  // @include with-inputs(input);
+  // @include with-dropdowns(dropdown);
+  // @include with-buttons(button);
+  @include with-groups(group);
 
   >.top {
     color: $color-2;
@@ -26,6 +28,9 @@
 
       >.top {
         border-bottom: $border-2;
+        >.heading {
+          text-transform: capitalize;
+        }
       }
 
       >.middle {
@@ -40,6 +45,11 @@
 
           &.cell-1 {
             width: 30%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
+            padding-right: 5px;
           }
 
           &.cell-2 {

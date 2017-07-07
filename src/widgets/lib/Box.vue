@@ -17,7 +17,7 @@ export default {
   props: {
     margin: String,
     padding: String,
-    flex: String,
+    flex: String
   }
 }
 </script>

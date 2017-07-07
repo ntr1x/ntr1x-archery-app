@@ -16,7 +16,7 @@ export default {
   title: 'Row',
   props: {
     justifyContent: String,
-    alignItems: String,
+    alignItems: String
   }
 }
 </script>
