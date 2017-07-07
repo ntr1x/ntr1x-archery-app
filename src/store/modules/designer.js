@@ -2,41 +2,12 @@
 import * as pages from './designer-pages.js'
 import * as props from './designer-props.js'
 
-import * as widgets from '@/widgets'
 import { buildPortal } from '@/engine/runtime'
-import { Registry } from '@/engine/registry'
+import { structure, registry } from '@/mock/portal0.mock'
 
 export default () => {
 
-  // console.log(widgets.Canvas._Ctor[0].options)
-  // console.log(Vue.extend({}))
-
-  const registry = new Registry({
-    components: {
-      'canvas': () => widgets.Canvas
-    }
-  })
-
-  const portalStruct = {
-    name: 'portal-a',
-    title: 'Demo Portal A',
-    pages: [
-      {
-        route: '/',
-        title: 'Default',
-        root: {
-          name: 'canvas',
-          propsExpr: {
-            justifyContent: '"r" + "ight"'
-          }
-        }
-      },
-      { route: '/offers', title: 'Offers' },
-      { route: '/offer/:offer', title: 'Offer Details' }
-    ]
-  }
-
-  const portalStub = buildPortal(portalStruct, registry, {})
+  const portal = buildPortal(structure, registry, {})
 
   return {
     namespaced: true,
@@ -50,10 +21,10 @@ export default () => {
       },
       dimensions: { name: 'pc', position: 'absolute', width: '100%', height: '100%' },
       scale: 1,
-      portal: portalStub,
+      portal: portal,
       selected: {
-        page: portalStub.pages[0],
-        widget: portalStub.pages[0].root
+        page: portal.pages[0],
+        widget: portal.pages[0].root
       }
       // page: {
       //   children: []
@@ -80,7 +51,7 @@ export default () => {
         state.selected.page = page
       },
       'widgets/select': (state, widget) => {
-        state.selected.widgets = widget
+        state.selected.widget = widget
       }
       // 'designer/select': (state, element) => {
       //   state.selection = element

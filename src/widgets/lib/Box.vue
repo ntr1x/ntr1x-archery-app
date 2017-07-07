@@ -11,14 +11,12 @@
 </style>
 
 <script>
+import { BoxMixin } from '@/widgets/mixins'
+
 export default {
   name: 'box',
   title: 'Box',
-  props: {
-    margin: String,
-    padding: String,
-    flex: String
-  }
+  mixins: [BoxMixin]
 }
 </script>
 

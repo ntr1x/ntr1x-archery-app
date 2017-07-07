@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Vuex from 'vuex'
 import uniqid from 'uniqid'
 import _ from 'lodash'
@@ -38,6 +39,22 @@ export function buildChildren (children, registry, context, parent) {
   ))
 }
 
+export function buildSlot (children, registry, context, parent) {
+
+  const instance = {
+    children: buildChildren(
+      children,
+      registry,
+      context,
+      parent
+    )
+  }
+
+  instance.build = ($renderContext) => {
+
+  }
+}
+
 export function buildSlots (slots, registry, context, parent) {
   return Object.entries(slots).reduce((result, [slot, children]) => {
     result[slot] = children == null
@@ -57,30 +74,76 @@ export function buildWidget (widget, registry, context, parent) {
   const ref = registry.component(widget.name)
   const component = ref()
 
+  const extended = Vue.extend({
+    props: component.props || {},
+    events: component.events || {},
+    mixins: component.mixins.map((m) => ({
+      props: m.props,
+      events: m.events
+    }))
+  })
+
   let instance = _.omitBy({
     id: uniqid(),
     ref,
     name: widget.name,
+    title: component.title,
+    model: widget,
     parent,
-    propsCategories: component.props
-      ? () => buildCategories(component.props)
+    propsCategories: extended.options.props
+      ? () => buildCategories(extended.options.props)
       : undefined,
-    eventsCategories: component.events
-      ? () => buildCategories(component.events)
+    eventsCategories: extended.options.events
+      ? () => buildCategories(extended.options.events)
       : undefined,
-    propsData: component.props
-      ? () => buildData(buildExpr(component.props, widget.propsExpr), context)
-      : undefined,
-    eventsData: component.events
-      ? () => buildData(buildExpr(component.events, widget.eventsExpr), context)
-      : undefined,
-    slots: widget.slots
-      ? ($render) => buildSlots(widget.slots, registry, buildContext(context, { $render }), instance)
-      : undefined,
+    node: ($runtime) => {
+
+      const runtimeContext = buildContext(
+        context,
+        { $runtime: () => $runtime }
+      )
+
+      return {
+        id: uniqid(),
+        name: widget.name,
+        propsData: extended.options.props
+          ? buildData(buildExpr(extended.options.props, widget.propsExpr), runtimeContext)
+          : undefined,
+        eventsData: extended.options.events
+          ? buildData(buildExpr(extended.options.events, widget.eventsExpr), runtimeContext)
+          : undefined // ,
+        // slots: instance.slots
+        //   ?
+      }
+    },
     context: context || undefined
   }, _.isUndefined)
 
+  const slots = widget.slots
+    ? buildSlots(widget.slots, registry, context, instance)
+    : undefined
+
+  if (slots != null) {
+    instance.slots = slots
+  }
+
   return instance
+}
+
+export function buildNode (widget, extended, runtimeContext) {
+
+  return {
+    id: uniqid(),
+    name: widget.name,
+    propsData: extended.options.props
+      ? buildData(buildExpr(extended.options.props, widget.propsExpr), runtimeContext)
+      : undefined,
+    eventsData: extended.options.events
+      ? buildData(buildExpr(extended.options.events, widget.eventsExpr), runtimeContext)
+      : undefined // ,
+    // slots: instance.slots
+    //   ? Object.entries(([name, slot]) => )
+  }
 }
 
 export function buildExpr (defs, overrides) {
@@ -105,15 +168,20 @@ export function buildPage (page, registry, context) {
     { $page: () => store }
   )
 
-  return _.omitBy({
+  const instance = _.omitBy({
     id: uniqid(),
     route: page.route,
     title: page.title,
     propsData: page.props ? buildData(buildExpr(page.props, page.propsExpr), context) : undefined,
     eventsData: page.events ? buildData(buildExpr(page.events, page.eventsExpr), context) : undefined,
     context: context || undefined,
-    root: page.root != null ? buildWidget(page.root, registry, pageContext) : undefined
+    model: page,
+    root: page.root
+      ? buildWidget(page.root, registry, pageContext)
+      : undefined
   }, _.isUndefined)
+
+  return instance
 }
 
 export function buildPortal (portal, registry, context) {

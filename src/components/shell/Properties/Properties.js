@@ -7,15 +7,13 @@ export default {
     ...controls,
     Property
   },
-  data () {
-    return {
-      mypropvalue: '"Hello"'
-    }
-  },
   computed: {
     ...mapState({
       widget: (state) => state.designer.selected.widget,
-      properties: (state) => state.designer.selected.widget && state.designer.selected.widget.propsCategories()
+      properties: (state) => {
+        console.log(state.designer.selected.widget, state.designer.selected.widget && state.designer.selected.widget.propsCategories())
+        return state.designer.selected.widget && state.designer.selected.widget.propsCategories()
+      }
     })
   },
   methods: {

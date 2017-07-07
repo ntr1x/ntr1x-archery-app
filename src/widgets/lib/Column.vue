@@ -12,12 +12,11 @@
 </style>
 
 <script>
+import { AppearanceMixin, FlexMixin } from '@/widgets/mixins'
+
 export default {
   name: 'column',
   title: 'Column',
-  props: {
-    justifyContent: String,
-    alignItems: String
-  }
+  mixins: [AppearanceMixin, FlexMixin]
 }
 </script>

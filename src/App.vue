@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root app">
     <router-view></router-view>
     <modal-stack :stack="$store.state.modals.stack" />
   </div>
@@ -14,3 +14,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+@import '~@/styles/partials/mixins';
+
+.root.app {
+  @include position(absolute, 0, 0, 0, 0);
+}
+</style>

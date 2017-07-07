@@ -1,68 +1,11 @@
-import { mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 import OutlineItem from './OutlineItem.vue'
 
 export default {
-  data () {
-    return {
-      children: [
-        {
-          title: 'One',
-          children: [
-            {
-              title: 'One',
-              children: [
-                {
-                  title: 'One'
-                },
-                {
-                  title: 'Two'
-                }
-              ]
-            },
-            {
-              title: 'Two',
-              children: [
-                {
-                  title: 'One'
-                },
-                {
-                  title: 'Two'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          title: 'One',
-          children: [
-            {
-              title: 'One',
-              children: [
-                {
-                  title: 'One'
-                },
-                {
-                  title: 'Two'
-                }
-              ]
-            },
-            {
-              title: 'Two',
-              children: [
-                {
-                  title: 'One'
-                },
-                {
-                  title: 'Two'
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  },
+  computed: mapState({
+    page: (state) => state.designer.selected.page
+  }),
   methods: mapMutations({
     toggle: 'designer/panels/toggle'
   }),

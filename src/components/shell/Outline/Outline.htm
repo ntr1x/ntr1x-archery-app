@@ -5,7 +5,7 @@
       <button class="highlight highlight-default" @click="toggle({ name: 'outline' })"><i class="material-icons icon-action">close</i></button>
     </div>
   </div>
-  <div class="middle" v-if="children">
-    <outline-item v-for="child in children" :key="child" :item="child" :level="0" />
+  <div class="middle" v-if="page && page.root">
+    <outline-item :item="page.root" :level="0" slotName="default" />
   </div>
 </div>

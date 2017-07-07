@@ -1,23 +1,33 @@
 <div class="root outline-item">
   <div class="top">
     <div class="left">
-      <button v-if="item.children" class="highlight highlight-default expand" :class="{ 'open': open }" @click="toggle()">
+      <button v-if="item.slots" class="highlight highlight-default expand" :class="{ 'open': open }" @click="toggle()">
         <i class="material-icons icon-action">arrow_drop_down</i>
       </button>
     </div>
     <div class="center">
-      <button class="highlight highlight-default label">
+      <span
+        type="button"
+        class="highlight highlight-default label"
+        @click="select(item)"
+        :class="{
+          'selected': item === selected
+        }"
+      >
         <i class="material-icons icon-action">bookmark</i>
-        <span>{{ item.title }}</span>
-      </button>
+        <span v-if="slotName !== 'default'">[{{slot}}]&nbsp;</span>
+        <span>{{ item.title || `< ${item.name} >` }}</span>
+      </span>
     </div>
     <div class="right">
       <button class="highlight highlight-default action"><i class="material-icons icon-action">delete</i></button>
     </div>
   </div>
   <div class="middle" :class="{ 'open': open }">
-    <div class="children" v-if="open && item.children">
-      <outline-item v-for="child in item.children" :key="child" :item="child" :level="level + 1" />
-    </div>
+    <template v-if="open && item.slots">
+      <div class="children" v-for="(slot, name) in item.slots" >
+        <outline-item v-for="child in slot" :key="child" :item="child" :level="level + 1" :slotName="name" />
+      </div>
+    </template>
   </div>
 </div>
