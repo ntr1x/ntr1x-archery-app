@@ -1,6 +1,8 @@
 <template>
   <div class="root row-repeater">
-    <slot name="item" v-for="item in items" :item="item"></slot>
+    <slot v-for="(item, key) in items" :value="value" :key="key">
+      <box></box>
+    </slot>
   </div>
 </template>
 
@@ -12,6 +14,7 @@
 
 <script>
 import { AppearanceMixin, FlexMixin } from '@/widgets/mixins'
+import { Box } from './Box'
 
 export default {
   name: 'row',

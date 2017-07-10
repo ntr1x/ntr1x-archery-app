@@ -19,9 +19,6 @@ export const structure = {
       title: 'Default',
       root: {
         name: 'canvas',
-        propsExpr: {
-          justifyContent: '"r" + "ight"'
-        },
         slots: {
           default: [
             {
@@ -32,9 +29,9 @@ export const structure = {
                     name: 'row',
                     slots: {
                       default: [
-                        { name: 'box' },
-                        { name: 'box' },
-                        { name: 'box' }
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"red"' } },
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"" + 20 * 3 + "px"', height: '"60px"', background: '"green"' } },
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"blue"' } }
                       ]
                     }
                   }
@@ -49,11 +46,11 @@ export const structure = {
                     name: 'row',
                     slots: {
                       default: [
-                        { name: 'box' },
-                        { name: 'box' },
-                        { name: 'box' },
-                        { name: 'box' },
-                        { name: 'box' }
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"red"' } },
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"" + 20 * 3 + "px"', height: '"60px"', background: '"green"' } },
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"blue"' } },
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"" + 20 * 3 + "px"', height: '"60px"', background: '"purple"' } },
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"yellow"' } }
                       ]
                     }
                   }

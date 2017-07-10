@@ -10,11 +10,10 @@
     @include dock-row();
     @include scrollable();
     justify-content: center;
-    align-items: center;
 
     .inner {
       @include paper(2, 5);
-      flex: 0 1 auto;
+      flex: 0 0 auto;
       background-color: #FFFFFF;
     }
   }

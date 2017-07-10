@@ -105,7 +105,7 @@ export function buildWidget (widget, registry, context, parent) {
 
       return {
         id: uniqid(),
-        name: widget.name,
+        component,
         propsData: extended.options.props
           ? buildData(buildExpr(extended.options.props, widget.propsExpr), runtimeContext)
           : undefined,
