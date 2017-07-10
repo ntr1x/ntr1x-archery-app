@@ -7,17 +7,22 @@
   >.outer {
 
     @include position(absolute, 20px, 20px, 20px, 20px);
-    @include dock-row();
     @include scrollable();
-    justify-content: center;
 
-    >.inner {
-      @include paper(2, 5);
-      flex: 0 0 auto;
-      background-color: #FFFFFF;
+    >.scallable {
 
-      >.content {
+      @include position(absolute, 0, 0, 0, 0);
+      @include dock-row();
+      justify-content: center;
+
+      >.inner {
+        @include paper(2, 5);
+        flex: 0 0 auto;
         background-color: #FFFFFF;
+
+        >.content {
+          background-color: #FFFFFF;
+        }
       }
     }
   }

@@ -56,12 +56,9 @@ export default () => {
         state.selected.widget = widget
       },
       'widgets/property': (state, { widget, type, name, value }) => {
-        Object.assign(widget.model.propsExpr, {
-          [name]: value
-        })
-        Object.assign(widget, {
-          id: uniqid()
-        })
+        widget.model.propsExpr = widget.model.propsExpr || {}
+        widget.model.propsExpr[name] = value
+        widget.id = uniqid()
       }
       // 'designer/select': (state, element) => {
       //   state.selection = element

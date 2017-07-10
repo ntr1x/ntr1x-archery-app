@@ -27,6 +27,7 @@ export default {
       }, {})
 
     return createElement(node.component, {
+      key: model.id,
       props: node.propsData,
       scopedSlots
     })

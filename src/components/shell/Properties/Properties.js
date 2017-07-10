@@ -1,9 +1,12 @@
 import { mapState, mapMutations } from 'vuex'
 import * as controls from '@/components/controls'
 import Property from './Property.vue'
-import uniqid from 'uniqid'
+import _ from 'lodash'
 
 export default {
+  created () {
+    this.updatePropertyDebounced = _.debounce(this.updateProperty, 500)
+  },
   components: {
     ...controls,
     Property
@@ -26,8 +29,7 @@ export default {
       })
     },
     handlePropertyChange ({ name, value, type }) {
-      console.log({ name, value, type })
-      this.updateProperty({ widget: this.widget, type, name, value })
+      this.updatePropertyDebounced({ widget: this.widget, type, name, value })
     }
   }
 }

@@ -85,6 +85,7 @@ export function buildWidget (widget, registry, context, parent) {
 
   let instance = _.omitBy({
     id: uniqid(),
+    componentId: uniqid(),
     ref,
     name: widget.name,
     title: component.title,
