@@ -16,12 +16,7 @@
       <div class="middle">
         <ul>
           <li v-for="item in category.items" :key="item">
-            <span class="highlight highlight-default">
-              <i class="icon-item" :class="item.icon.class"
-                :style="{ backgroundImage: item.icon.backgroundImage && `url(${item.icon.backgroundImage})` }"
-              >{{item.icon.content}}</i>
-              <span>{{item.title}}</span>
-            </span>
+            <palette-item :category="category" :item="item" />
           </li>
         </ul>
       </div>

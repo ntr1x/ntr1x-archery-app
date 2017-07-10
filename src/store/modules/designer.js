@@ -27,7 +27,8 @@ export default () => {
       selected: {
         page: portal.pages[0],
         widget: portal.pages[0].root
-      }
+      },
+      transfer: null
       // page: {
       //   children: []
       // },
@@ -59,6 +60,9 @@ export default () => {
         widget.model.propsExpr = widget.model.propsExpr || {}
         widget.model.propsExpr[name] = value
         widget.id = uniqid()
+      },
+      'transfer/update': (state, data) => {
+        state.transfer = data
       }
       // 'designer/select': (state, element) => {
       //   state.selection = element
@@ -81,7 +85,17 @@ export default () => {
 
       'props/create': props.create,
       'props/update': props.update,
-      'props/remove': props.remove
+      'props/remove': props.remove,
+
+      'transfer/put': ({ commit }, data) => {
+        commit('transfer/update', data)
+      },
+
+      'transfer/retrieve': ({ state, commit }) => {
+        const data = state.transfer
+        commit('transfer/update', null)
+        return data
+      }
 
       // 'designer/setup': ({ state, commit }) => {
       //   commit('designer/widgets/create', {

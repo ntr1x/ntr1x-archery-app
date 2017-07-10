@@ -5,16 +5,6 @@
 .root.palette {
 
   @include shell-pane();
-  @include with-highlights();
-  @include with-icons(icon-item, 22, 14);
-
-  .icon-item {
-    >svg {
-      fill: $color-white;
-    }
-  }
-
-  color: $color-white;
 
   >.top {
     color: $color-2;
@@ -40,7 +30,6 @@
           padding: 0;
           list-style: none;
           >li {
-
           }
         }
       }

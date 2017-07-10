@@ -1,11 +1,18 @@
 import { mapMutations } from 'vuex'
-import Palette from '@/palette'
+
+import PaletteItem from './PaletteItem.vue'
+import palette from '@/palette'
 
 export default {
-  computed: {
-    palette: () => Palette
+  components: {
+    PaletteItem
   },
-  methods: mapMutations({
-    toggle: 'designer/panels/toggle'
-  })
+  computed: {
+    palette: () => palette
+  },
+  methods: {
+    ...mapMutations({
+      toggle: 'designer/panels/toggle'
+    })
+  }
 }
