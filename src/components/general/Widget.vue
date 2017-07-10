@@ -12,9 +12,6 @@ export default {
 
     const model = this.model
     const node = this.model.node({})
-    console.log(this)
-
-    this.$options.components['widget'] = this
 
     const scopedSlots = !model.slots
       ? undefined
@@ -28,8 +25,6 @@ export default {
         )
         return target
       }, {})
-
-    console.log(scopedSlots)
 
     return createElement(node.component, {
       props: node.propsData,

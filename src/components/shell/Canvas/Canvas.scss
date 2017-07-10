@@ -4,17 +4,21 @@
 
   @include position(absolute, 0, 0, 0, 0);
 
-  .outer {
+  >.outer {
 
     @include position(absolute, 20px, 20px, 20px, 20px);
     @include dock-row();
     @include scrollable();
     justify-content: center;
 
-    .inner {
+    >.inner {
       @include paper(2, 5);
       flex: 0 0 auto;
       background-color: #FFFFFF;
+
+      >.content {
+        background-color: #FFFFFF;
+      }
     }
   }
 }

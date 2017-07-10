@@ -4,6 +4,7 @@ import * as controls from '@/components/controls'
 export default {
   components: { ...controls },
   props: {
+    type: String, // 'prop' | 'event'
     widget: Object,
     property: Object
   },
@@ -11,7 +12,20 @@ export default {
     value: null
   }),
   created () {
-    // this.value = this.property.default || null
+
+    const model = this.widget.model
+
+    if (this.type === 'prop') {
+      this.value = model.propsExpr && (this.property.name in model.propsExpr)
+        ? model.propsExpr[this.property.name]
+        : this.property.default || null
+    }
+
+    if (this.type === 'event') {
+      this.value = model.eventsExpr && (this.property.name in model.eventsExpr)
+        ? model.eventsExpr[this.property.name]
+        : (this.property.default || null)
+    }
   },
   methods: {
     ...mapMutations({

@@ -6,7 +6,9 @@ export const registry = new Registry({
     'canvas': () => widgets.Canvas,
     'box': () => widgets.Box,
     'row': () => widgets.Row,
-    'column': () => widgets.Column
+    'column': () => widgets.Column,
+    'row-repeater': () => widgets.RowRepeater,
+    'column-repeater': () => widgets.ColumnRepeater
   }
 })
 
@@ -51,6 +53,53 @@ export const structure = {
                         { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"blue"' } },
                         { name: 'box', propsExpr: { margin: '"10px"', width: '"" + 20 * 3 + "px"', height: '"60px"', background: '"purple"' } },
                         { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"yellow"' } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              name: 'box',
+              slots: {
+                default: [
+                  {
+                    name: 'row-repeater',
+                    propsExpr: { items: '[0,1,2,3]' },
+                    slots: {
+                      default: [
+                        { name: 'box', propsExpr: { margin: '"10px"', width: '"40px"', height: '"60px"', background: '"brown"' } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              name: 'box',
+              slots: {
+                default: [
+                  {
+                    name: 'row-repeater',
+                    propsExpr: { items: '[0,1,2,3,5]' },
+                    slots: {
+                      default: [
+                        {
+                          name: 'box',
+                          slots: {
+                            default: [
+                              {
+                                name: 'column-repeater',
+                                propsExpr: { items: '[0,1,2,3,5]' },
+                                slots: {
+                                  default: [
+                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '"magenta"' } }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
                       ]
                     }
                   }

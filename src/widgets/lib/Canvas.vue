@@ -1,6 +1,6 @@
 <template>
   <div class="root">
-    <slot name="default"></slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -8,7 +8,6 @@
   .root {
     display: flex;
     flex-direction: column;
-    min-height: 200px;
     position: relative;
   }
 </style>

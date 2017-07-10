@@ -10,7 +10,7 @@ export default {
   computed: {
     ...mapState({
       widget: (state) => state.designer.selected.widget,
-      properties: (state) => state.designer.selected.widget && state.designer.selected.widget.propsCategories()
+      propsCategories: (state) => state.designer.selected.widget && state.designer.selected.widget.propsCategories()
     })
   },
   methods: {

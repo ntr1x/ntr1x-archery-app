@@ -1,15 +1,19 @@
 // import palette from '@/engine/palette'
 
+import Box from './lib/Box.vue'
 import Canvas from './lib/Canvas.vue'
 import Column from './lib/Column.vue'
 import Row from './lib/Row.vue'
-import Box from './lib/Box.vue'
+import RowRepeater from './lib/RowRepeater.vue'
+import ColumnRepeater from './lib/ColumnRepeater.vue'
 
 export {
+  Box,
   Canvas,
   Column,
   Row,
-  Box
+  RowRepeater,
+  ColumnRepeater
 }
 
 // palette.component('a-canvas', Canvas)
