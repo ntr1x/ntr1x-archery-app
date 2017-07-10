@@ -5,6 +5,8 @@ import * as props from './designer-props.js'
 import { buildPortal } from '@/engine/runtime'
 import { structure, registry } from '@/mock/portal0.mock'
 
+import uniqid from 'uniqid'
+
 export default () => {
 
   const portal = buildPortal(structure, registry, {})
@@ -52,6 +54,14 @@ export default () => {
       },
       'widgets/select': (state, widget) => {
         state.selected.widget = widget
+      },
+      'widgets/property': (state, { widget, type, name, value }) => {
+        Object.assign(widget.model.propsExpr, {
+          [name]: value
+        })
+        Object.assign(widget, {
+          id: uniqid()
+        })
       }
       // 'designer/select': (state, element) => {
       //   state.selection = element

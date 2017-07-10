@@ -34,6 +34,11 @@ export default {
     }),
     handleInput (value) {
       this.value = value
+      this.$emit('change', {
+        name: this.property.name,
+        value,
+        type: this.type
+      })
     },
     edit () {
       this.modal({
