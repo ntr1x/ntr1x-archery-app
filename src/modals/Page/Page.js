@@ -1,6 +1,6 @@
 import { mapMutations, mapActions } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
-import Focus from '@/directives/Focus'
+import { Focus } from '@/directives'
 import * as controls from '@/components/controls'
 
 export default {

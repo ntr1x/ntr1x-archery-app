@@ -1,12 +1,8 @@
 <script>
-
 export default {
-  name: 'proxy',
+  name: 'widget',
   props: {
     model: Object
-  },
-  beforeCreate () {
-    this.$options.components.Proxy = require('./Proxy.vue')
   },
   render (createElement) {
 
@@ -17,7 +13,7 @@ export default {
       ? undefined
       : Object.entries(model.slots).reduce((target, [name, slot]) => {
         target[name] = (scopedProps) => slot.map(
-          (m) => createElement('proxy', {
+          (m) => createElement('widget', {
             props: {
               model: m
             }
