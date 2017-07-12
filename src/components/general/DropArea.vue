@@ -12,7 +12,8 @@
 <script>
 export default {
   props: {
-    area: Object
+    area: Object,
+    clip: Object
   }
 }
 </script>
@@ -20,9 +21,10 @@ export default {
 <style scoped lang="scss">
 .root.drop-area {
   position: fixed;
-  z-index: 10000;
+  z-index: 1;
   pointer-events: none;
   background: rgba(100,100,100,0.5);
+  // clip: rect(0,1000px,800px,0);
   // border: 1px solid yellow;
 }
 </style>

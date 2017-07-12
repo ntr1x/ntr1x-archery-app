@@ -3,6 +3,7 @@
 .root.canvas {
 
   @include position(absolute, 0, 0, 0, 0);
+  overflow: hidden;
 
   >.outer {
 

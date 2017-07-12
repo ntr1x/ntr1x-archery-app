@@ -7,16 +7,12 @@ export default () => ({
     ]
   },
   mutations: {
-    'enter': (state, area) => {
-      // state.stack.pop()
-      state.stack.push({
+    'update': (state, collection) => {
+      state.stack = collection.map((item) => ({
         id: uniqid(),
-        area
-      })
-      console.log(JSON.stringify(state.stack))
-    },
-    'leave': (state) => {
-      state.stack.shift()
+        area: item.area,
+        clip: item.clip
+      }))
     }
   }
 })
