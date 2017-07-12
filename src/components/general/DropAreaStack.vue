@@ -1,6 +1,6 @@
 <template>
-  <section class="root modal-stack">
-    <modal v-for="item in stack" :modal="item.modal" :key="item.id"></modal>
+  <section class="root drop-area-stack">
+    <drop-area v-for="item in stack" :area="item.area" :key="item.id"></drop-area>
   </section>
 </template>
 
@@ -10,13 +10,13 @@ export default {
     stack: Array
   },
   components: {
-    Modal: require('./Modal')
+    DropArea: require('./DropArea')
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .root.modal-stack {
+  .root.drop-area-stack {
     position: relative;
     overflow: visible;
     z-index: 100;

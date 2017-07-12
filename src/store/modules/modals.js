@@ -1,3 +1,5 @@
+import uniqid from 'uniqid'
+
 export default () => ({
   namespaced: true,
   state: {
@@ -5,7 +7,10 @@ export default () => ({
   },
   mutations: {
     'open': (state, modal) => {
-      state.stack.push(modal)
+      state.stack.push({
+        id: uniqid(),
+        modal
+      })
     },
     'close': (state) => {
       state.stack.pop()
