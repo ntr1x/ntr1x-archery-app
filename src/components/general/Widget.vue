@@ -1,6 +1,7 @@
 <script>
 export default {
   name: 'widget',
+  abstract: true,
   props: {
     model: Object
   },

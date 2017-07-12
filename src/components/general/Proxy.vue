@@ -2,6 +2,7 @@
 
 export default {
   name: 'proxy',
+  abstract: true,
   props: {
     component: {
       type: [ String, Object, Function ]

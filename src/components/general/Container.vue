@@ -26,16 +26,25 @@ export default {
   },
   methods: {
     handleDragenter (e) {
+      // if (e.target !== this.$el) {
+      //   e.preventDefault()
+      //   return
+      // }
       e.target.style['box-shadow'] = 'rgba(255, 255, 255, 0.360784) 0px 1px 0px 0px inset, blue 0px 0px 0px 2px'
+      // e.target.style['pointer-events'] = 'none'
       console.log('dragenter', e.target.getBoundingClientRect())
     },
     handleDragleave (e) {
+      // if (e.target !== this.$el) {
+      //   e.preventDefault()
+      //   return
+      // }
       e.target.style['box-shadow'] = null
+      // e.target.style['pointer-events'] = null
       console.log('dragleave', e.target.getBoundingClientRect())
     },
     handleDragover (e) {
       if (e.target === this.$el) {
-        console.log('asd')
         e.preventDefault()
       }
     },
