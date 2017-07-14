@@ -1,7 +1,7 @@
 export default {
-  inserted (el) {
+  inserted (el, { arg }) {
     el.__area__ = {
-      drop: true
+      drop: arg
     }
   }
 }

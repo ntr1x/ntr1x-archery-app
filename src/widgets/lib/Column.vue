@@ -1,5 +1,5 @@
 <template>
-  <div class="root column" v-drop>
+  <div class="root column" v-drop:column>
     <slot></slot>
   </div>
 </template>

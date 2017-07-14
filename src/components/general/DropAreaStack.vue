@@ -1,6 +1,6 @@
 <template>
   <section class="root drop-area-stack">
-    <drop-area v-for="item in stack" :area="item.area" :clip="item.clip" :key="item.id"></drop-area>
+    <drop-area v-for="item in stack" :mode="item.mode" :area="item.area" :bounds="item.bounds" :children="item.children" :key="item.id" />
   </section>
 </template>
 

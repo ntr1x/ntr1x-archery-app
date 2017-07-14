@@ -17,12 +17,14 @@
       justify-content: center;
 
       >.inner {
+        box-sizing: border-box;
         @include paper(2, 5);
         flex: 0 0 auto;
+        position: relative;
         background-color: #FFFFFF;
 
         >.content {
-          background-color: #FFFFFF;
+          @include position(absolute, 0, 0, 0, 0);
         }
       }
     }

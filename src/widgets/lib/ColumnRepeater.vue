@@ -1,5 +1,5 @@
 <template>
-  <div class="root column-repeater" v-drop>
+  <div class="root column-repeater" v-drop:column>
     <slot v-for="item in items" :item="item" />
   </div>
 </template>

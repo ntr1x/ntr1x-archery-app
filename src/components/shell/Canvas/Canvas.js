@@ -14,14 +14,10 @@ export default {
     counter: 0
   }),
   mounted () {
-    console.log('Container mounted')
-
     this.$el.addEventListener('dragenter', this.handleDragenter)
     this.$el.addEventListener('dragleave', this.handleDragleave)
     this.$el.addEventListener('dragover', this.handleDragover)
     this.$el.addEventListener('drop', this.handleDrop)
-
-    console.log(this)
   },
   beforeDestroy () {
 
@@ -29,8 +25,6 @@ export default {
     this.$el.removeEventListener('dragleave', this.handleDragleave)
     this.$el.removeEventListener('dragover', this.handleDragover)
     this.$el.removeEventListener('drop', this.handleDrop)
-
-    console.log('Container beforeDestroy')
   },
   methods: {
     ...mapMutations({
@@ -42,29 +36,32 @@ export default {
       while (element.parentElement != null) {
         // console.log(element)
         if (element.__area__) {
-          stack.push(element)
+          stack.push([element, element.__area__.drop])
         }
         element = element.parentElement
       }
 
-      const clipRect = this.$el.getBoundingClientRect()
-      const clip = {
-        top: clipRect.top + 'px',
-        left: clipRect.left + 'px',
-        right: clipRect.right + 'px',
-        bottom: clipRect.bottom + 'px'
-      }
-
-      this.updateDropAreas(stack.map(element => {
+      const clip = this.$el.getBoundingClientRect()
+      const bounds = { top: clip.top, right: clip.right, bottom: clip.bottom, left: clip.left }
+      this.updateDropAreas(stack.map(([element, mode]) => {
         const rect = element.getBoundingClientRect()
-        return {
-          clip,
-          area: {
-            top: rect.top + 'px',
-            left: rect.left + 'px',
-            width: (rect.right - rect.left) + 'px',
-            height: (rect.bottom - rect.top) + 'px'
+        const children = []
+        if (element.children) {
+          for (let i = 0; i < element.children.length; i++) {
+            const child = element.children[i].getBoundingClientRect()
+            children.push({
+              top: child.top,
+              right: child.right,
+              bottom: child.bottom,
+              left: child.left
+            })
           }
+        }
+        return {
+          mode,
+          bounds,
+          area: { top: rect.top, right: rect.right, bottom: rect.bottom, left: rect.left },
+          children
         }
       }))
     },
@@ -79,14 +76,14 @@ export default {
       }
     },
     handleDragover (e) {
-      if (e.target === this.$el) {
+      if (this.counter) {
         e.preventDefault()
       }
     },
     handleDrop (e) {
+      this.counter = 0
+      this.updateDropAreas([])
       e.preventDefault()
-      // const data = await this.transferRetrieve()
-      // console.log('drop')
     }
   }
 }

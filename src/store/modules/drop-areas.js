@@ -10,8 +10,10 @@ export default () => ({
     'update': (state, collection) => {
       state.stack = collection.map((item) => ({
         id: uniqid(),
+        mode: item.mode,
         area: item.area,
-        clip: item.clip
+        bounds: item.bounds,
+        children: item.children
       }))
     }
   }

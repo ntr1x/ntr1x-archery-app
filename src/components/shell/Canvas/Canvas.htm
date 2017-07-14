@@ -1,10 +1,10 @@
 <div class="root canvas">
   <div class="outer">
-    <div class="scallable" :style="{
-      transform: `scale(${scale})`
-    }">
-      <div class="inner" :style="{
+    <div class="scallable">
+      <div class="inner" ref="inner" :style="{
         position: dimensions.position,
+        transform: `scale(${scale})`,
+        transformOrigin: 'top center',
         width: dimensions.width || '100%',
         height: dimensions.height || '100%'
       }">
