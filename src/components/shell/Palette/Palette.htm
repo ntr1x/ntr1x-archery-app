@@ -6,20 +6,12 @@
     </div>
   </div>
   <div class="middle">
-    <div class="section" v-for="category in palette.categories" :key="category">
-      <div class="top">
-        <h5 class="heading">{{category.title}}</h5>
-        <div class="actions">
-          <button class="highlight highlight-default"><i class="material-icons icon-action">arrow_drop_down</i></button>
-        </div>
-      </div>
-      <div class="middle">
-        <ul>
-          <li v-for="item in category.items" :key="item">
-            <palette-item :category="category" :item="item" />
-          </li>
-        </ul>
-      </div>
-    </div>
+    <category class="section" v-for="category in palette.categories" :key="category" :title="category.title" >
+      <ul>
+        <li v-for="item in category.items" :key="item">
+          <palette-item :category="category" :item="item" />
+        </li>
+      </ul>
+    </category>
   </div>
 </div>

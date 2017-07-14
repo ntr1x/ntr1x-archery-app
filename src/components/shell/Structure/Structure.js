@@ -1,5 +1,6 @@
 import { mapState, mapMutations, mapActions } from 'vuex'
 
+import Category from '../Category/Category.vue'
 import PageModal from '@/modals/Page/Page.vue'
 import PropModal from '@/modals/Prop/Prop.vue'
 
@@ -9,6 +10,9 @@ export default {
     props: state => state.designer.selected.page && state.designer.selected.page.props,
     selectedPage: state => state.designer.selected.page
   }),
+  components: {
+    Category
+  },
   methods: {
     ...mapMutations({
       toggle: 'designer/panels/toggle',

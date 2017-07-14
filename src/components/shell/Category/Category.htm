@@ -1,0 +1,16 @@
+<div class="root category">
+  <div class="top">
+    <h5 class="heading">{{ title }}</h5>
+    <div class="actions">
+      <slot name="actions"></slot>
+      <a class="highlight highlight-default expand" :class="{
+        open: open
+      }" @click="toggle">
+        <i class="material-icons icon-action">arrow_drop_down</i>
+      </a>
+    </div>
+  </div>
+  <div class="middle" v-if="open">
+    <slot></slot>
+  </div>
+</div>

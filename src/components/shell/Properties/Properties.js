@@ -1,6 +1,7 @@
 import { mapState, mapMutations } from 'vuex'
 import * as controls from '@/components/controls'
 import Property from './Property.vue'
+import Category from '../Category/Category.vue'
 import _ from 'lodash'
 
 export default {
@@ -9,7 +10,8 @@ export default {
   },
   components: {
     ...controls,
-    Property
+    Property,
+    Category
   },
   computed: {
     ...mapState({

@@ -1,5 +1,5 @@
 <template>
-  <div class="root box" :style="{
+  <div class="root box" draggable="true" :style="{
     'flex': flex,
     'width': width,
     'height': height,

@@ -1,0 +1,33 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+@import "~@/styles/shell/pane";
+
+.root.category {
+
+  @include shell-pane();
+  @include flex-column();
+
+  >.top {
+    border-bottom: $border-2;
+    >.heading {
+      text-transform: capitalize;
+    }
+    >.actions {
+      >.expand {
+        padding: 0px;
+        transform: rotate(-90deg);
+        transition: transform 0.2s ease-in-out;
+        &.open {
+          transform: rotate(0);
+        }
+      }
+    }
+  }
+
+  >.middle {
+    padding: 6px 12px;
+    border-bottom: $border-2;
+    color: $color-2;
+    font-size: 12px;
+  }
+}

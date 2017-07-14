@@ -6,27 +6,19 @@
     </div>
   </div>
   <div class="middle">
-    <div class="section" v-for="category in propsCategories" :key="category.name">
-      <div class="top">
-        <h5 class="heading">{{ category.name }}</h5>
-        <div class="actions">
-          <button class="highlight highlight-default"><i class="material-icons icon-action">arrow_drop_down</i></button>
-        </div>
-      </div>
-      <div class="middle">
-        <div class="table">
-          <div class="tbody">
-            <div class="row" v-for="property in category.defs" :key="property.name">
-              <div class="cell cell-1">
-                {{ property.def.title || property.name }}:
-              </div>
-              <div class="cell cell-2">
-                <property :widget="widget" :property="property" type="prop" @change="handlePropertyChange"/>
-              </div>
+    <category class="section" v-for="category in propsCategories" :key="category.name" :title="category.name" >
+      <div class="table">
+        <div class="tbody">
+          <div class="row" v-for="property in category.defs" :key="property.name">
+            <div class="cell cell-1">
+              {{ property.def.title || property.name }}:
+            </div>
+            <div class="cell cell-2">
+              <property :widget="widget" :property="property" type="prop" @change="handlePropertyChange"/>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </category>
   </div>
 </div>

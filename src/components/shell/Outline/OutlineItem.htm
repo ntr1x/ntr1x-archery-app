@@ -1,9 +1,9 @@
 <div class="root outline-item">
   <div class="top">
     <div class="left">
-      <button v-if="item.slots" class="highlight highlight-default expand" :class="{ 'open': open }" @click="toggle()">
+      <a v-if="item.slots" class="highlight highlight-default expand" :class="{ 'open': open }" @click="toggle()">
         <i class="material-icons icon-action">arrow_drop_down</i>
-      </button>
+      </a>
     </div>
     <div class="center">
       <span

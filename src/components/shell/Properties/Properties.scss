@@ -23,40 +23,21 @@
 
     >.section {
 
-      @include shell-pane();
-      @include flex-column();
+      .cell {
 
-      >.top {
-        border-bottom: $border-2;
-        >.heading {
-          text-transform: capitalize;
+        &.cell-1 {
+          width: 30%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          vertical-align: middle;
+          padding-right: 5px;
         }
-      }
 
-      >.middle {
-        padding: 6px 12px;
-        border-bottom: $border-2;
-        color: $color-2;
-        font-size: 12px;
-
-        .cell {
-
-          // padding:
-
-          &.cell-1 {
-            width: 30%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            vertical-align: middle;
-            padding-right: 5px;
-          }
-
-          &.cell-2 {
-            position: relative;
-            width: 70%;
-            padding: 2px 0px;
-          }
+        &.cell-2 {
+          position: relative;
+          width: 70%;
+          padding: 2px 0px;
         }
       }
     }

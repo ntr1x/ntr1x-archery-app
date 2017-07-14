@@ -13,25 +13,11 @@
   >.middle {
     @include scrollable();
 
-    >.section {
-
-      @include shell-pane();
-      @include flex-column();
-
-      >.top {
-        border-bottom: $border-2;
-      }
-
-      >.middle {
-        padding: 6px 6px;
-        border-bottom: $border-2;
-        >ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-          >li {
-          }
-        }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      >li {
       }
     }
   }
