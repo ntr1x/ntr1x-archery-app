@@ -2,26 +2,19 @@
 @import "~@/styles/partials/mixins";
 @import "~@/styles/themes/shell";
 
-.root {
-  position: relative;
-  overflow: visible;
-  z-index: 100;
+.root.modal {
+  @include position(fixed, 0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .modal {
-    @include position(fixed, 0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.2);
+  >.content {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .content {
-      position: relative;
-      flex: 0 0 auto;
-      display: block;
-
-      >* {
-        display: table;
-      }
-    }
+    position: relative;
+    flex: 0 0 auto;
+    height: 100%;
   }
 }

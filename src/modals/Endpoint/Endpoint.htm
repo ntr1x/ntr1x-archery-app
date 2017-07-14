@@ -1,0 +1,77 @@
+<form class="root endpoint"
+  @submit.prevent="() => { $v.$touch(); !$v.$invalid && submit() }"
+  @reset.prevent="close()"
+  @keyup.esc="close()"
+  novalidate
+>
+  <div class="top">
+    <h3 class="heading">{{spec.info.title}}</h3>
+    <div class="actions">
+      <button type="reset" class="highlight highlight-default"><i class="material-icons icon-action">close</i></button>
+    </div>
+  </div>
+  <div class="middle">
+    <div class="left">
+      <ul>
+        <li :class="{ active: filterTag === null }">
+          <a @click="handleFilterTag(null)">
+            <span class="tag-name">All</span>
+            <span class="tag-description">Any tags</span>
+          </a>
+        </li>
+        <li v-for="tag in spec.tags" :key="tag" :class="{ active: filterTag === tag.name }">
+          <a @click="handleFilterTag(tag.name)">
+            <span class="tag-name">{{tag.name || 'Noname'}}</span>
+            <span class="tag-description" v-if="tag.description">{{tag.description}}</span>
+          </a>
+        </li>
+        <li :class="{ active: filterTag === '' }">
+          <a @click="handleFilterTag('')">
+            <span class="tag-name">Other</span>
+            <span class="tag-description">Methods without tags</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="center">
+      <div class="top">
+        <c-text v-model="filterString" @input="handleFilterString" class="input input-default" placeholder="Filter..." v-focus />
+      </div>
+      <div class="middle">
+        <div class="table">
+          <div class="tbody">
+            <div class="row" v-for="item in filteredItems" @click="handleToggleSelected(item)">
+              <div class="cell cell-check">
+                <input type="checkbox" v-model="item.selected" @click.stop />
+              </div>
+              <div class="cell cell-method">
+                <span class="highlight" :class="{
+                  'highlight-default': item.method === 'OPTIONS',
+                  'highlight-info': item.method === 'HEAD',
+                  'highlight-primary': item.method === 'GET',
+                  'highlight-success': item.method === 'POST',
+                  'highlight-warning': item.method === 'PUT',
+                  'highlight-danger': item.method === 'DELETE'
+                }">{{item.method}}</span>
+              </div>
+              <div class="cell cell-path">
+                {{item.path}}
+              </div>
+              <div class="cell cell-info">
+                {{item.operation.summary}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="center">
+    </div>
+    <div class="right">
+      <button type="reset" class="action action-default">Cancel</button>
+      <button type="submit" class="action action-primary">Import Selected</button>
+    </div>
+  </div>
+</form>

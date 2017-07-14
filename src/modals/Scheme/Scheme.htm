@@ -1,0 +1,45 @@
+<form class="root scheme"
+  @submit.prevent="() => { $v.$touch(); !$v.$invalid && submit() }"
+  @reset.prevent="close()"
+  @keyup.esc="close()"
+  novalidate
+>
+  <div class="top">
+    <h3 class="heading">Scheme</h3>
+    <div class="actions">
+      <button type="reset" class="highlight highlight-default"><i class="material-icons icon-action">close</i></button>
+    </div>
+  </div>
+  <div class="middle">
+    <div class="row">
+      <label>Swagger 2.0 Schema</label>
+      <div class="group">
+        <c-text
+          v-model="url"
+          v-focus
+          placeholder="Scheme URL"
+          class="input input-default group-item group-item-fill"
+          @input="$v.url.$touch()"
+          :class="{
+            'input-danger': $v.url.$error
+          }"
+        />
+      </div>
+      <template v-if="$v.url.$error">
+        <div v-if="!$v.url.required">Scheme is a required field</div>
+        <div v-if="!$v.url.url">Scheme should be a valid URL</div>
+      </template>
+    </div>
+    <div class="row" v-if="error">
+      {{error}}
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="center">
+    </div>
+    <div class="right">
+      <button type="reset" class="action action-default">Cancel</button>
+      <button class="action action-primary">Next</button>
+    </div>
+  </div>
+</form>

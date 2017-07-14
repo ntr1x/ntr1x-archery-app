@@ -20,6 +20,10 @@
   overflow: hidden;
 
   font-size: 14px;
+  flex: 0 0 auto;
+
+  max-height: 90%;
+  max-width: 90%;
 
   >.top {
     padding: 12px 12px;
@@ -48,7 +52,8 @@
   }
 
   >.middle {
-      padding: 12px 12px;
+    @include scrollable();
+    padding: 12px 12px;
   }
 
   >.bottom {

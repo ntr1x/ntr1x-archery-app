@@ -3,6 +3,7 @@ import { mapState, mapMutations, mapActions } from 'vuex'
 import Category from '../Category/Category.vue'
 import PageModal from '@/modals/Page/Page.vue'
 import PropModal from '@/modals/Prop/Prop.vue'
+import SchemeModal from '@/modals/Scheme/Scheme.vue'
 
 export default {
   computed: mapState({
@@ -23,6 +24,11 @@ export default {
       removePage: 'designer/pages/remove',
       removeProp: 'designer/props/remove'
     }),
+    importRemotes () {
+      this.modal({
+        factory: () => SchemeModal
+      })
+    },
     newPage () {
       this.modal({
         factory: () => PageModal

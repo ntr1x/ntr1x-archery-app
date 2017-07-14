@@ -2,11 +2,11 @@ import { mapState, mapMutations } from 'vuex'
 import * as controls from '@/components/controls'
 import Property from './Property.vue'
 import Category from '../Category/Category.vue'
-import _ from 'lodash'
+import { debounce } from 'lodash'
 
 export default {
   created () {
-    this.updatePropertyDebounced = _.debounce(this.updateProperty, 500)
+    this.updatePropertyDebounced = debounce(this.updateProperty, 500)
   },
   components: {
     ...controls,

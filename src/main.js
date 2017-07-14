@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
 import Vuelidate from 'vuelidate'
 // import VueMaterial from 'vue-material'
 
@@ -25,7 +24,6 @@ import '@/styles/themes/default.scss'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
-Vue.use(VueResource)
 Vue.use(Vuelidate)
 // Vue.use(VueMaterial)
 
