@@ -73,7 +73,7 @@ export default {
       for (let i = 1; i < children.length; i++) {
         const prev = children[i - 1]
         const curr = children[i]
-        positions.push({ top: `${(curr.bottom + prev.top) / 2}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
+        positions.push({ top: `${(curr.top + prev.bottom) / 2}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
       }
       positions.push({ top: `${area.bottom}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
       return positions
@@ -95,8 +95,8 @@ export default {
     position: fixed;
     z-index: 2;
     pointer-events: none;
-    background: rgba(100,0,0,0.2);
-    outline: 1px solid yellow;
+    // background: rgba(100,0,0,0.2);
+    // outline: 1px solid yellow;
 
     >.drop-position {
       position: fixed;
