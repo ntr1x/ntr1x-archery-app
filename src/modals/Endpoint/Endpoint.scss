@@ -6,95 +6,41 @@
 .root.endpoint {
 
   @include shell-modal();
-  @include shell-form();
-
-  height: 700px;
-  width: 1000px;
-  overflow: auto;
+  width: 600px;
 
   >.middle {
-    @include dock-row();
-    @include with-tables(fixed);
+    @include shell-form();
+    @include with-tables();
 
-    >.left {
-      @include scrollable();
-      padding: 0px 5px 0px 0px;
-      width: 200px;
-      >ul {
-        padding: 0;
-        list-style: none;
-        margin: 0px;
-        >li {
-          >a {
-            padding: 5px;
-            display: block;
-            border-radius: 2px;
-            cursor: pointer;
-            >.tag-name {
-              display: block;
-            }
-            >.tag-description {
-              display: block;
-              font-size: 0.9em;
-              opacity: 0.7;
-            }
-            &:hover {
-              background: $background-1;
-            }
-          }
+    @include with-icons('caret-sm', 22px, 14px, 16px);
+    @include with-inputs('input-sm');
+    @include with-buttons('button-sm');
 
-          &.active {
-            >a {
-              background: $background-selection-0;
-              &:hover {
-                background: $background-selection-1;
-              }
-            }
-          }
+    .cell {
+      padding: 2px;
+      vertical-align: middle;
+      &.cell-index {
+        // padding-left: 0;
+        text-align: center;
+      }
+      &.cell-name {
+        .input-sm {
+          width: 100px;
         }
       }
-    }
-
-    >.center {
-      flex: 1 1 100%;
-      padding: 0px 0px 0px 5px;
-      @include dock-column();
-      >.top {
-        padding: 0px 5px 10px 5px;
+      &.cell-value {
+        width: 100%;
       }
-      >.middle {
-        @include scrollable();
-        padding: 5px;
+      &.cell-actions {
+        padding-right: 0;
       }
     }
 
     .row {
-      user-select: none;
-      cursor: pointer;
-      &:hover {
-        background: $background-1;
-      }
-    }
-
-    .cell {
-
-      padding: 5px;
-      vertical-align: middle;
-
-      &.cell-check {
-        width: 20px;
-      }
-
-      &.cell-method {
-        width: 50px;
-      }
-
-      &.cell-path {
-        width: 200px;
-      }
-
-      &.cell-info {
-        width: auto;
+      &.row-add {
+        .cell-check, .cell-type, .cell-name, .cell-value {
+          opacity: 0.5;
+        }
       }
     }
   }

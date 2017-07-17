@@ -6,7 +6,7 @@
 
   @include shell-pane();
   @include with-highlights(highlight);
-  @include with-icons(icon, 22, 14);
+  @include with-icons(icon, 22px, 14px);
 
   >.top {
     color: $color-2;

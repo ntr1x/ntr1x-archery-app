@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="middle">
-    <div class="row">
+    <div class="form-row">
       <label>Name</label>
       <div class="group">
         <c-text
@@ -28,7 +28,7 @@
         <div v-if="!$v.name.required">Name is a required field</div>
       </template>
     </div>
-    <div class="row">
+    <div class="form-row">
       <label>Title</label>
       <div class="group">
         <c-text
@@ -38,7 +38,7 @@
         />
       </div>
     </div>
-    <div class="row">
+    <div class="form-row">
       <label>Type</label>
       <div class="group">
         <c-text
@@ -60,7 +60,7 @@
         </c-button>
       </div>
     </div>
-    <div class="row" v-if="error">
+    <div class="form-row" v-if="error">
       {{error}}
     </div>
   </div>

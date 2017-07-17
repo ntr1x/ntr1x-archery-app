@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="middle">
-    <div class="row">
+    <div class="form-row">
       <label>Swagger 2.0 Schema</label>
       <div class="group">
         <c-text
@@ -30,7 +30,7 @@
         <div v-if="!$v.url.url">Scheme should be a valid URL</div>
       </template>
     </div>
-    <div class="row" v-if="error">
+    <div class="form-row" v-if="error">
       {{error}}
     </div>
   </div>

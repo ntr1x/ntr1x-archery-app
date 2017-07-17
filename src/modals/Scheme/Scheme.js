@@ -3,7 +3,7 @@ import { required, url } from 'vuelidate/lib/validators'
 import axios from 'axios'
 import { Focus } from '@/directives'
 import * as controls from '@/components/controls'
-import EndpointModal from '@/modals/Endpoint/Endpoint.vue'
+import Swagger from './Swagger.vue'
 
 export default {
   data () {
@@ -34,7 +34,7 @@ export default {
         }
         this.close()
         this.modal({
-          factory: () => EndpointModal,
+          factory: () => Swagger,
           data: {
             spec: response.data
           }

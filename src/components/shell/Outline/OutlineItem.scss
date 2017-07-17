@@ -4,7 +4,7 @@
 
 .root.outline-item {
   @include dock-column();
-  @include with-icons(icon-action, 22, 18);
+  @include with-icons(icon-action, 22px, 18px);
   @include with-highlights();
   position: relative;
 

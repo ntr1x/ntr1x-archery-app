@@ -1,12 +1,13 @@
 @import "~@/styles/partials/variables";
 @import "~@/styles/partials/mixins";
 
-@mixin shell-form($row: row) {
+@mixin shell-form($row: form-row) {
 
   @include with-inputs(input, 32px, 14px, 0px 8px);
   @include with-buttons(button, 32px, 14px, 0px 12px);
   @include with-dropdowns(dropdown, 32px, 14px, 0px 8px);
-  @include with-icons(icon, 32, 24);
+  @include with-icons(icon, 32px, 24px);
+  @include with-icons(caret, 32px, 24px, 16px);
   @include with-groups(group);
 
   >.#{$row} {

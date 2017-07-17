@@ -9,7 +9,7 @@
   @include with-buttons();
   @include with-buttons(action, 32px, 14px, 0px 12px);
   @include with-highlights(action-link, 32px, 14px, 0px 12px);
-  @include with-icons(icon-action, 22, 18);
+  @include with-icons(icon-action, 22px, 18px);
 
   background: $background-0;
   color: $color-white;

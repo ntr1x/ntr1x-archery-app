@@ -34,7 +34,7 @@ export default {
 
 .root.palette-item {
   @include with-highlights();
-  @include with-icons(icon-item, 22, 14);
+  @include with-icons(icon-item, 22px, 14px);
   display: inline-block;
   background: transparent;
 

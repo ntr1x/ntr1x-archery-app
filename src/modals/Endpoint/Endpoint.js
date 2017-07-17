@@ -1,122 +1,103 @@
 import { mapMutations } from 'vuex'
+import { required, url } from 'vuelidate/lib/validators'
 import { Focus } from '@/directives'
 import * as controls from '@/components/controls'
-import { debounce } from 'lodash'
 
 export default {
   props: {
-    spec: Object
+    endpoint: Object
   },
   data () {
     return {
-      filterTag: null, // null - all, '' - other
-      filterString: '',
-      filteredItems: null,
+      name: this.endpoint && this.endpoint.name,
+      type: this.endpoint && this.endpoint.type || 'get',
+      url: null,
+      path: null,
       error: null
     }
   },
-  created () {
-    console.log(this.spec)
-
-    const items = []
-    for (const [path, definition] of Object.entries(this.spec.paths)) {
-      for (const [method, operation] of Object.entries(definition)) {
-        items.push({
-          selected: false,
-          path,
-          definition,
-          method: method.toUpperCase(),
-          operation
-        })
-      }
-    }
-    this.items = items
-
-    this.filter()
-    this.filterDebounced = debounce(this.filter, 300)
+  computed: {
+    types: () => ([
+      'OPTIONS',
+      'HEAD',
+      'GET',
+      'POST',
+      'PUT',
+      'PATCH',
+      'DELETE'
+    ])
   },
   components: {
     ...controls
   },
-  directives: {
-    Focus
+  validations: {
+    name: {
+      required
+    },
+    type: {
+      required
+    },
+    url: {
+      required,
+      url
+    },
+    path: {
+      required
+    }
   },
   methods: {
     ...mapMutations({
-      close: 'modals/close'
+      close: 'modals/close',
+      modal: 'modals/open'
     }),
-    handleFilterTag (tag) {
-      this.filterTag = tag
-      this.filter()
+    // ...mapActions({
+    //   createPage: 'designer/pages/create',
+    //   updatePage: 'designer/pages/update',
+    //   removePage: 'designer/pages/remove'
+    // }),
+    handleTypeChange (type) {
+      this.type = type
     },
-    handleFilterString (string) {
-      this.filterString = string
-      this.filterDebounced()
-    },
-    handleToggleSelected (item) {
-      item.selected = !item.selected
-    },
-    filter () {
-      const items = []
+    async create () {
       try {
-        for (const item of this.items) {
-          const { path, method, operation } = item
-
-          if (this.filterTag !== null) {
-            let accept = false
-            if (!operation.tags) {
-              if (this.filterTag === '') {
-                accept = true
-              }
-            } else {
-              for (const tag of operation.tags) {
-                if (tag === this.filterTag) {
-                  accept = true
-                  break
-                }
-              }
-            }
-            if (!accept) {
-              continue
-            }
-          }
-
-          if (this.filterString !== '') {
-            let accept = false
-            const parts = this.filterString.split(/\s+/g)
-            for (const part of parts) {
-              if (path.toLowerCase().indexOf(part.toLowerCase()) >= 0) {
-                accept = true
-                break
-              }
-              if (method.toLowerCase().indexOf(part.toLowerCase()) >= 0) {
-                accept = true
-                break
-              }
-              if (operation.summary != null && operation.summary.toLowerCase().indexOf(part.toLowerCase()) >= 0) {
-                accept = true
-                break
-              }
-            }
-            if (!accept) {
-              continue
-            }
-          }
-
-          items.push(item)
-        }
-      } catch (e) {
-        console.log(e)
-        // ignore
-      }
-      this.filteredItems = items
-    },
-    async submit () {
-      try {
+        // await this.createEndpoint({
+        //   name: this.name,
+        //   title: this.title,
+        //   type: this.type
+        // })
         this.close()
       } catch (e) {
         this.error = e.message
       }
+    },
+    async update () {
+      try {
+        // await this.updateEndpoint({
+        //   id: this.page.id,
+        //   name: this.name,
+        //   title: this.title,
+        //   type: this.type
+        // })
+        this.close()
+      } catch (e) {
+        this.error = e.message
+      }
+    },
+    async remove () {
+      try {
+        // await this.removeProp(this.prop)
+        this.close()
+      } catch (e) {
+        this.error = e.message
+      }
+    },
+    async submit () {
+      return this.endpoint
+        ? await this.update()
+        : await this.create()
     }
+  },
+  directives: {
+    Focus
   }
 }

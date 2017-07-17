@@ -2,7 +2,7 @@
 @import "~@/styles/partials/mixins";
 
 .root.footer {
-  @include with-icons(icon, 24, 18);
+  @include with-icons(icon, 24px, 18px);
   @include with-buttons();
   @include with-highlights();
   padding: 6px 12px;

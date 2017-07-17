@@ -4,8 +4,7 @@
 
 .root.toolbar {
 
-  @include with-icons(icon, 48, 24);
-  @include with-icons(icon, 24, 18);
+  @include with-icons(icon, 24px, 18px);
   @include with-highlights();
   @include dock-row();
 

@@ -6,7 +6,7 @@
 
   @include shell-pane();
   @include with-highlights();
-  @include with-icons(icon, 22, 14);
+  @include with-icons(icon, 22px, 14px);
   @include with-tables(fixed);
   // @include with-inputs(input);
   // @include with-dropdowns(dropdown);
