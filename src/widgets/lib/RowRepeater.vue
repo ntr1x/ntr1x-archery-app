@@ -1,6 +1,6 @@
 <template>
   <div class="root row-repeater" v-drop:row>
-    <slot v-for="item in items" :item="item" />
+    <slot v-for="item in items" :row="item" />
   </div>
 </template>
 
@@ -24,6 +24,14 @@ export default {
       type: Array,
       title: 'Items',
       category: 'Content'
+    }
+  },
+  produces: {
+    default: {
+      row: {
+        type: [ Object, String, Number, Boolean, Function, Symbol ],
+        description: 'Loop Variable'
+      }
     }
   },
   directives: {

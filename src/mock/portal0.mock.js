@@ -94,7 +94,7 @@ export const structure = {
                                 slots: {
                                   default: [
                                     // eslint-disable-next-line
-                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '(() => { return `rgba(100,${30*$runtime().item},0,0.5)` })()' } }
+                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '(() => { return `rgba(100,${30*$runtime().column},0,0.5)` })()' } }
                                   ]
                                 }
                               }
@@ -109,6 +109,7 @@ export const structure = {
             },
             {
               name: 'box',
+              propsExpr: { background: '"grey"' },
               slots: {
                 default: [
                   {
@@ -126,7 +127,7 @@ export const structure = {
                                 slots: {
                                   default: [
                                     // eslint-disable-next-line
-                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '`rgba(100,${30*$runtime().item},0,0.5)`' }}
+                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '`rgba(100,${30*$runtime().row},0,0.5)`' }}
                                   ]
                                 }
                               }

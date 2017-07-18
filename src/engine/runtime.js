@@ -12,6 +12,7 @@ export function buildContext (parent, actual) {
 }
 
 export function buildValue (expression, context) {
+  console.log(expression, context.$runtime(), context)
   try {
     // eslint-disable-next-line no-new-func
     const f = new Function(Object.keys(context || {}).join(','), `return ${expression}`)
@@ -101,7 +102,7 @@ export function buildWidget (widget, registry, context, parent) {
 
       const runtimeContext = buildContext(
         context,
-        { $runtime: () => $runtime }
+        { ...$runtime, $runtime: () => $runtime }
       )
 
       return {
