@@ -4,13 +4,14 @@ export default {
   abstract: true,
   props: {
     model: Object,
-    runtimeContext: Object
-    // item: [Object, String, Number]
+    runtimeContext: Function
   },
   render (createElement) {
 
+    const context = this.runtimeContext ? this.runtimeContext() : undefined
+
     const model = this.model
-    const node = this.model.node(this.runtimeContext)
+    const node = this.model.node(context)
 
     const scopedSlots = !model.slots
       ? undefined
@@ -20,7 +21,10 @@ export default {
             (m) => createElement('widget', {
               props: {
                 model: m,
-                runtimeContext: scopedProps
+                runtimeContext: () => ({
+                  ...context,
+                  ...scopedProps
+                })
               }
             })
           )
