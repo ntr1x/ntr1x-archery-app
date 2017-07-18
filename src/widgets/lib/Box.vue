@@ -4,7 +4,8 @@
     'width': width,
     'height': height,
     'background': background,
-    'margin': margin
+    'margin': margin,
+    'padding': padding
   }">
     <slot></slot>
   </div>

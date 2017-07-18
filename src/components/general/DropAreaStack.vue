@@ -19,6 +19,6 @@ export default {
   .root.drop-area-stack {
     position: relative;
     overflow: visible;
-    z-index: 100;
+    z-index: 200;
   }
 </style>

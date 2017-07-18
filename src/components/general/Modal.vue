@@ -1,6 +1,6 @@
 <template>
-  <div class="root modal" @click.self="$store.commit('modals/close')">
-    <div class="content">
+  <div class="root modal">
+    <div class="content" @click.self="$store.commit('modals/close')">
       <proxy :component="modal.factory()" :pass="modal.data"></proxy>
     </div>
   </div>

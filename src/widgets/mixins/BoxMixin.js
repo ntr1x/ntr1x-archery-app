@@ -19,13 +19,11 @@ export default {
     margin: {
       type: String,
       title: 'Margin',
-      default: 'auto',
       category: 'Box'
     },
     padding: {
       type: String,
       title: 'Padding',
-      default: 'auto',
       category: 'Box'
     }
   },

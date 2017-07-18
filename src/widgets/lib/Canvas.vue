@@ -5,7 +5,9 @@
     height: height,
     background: background,
     margin: margin,
-    padding: padding
+    padding: padding,
+    justifyContent: justifyContent,
+    alignItems: alignItems
   }">
     <slot></slot>
   </div>
@@ -13,10 +15,11 @@
 
 <style lang="scss" scoped>
   .root.canvas {
-    display: flex !important;
-    flex-direction: column !important;
-    position: relative !important;
-    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: visible;
+    box-sizing: border-box;
   }
 </style>
 

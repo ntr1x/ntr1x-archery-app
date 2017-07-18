@@ -82,7 +82,7 @@ export const structure = {
                 default: [
                   {
                     name: 'row-repeater',
-                    propsExpr: { items: '[0,1,2,3,5]' },
+                    propsExpr: { items: '[0,1,2,3,5,6,7,8,9]' },
                     slots: {
                       default: [
                         {
@@ -91,7 +91,7 @@ export const structure = {
                             default: [
                               {
                                 name: 'column-repeater',
-                                propsExpr: { items: '[0,1,2,3,5]' },
+                                propsExpr: { items: '[0,1,2,3,5,6,7,8,9]' },
                                 slots: {
                                   default: [
                                     // eslint-disable-next-line

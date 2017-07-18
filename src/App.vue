@@ -2,6 +2,7 @@
   <div class="root app">
     <router-view></router-view>
     <drop-area-stack :stack="$store.state.dropAreas.stack" />
+    <selection-stack :widget="$store.state.designer.selected.widget" />
     <modal-stack :stack="$store.state.modals.stack" />
   </div>
 </template>
@@ -12,6 +13,7 @@
 export default {
   components: {
     DropAreaStack: require('@/components/general/DropAreaStack'),
+    SelectionStack: require('@/components/general/SelectionStack'),
     ModalStack: require('@/components/general/ModalStack')
   }
 }

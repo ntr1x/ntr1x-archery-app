@@ -16,6 +16,7 @@ export default {
       type: String,
       title: 'Align Items',
       category: 'Layout',
+      default: '\'stretch\'',
       options: [
         'stretch',
         'center',

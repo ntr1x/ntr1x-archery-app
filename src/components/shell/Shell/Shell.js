@@ -8,7 +8,7 @@ import ShellStructure from '../Structure/Structure.vue'
 import ShellPalette from '../Palette/Palette.vue'
 import ShellOutline from '../Outline/Outline.vue'
 import ShellConsole from '../Console/Console.vue'
-import ShellCanvas from '../Canvas/Canvas.vue'
+import ShellEditor from '../Editor/Editor.vue'
 
 export default {
   components: {
@@ -20,7 +20,7 @@ export default {
     ShellPalette,
     ShellOutline,
     ShellConsole,
-    ShellCanvas
+    ShellEditor
   },
   computed: mapState({
     palette: state => state.designer.panels.palette,

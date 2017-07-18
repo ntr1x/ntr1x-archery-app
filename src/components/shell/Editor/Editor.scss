@@ -1,6 +1,6 @@
 @import "~@/styles/partials/mixins";
 
-.root.canvas {
+.root.editor {
 
   @include position(absolute, 0, 0, 0, 0);
   overflow: hidden;
@@ -25,6 +25,7 @@
 
         >.content {
           @include position(absolute, 0, 0, 0, 0);
+          @include scrollable();
         }
       }
     }

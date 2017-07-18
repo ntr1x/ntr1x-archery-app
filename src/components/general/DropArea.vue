@@ -16,7 +16,6 @@
       }">
       </div>
     </div>
-    <pre>{{area}}</pre>
   </div>
 </template>
 

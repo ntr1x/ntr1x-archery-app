@@ -1,4 +1,6 @@
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'widget',
   abstract: true,
@@ -35,7 +37,21 @@ export default {
     return createElement(node.component, {
       key: model.id,
       props: node.propsData,
-      scopedSlots
+      scopedSlots,
+      attrs: {
+        'data-widget-id': this.model.id
+      },
+      nativeOn: {
+        click: (e) => {
+          e.stopPropagation()
+          this.select(model)
+        }
+      }
+    })
+  },
+  methods: {
+    ...mapMutations({
+      select: 'designer/widgets/select'
     })
   }
 }
