@@ -93,7 +93,40 @@ export const structure = {
                                 propsExpr: { items: '[0,1,2,3,5]' },
                                 slots: {
                                   default: [
-                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '"magenta"' } }
+                                    // eslint-disable-next-line
+                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '(() => { return `rgba(100,${30*$runtime().item},0,0.5)` })()' } }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              name: 'box',
+              slots: {
+                default: [
+                  {
+                    name: 'row-repeater',
+                    propsExpr: { items: '[0,1,2,3,5]' },
+                    slots: {
+                      default: [
+                        {
+                          name: 'box',
+                          slots: {
+                            default: [
+                              {
+                                name: 'column-repeater',
+                                propsExpr: { items: '[0,1,2,3,5]' },
+                                slots: {
+                                  default: [
+                                    // eslint-disable-next-line
+                                    { name: 'box', propsExpr: { margin: '"10px"', width: '"50px"', height: '"50px"', background: '`rgba(100,${30*$runtime().item},0,0.5)`' }}
                                   ]
                                 }
                               }

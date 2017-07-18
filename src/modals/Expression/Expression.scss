@@ -6,6 +6,7 @@
 
   @include shell-modal();
   @include with-inputs('input');
+  width: 900px;
 
   >.middle {
 
@@ -14,6 +15,13 @@
 
     >.column {
       padding: 6px;
+
+      &.column-expression {
+        width: 60%;
+      }
+      &.column-context {
+        width: 40%;
+      }
     }
   }
 }

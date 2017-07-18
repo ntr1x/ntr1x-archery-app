@@ -10,23 +10,15 @@
     </div>
   </div>
   <div class="middle">
-    <div class="column">
-      <div><label>Expression</label></div>
-      <div>
-        <textarea class="input input-default" v-focus>
-        </textarea>
-      </div>
-      <div><label>Preview</label></div>
-      <div>
-        <textarea class="input input-default">
-        </textarea>
+    <div class="column column-expression">
+      <div class="form-row">
+        <c-source mode="javascript" />
       </div>
     </div>
-    <div class="column">
+    <div class="column column-context">
       <div><label>Context</label></div>
       <div>
-        <textarea class="input input-default">
-        </textarea>
+        <pre>{{context}}</pre>
       </div>
     </div>
   </div>

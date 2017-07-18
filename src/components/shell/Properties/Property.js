@@ -1,4 +1,5 @@
 import { mapMutations } from 'vuex'
+import Expression from '@/modals/Expression/Expression.vue'
 import * as controls from '@/components/controls'
 
 export default {
@@ -42,7 +43,13 @@ export default {
     },
     edit () {
       this.modal({
-        factory: () => require('@/modals/Expression/Expression.vue')
+        factory: () => Expression,
+        data: {
+          property: this.property,
+          widget: this.widget,
+          type: this.type,
+          value: this.value
+        }
       })
     }
   }
