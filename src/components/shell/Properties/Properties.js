@@ -15,8 +15,8 @@ export default {
   },
   computed: {
     ...mapState({
-      widget: (state) => state.designer.selected.widget,
-      propsCategories: (state) => state.designer.selected.widget && state.designer.selected.widget.propsCategories()
+      widget: (state) => state.editor.selection,
+      propsCategories: (state) => state.editor.selection && state.editor.selection.propsCategories()
     })
   },
   methods: {

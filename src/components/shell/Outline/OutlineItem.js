@@ -1,4 +1,4 @@
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'outline-item',
@@ -9,7 +9,7 @@ export default {
   },
   computed: {
     ...mapState({
-      selected: (state) => state.designer.selected.widget
+      selected: (state) => state.editor.selection
     })
   },
   data () {
@@ -18,8 +18,8 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({
-      select: 'designer/widgets/select'
+    ...mapActions({
+      select: 'editor/select'
     }),
     toggle () {
       this.open = !this.open

@@ -1,11 +1,11 @@
-<div class="root properties" :key="widget.componentId">
+<div class="root properties">
   <div class="top">
     <h3 class="heading">Properties</h3>
     <div class="actions">
       <button class="highlight highlight-default" @click="toggle({ name: 'properties' })"><i class="material-icons icon-action">close</i></button>
     </div>
   </div>
-  <div class="middle">
+  <div class="middle" :key="widget.componentId" v-if="widget">
     <category class="section" v-for="category in propsCategories" :key="category.name" :title="category.name" >
       <div class="table">
         <div class="tbody">

@@ -1,5 +1,5 @@
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'widget',
@@ -50,8 +50,8 @@ export default {
     })
   },
   methods: {
-    ...mapMutations({
-      select: 'designer/widgets/select'
+    ...mapActions({
+      select: 'editor/select'
     })
   }
 }

@@ -29,10 +29,6 @@ export default () => {
         widget: portal.pages[0].root
       },
       transfer: null
-      // page: {
-      //   children: []
-      // },
-      // selection: null
     },
     mutations: {
       'panels/toggle': (state, { name }) => {

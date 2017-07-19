@@ -1,5 +1,5 @@
 <template>
-  <div class="root palette-item" draggable="true" @dragstart="handleDragstart">
+  <div class="root palette-item" draggable="true" @dragstart="handleDragstart"  @dragend="handleDragend">
     <span class="highlight highlight-default">
       <i class="icon-item" :class="item.icon.class"
         :style="{ backgroundImage: item.icon.backgroundImage && `url(${item.icon.backgroundImage})` }"
@@ -19,12 +19,9 @@ export default {
   },
   methods: {
     ...mapActions({
-      transferPut: 'designer/transfer/put'
-    }),
-    handleDragstart (e) {
-      this.transferPut(this.item)
-      e.dataTransfer.setData('application/x-widget', `${this.category.name}.${this.item.name}`)
-    }
+      handleDragstart: 'editor/dragstart',
+      handleDragend: 'editor/dragend'
+    })
   }
 }
 </script>

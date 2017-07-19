@@ -1,6 +1,6 @@
 <template>
   <div class="root selection" :style="{
-    /*clip: clip*/
+    clip: clip
   }">
     <div class="shadow" :style="{
       top: top,
@@ -58,7 +58,8 @@ export default {
     position: fixed;
     z-index: 2;
     pointer-events: none;
-    outline: 2px solid blue;
+    box-sizing: border-box;
+    border: 2px solid blue;
 
     >.actions {
 

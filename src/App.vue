@@ -1,8 +1,8 @@
 <template>
   <div class="root app">
     <router-view></router-view>
-    <drop-area-stack :stack="$store.state.dropAreas.stack" />
-    <selection-stack :widget="$store.state.designer.selected.widget" />
+    <drop-area-stack :stack="$store.state.editor.dropAreas" />
+    <selection-stack :stack="$store.state.editor.selectedEntries" />
     <modal-stack :stack="$store.state.modals.stack" />
   </div>
 </template>
