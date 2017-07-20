@@ -1,8 +1,6 @@
 <template>
   <section class="root drop-area-stack">
-    <div class="clip" :style="{
-      clip: clip
-    }">
+    <div class="clip" :style="{ clip: clip }">
       <drop-area v-for="item in stack" :mode="item.mode" :area="item.area" :children="item.children" :key="item.id" />
     </div>
   </section>
@@ -10,7 +8,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import { clipBounds } from '@/engine/editor'
 
 export default {
   props: {
@@ -19,9 +16,7 @@ export default {
   computed: {
     ...mapState({
       clip: (state) => {
-        const bounds = state.editor.editor && state.editor.content
-          ? clipBounds(state.editor.editor(), state.editor.content())
-          : null
+        const bounds = state.editor.bounds
         return bounds
           ? `rect(${bounds.top}px, ${bounds.right}px, ${bounds.bottom}px, ${bounds.left}px)`
           : null

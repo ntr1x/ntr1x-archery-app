@@ -11,7 +11,7 @@ export const clipBounds = (editor, content) => {
   }
 }
 
-export const dropAreas = (editor, element) => {
+export const dropAreas = (element) => {
 
   if (!element) {
     return []
@@ -48,14 +48,11 @@ export const dropAreas = (editor, element) => {
   })
 }
 
-export const selectedEntries = (editor, widget) => {
+export const selectedEntries = (widget) => {
 
   if (!widget) {
     return []
   }
-
-  const clip = editor.getBoundingClientRect()
-  const bounds = { top: clip.top, right: clip.right, bottom: clip.bottom, left: clip.left }
 
   const elements = [...document.querySelectorAll(`[data-component-id="${widget.componentId}"]`)]
   return elements.map((element, index) => {
@@ -64,8 +61,7 @@ export const selectedEntries = (editor, widget) => {
       id: uniqid(),
       index,
       title: widget.title || widget.name,
-      area: { top: rect.top, right: rect.right, bottom: rect.bottom, left: rect.left },
-      bounds
+      area: { top: rect.top, right: rect.right, bottom: rect.bottom, left: rect.left }
     }
   })
 }

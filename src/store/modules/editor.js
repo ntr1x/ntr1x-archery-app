@@ -1,4 +1,4 @@
-import { dropAreas, selectedEntries } from '@/engine/editor'
+import { dropAreas, selectedEntries, clipBounds } from '@/engine/editor'
 
 export default () => {
   return {
@@ -6,6 +6,7 @@ export default () => {
     state: {
       editor: null,
       content: null,
+      bounds: null,
       dropAreas: [],
       selection: null,
       selectedEntries: []
@@ -24,6 +25,9 @@ export default () => {
           ? () => content
           : null
       },
+      'bounds': (state, bounds) => {
+        state.bounds = bounds
+      },
       'dropAreas': (state, areas) => {
         state.dropAreas = areas
       },
@@ -36,14 +40,15 @@ export default () => {
         commit('editor', editor)
         commit('content', content)
         commit('dropAreas', [])
+        commit('bounds', editor && content && clipBounds(editor, content) || null)
       },
       scroll: ({ state, commit }, e) => {
         commit('dropAreas', [])
-        commit('selectedEntries', selectedEntries(state.content(), state.selection))
+        commit('selectedEntries', selectedEntries(state.selection))
       },
       select: ({ state, commit, dispatch }, widget) => {
         commit('dropAreas', [])
-        commit('selectedEntries', selectedEntries(state.content(), widget))
+        commit('selectedEntries', selectedEntries(widget))
         commit('selection', widget)
       },
       dragstart: ({ state, commit, dispatch }, e) => {
@@ -53,7 +58,7 @@ export default () => {
         commit('dropAreas', [])
       },
       dragenter: ({ state, commit, dispatch }, e) => {
-        commit('dropAreas', dropAreas(state.content(), e.target))
+        commit('dropAreas', dropAreas(e.target))
       },
       dragleave: ({ state, commit, dispatch }, e) => {
       },
