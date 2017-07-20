@@ -1,4 +1,4 @@
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   computed: {
@@ -14,15 +14,29 @@ export default {
     })
   },
   methods: {
+    ...mapActions({
+      scroll: 'editor/scroll'
+    }),
     ...mapMutations({
       viewport: 'designer/viewport/dimensions',
       zoom: 'designer/viewport/zoom',
-      toggle: 'designer/panels/toggle',
       modal: 'modals/open'
     }),
     newPage () {
       this.modal({
         factory: () => require('@/modals/Page/Page.vue')
+      })
+    },
+    handleViewport (viewport) {
+      this.viewport(viewport)
+      this.$nextTick(() => {
+        this.scroll()
+      })
+    },
+    handleZoom (scale) {
+      this.zoom(scale)
+      this.$nextTick(() => {
+        this.scroll()
       })
     }
   }

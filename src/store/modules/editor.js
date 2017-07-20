@@ -44,10 +44,12 @@ export default () => {
         commit('editor', editor)
         commit('content', content)
         commit('dropAreas', [])
-        commit('innerBounds', editor && innerBounds(editor, content) || null)
-        commit('outerBounds', editor && content && outerBounds(editor) || null)
+        commit('innerBounds', editor && content && innerBounds(editor, content) || null)
+        commit('outerBounds', editor && outerBounds(editor) || null)
       },
       scroll: ({ state, commit }, e) => {
+        commit('innerBounds', state.editor && state.content && innerBounds(state.editor(), state.content()) || null)
+        commit('outerBounds', state.editor && outerBounds(state.editor()) || null)
         commit('dropAreas', [])
         commit('selectedEntries', selectedEntries(state.selection))
       },

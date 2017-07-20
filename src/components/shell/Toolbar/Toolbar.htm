@@ -7,27 +7,27 @@
   <div class="center">
   </div>
   <div class="right padding">
-    <button class="highlight highlight-default" title="Zoom out" @click="zoom(scale - 0.2)"><i class="material-icons icon icon-24-18">zoom_out</i></button>
-    <button class="highlight highlight-default" title="Reset zoom" @click="zoom(1)">{{ (scale * 100).toFixed(0) }}%</button>
-    <button class="highlight highlight-default" title="Zoom in" @click="zoom(scale + 0.2)"><i class="material-icons icon icon-24-18">zoom_in</i></button>
+    <button class="highlight highlight-default" title="Zoom out" @click="handleZoom(scale - 0.2)"><i class="material-icons icon icon-24-18">zoom_out</i></button>
+    <button class="highlight highlight-default" title="Reset zoom" @click="handleZoom(1)">{{ (scale * 100).toFixed(0) }}%</button>
+    <button class="highlight highlight-default" title="Zoom in" @click="handleZoom(scale + 0.2)"><i class="material-icons icon icon-24-18">zoom_in</i></button>
   </div>
   <div class="right">
     <div class="buttons screen">
       <button class="button"
         :class="{ active: active.name === dimensions.custom.name }"
-        @click="viewport(dimensions.custom)"
+        @click="handleViewport(dimensions.custom)"
       >{{ dimensions.custom.width || 'auto' }}&nbsp;x&nbsp;{{ dimensions.custom.height || 'auto' }}</button>
       <button class="button icon"
         :class="{ active: active.name === dimensions.phone.name }"
-        @click="viewport(dimensions.phone)"
+        @click="handleViewport(dimensions.phone)"
       ><i class="material-icons icon icon-48-24">phone_iphone</i></button>
       <button class="button icon"
         :class="{ active: active.name === dimensions.tablet.name }"
-        @click="viewport(dimensions.tablet)"
+        @click="handleViewport(dimensions.tablet)"
       ><i class="material-icons icon icon-48-24">tablet_mac</i></button>
       <button class="button icon"
         :class="{ active: active.name === dimensions.pc.name }"
-        @click="viewport(dimensions.pc)"
+        @click="handleViewport(dimensions.pc)"
       ><i class="material-icons icon icon-48-24">computer</i></button>
     </div>
   </div>
