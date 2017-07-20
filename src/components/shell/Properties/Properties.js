@@ -1,4 +1,4 @@
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 import * as controls from '@/components/controls'
 import Property from './Property.vue'
 import Category from '../Category/Category.vue'
@@ -20,9 +20,11 @@ export default {
     })
   },
   methods: {
+    ...mapActions({
+      updateProperty: 'designer/widgets/property'
+    }),
     ...mapMutations({
       toggle: 'designer/panels/toggle',
-      updateProperty: 'designer/widgets/property',
       modal: 'modals/open'
     }),
     edit () {

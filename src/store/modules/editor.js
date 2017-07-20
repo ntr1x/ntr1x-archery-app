@@ -42,6 +42,7 @@ export default () => {
         commit('selectedEntries', selectedEntries(state.content(), state.selection))
       },
       select: ({ state, commit, dispatch }, widget) => {
+        commit('dropAreas', [])
         commit('selectedEntries', selectedEntries(state.content(), widget))
         commit('selection', widget)
       },

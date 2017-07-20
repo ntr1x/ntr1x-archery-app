@@ -21,7 +21,7 @@ export default () => {
         structure: { open: true },
         console: { open: true }
       },
-      dimensions: { name: 'pc', position: 'absolute', width: '100%', height: '100%' },
+      dimensions: { name: 'phone', position: 'relative', width: '414px', height: '736px' },
       scale: 1,
       portal: portal,
       selected: {
@@ -82,6 +82,11 @@ export default () => {
       'props/create': props.create,
       'props/update': props.update,
       'props/remove': props.remove,
+
+      'widgets/property': ({ state, commit, dispatch }, { widget, type, name, value }) => {
+        commit('widgets/property', { widget, type, name, value })
+        dispatch('editor/select', widget, { root: true })
+      },
 
       'transfer/put': ({ commit }, data) => {
         commit('transfer/update', data)

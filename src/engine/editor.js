@@ -1,5 +1,16 @@
 import uniqid from 'uniqid'
 
+export const clipBounds = (editor, content) => {
+  const rect1 = editor && editor.getBoundingClientRect() || null
+  const rect2 = content && content.getBoundingClientRect() || null
+  return {
+    top: Math.max(rect1.top + 20, rect2.top),
+    left: Math.max(rect1.left + 20, rect2.left),
+    bottom: Math.min(rect1.bottom - 20, rect2.bottom),
+    right: Math.min(rect1.right - 20, rect2.right)
+  }
+}
+
 export const dropAreas = (editor, element) => {
 
   if (!element) {
@@ -13,9 +24,6 @@ export const dropAreas = (editor, element) => {
     }
     element = element.parentElement
   }
-
-  const clip = editor.getBoundingClientRect()
-  const bounds = { top: clip.top, right: clip.right, bottom: clip.bottom, left: clip.left }
 
   return stack.map(([element, mode]) => {
     const rect = element.getBoundingClientRect()
@@ -34,7 +42,6 @@ export const dropAreas = (editor, element) => {
     return {
       id: uniqid(),
       mode,
-      bounds,
       area: { top: rect.top, right: rect.right, bottom: rect.bottom, left: rect.left },
       children
     }
@@ -50,7 +57,7 @@ export const selectedEntries = (editor, widget) => {
   const clip = editor.getBoundingClientRect()
   const bounds = { top: clip.top, right: clip.right, bottom: clip.bottom, left: clip.left }
 
-  const elements = [...document.querySelectorAll(`[data-widget-id="${widget.id}"]`)]
+  const elements = [...document.querySelectorAll(`[data-component-id="${widget.componentId}"]`)]
   return elements.map((element, index) => {
     const rect = element.getBoundingClientRect()
     return {

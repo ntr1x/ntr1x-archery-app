@@ -10,6 +10,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { clipBounds } from '@/engine/editor'
 
 export default {
   props: {
@@ -18,11 +19,12 @@ export default {
   computed: {
     ...mapState({
       clip: (state) => {
-        if (!state.editor.content) {
-          return null
-        }
-        const bounds = state.editor.content().getBoundingClientRect()
-        return `rect(${bounds.top}px, ${bounds.right}px, ${bounds.bottom}px, ${bounds.left}px)`
+        const bounds = state.editor.editor && state.editor.content
+          ? clipBounds(state.editor.editor(), state.editor.content())
+          : null
+        return bounds
+          ? `rect(${bounds.top}px, ${bounds.right}px, ${bounds.bottom}px, ${bounds.left}px)`
+          : null
       }
     })
   },

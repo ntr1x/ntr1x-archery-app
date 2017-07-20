@@ -39,7 +39,7 @@ export default {
       props: node.propsData,
       scopedSlots,
       attrs: {
-        'data-widget-id': this.model.id
+        'data-component-id': this.model.componentId
       },
       nativeOn: {
         click: (e) => {
