@@ -8,6 +8,8 @@
   .root {
     display: flex;
     position: relative;
+    width: auto;
+    flex-wrap: wrap;
   }
 </style>
 

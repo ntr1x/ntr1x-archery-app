@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import * as pages from './designer-pages.js'
 import * as props from './designer-props.js'
 
@@ -83,11 +82,8 @@ export default () => {
       'props/update': props.update,
       'props/remove': props.remove,
 
-      'widgets/property': ({ state, commit, dispatch }, { widget, type, name, value }) => {
+      'widgets/property': async ({ state, commit, dispatch }, { widget, type, name, value }) => {
         commit('widgets/property', { widget, type, name, value })
-        Vue.nextTick(() => {
-          dispatch('editor/select', widget, { root: true })
-        })
       },
 
       'transfer/put': ({ commit }, data) => {

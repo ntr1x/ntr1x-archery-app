@@ -6,7 +6,7 @@ import { debounce } from 'lodash'
 
 export default {
   created () {
-    this.updatePropertyDebounced = debounce(this.updateProperty, 500)
+    this.updatePropertyDebounced = debounce(this.updateProperty, 400)
   },
   components: {
     ...controls,
@@ -21,7 +21,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateProperty: 'designer/widgets/property'
+      updateWidgetProperty: 'designer/widgets/property',
+      selectWidget: 'editor/select'
     }),
     ...mapMutations({
       toggle: 'designer/panels/toggle',
@@ -30,6 +31,12 @@ export default {
     edit () {
       this.modal({
         factory: () => require('@/modals/Expression/Expression.vue')
+      })
+    },
+    async updateProperty ({ name, value, type }) {
+      await this.updateWidgetProperty({ widget: this.widget, type, name, value })
+      this.$nextTick(() => {
+        this.selectWidget(this.widget)
       })
     },
     handlePropertyChange ({ name, value, type }) {

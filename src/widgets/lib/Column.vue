@@ -8,6 +8,7 @@
   .root {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     position: relative;
   }
 </style>
