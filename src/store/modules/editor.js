@@ -1,4 +1,4 @@
-import { dropAreas, selectedEntries, clipBounds } from '@/engine/editor'
+import { dropAreas, selectedEntries, innerBounds, outerBounds } from '@/engine/editor'
 
 export default () => {
   return {
@@ -6,7 +6,8 @@ export default () => {
     state: {
       editor: null,
       content: null,
-      bounds: null,
+      innerBounds: null,
+      outerBounds: null,
       dropAreas: [],
       selection: null,
       selectedEntries: []
@@ -25,8 +26,11 @@ export default () => {
           ? () => content
           : null
       },
-      'bounds': (state, bounds) => {
-        state.bounds = bounds
+      'innerBounds': (state, innerBounds) => {
+        state.innerBounds = innerBounds
+      },
+      'outerBounds': (state, outerBounds) => {
+        state.outerBounds = outerBounds
       },
       'dropAreas': (state, areas) => {
         state.dropAreas = areas
@@ -40,7 +44,8 @@ export default () => {
         commit('editor', editor)
         commit('content', content)
         commit('dropAreas', [])
-        commit('bounds', editor && content && clipBounds(editor, content) || null)
+        commit('innerBounds', editor && innerBounds(editor, content) || null)
+        commit('outerBounds', editor && content && outerBounds(editor) || null)
       },
       scroll: ({ state, commit }, e) => {
         commit('dropAreas', [])
@@ -52,6 +57,7 @@ export default () => {
         commit('selection', widget)
       },
       dragstart: ({ state, commit, dispatch }, e) => {
+        e.dataTransfer.setData('application/x-widget', `123`)
         // e.dataTransfer.setData('application/x-widget', `${this.category.name}.${this.item.name}`)
       },
       dragend: ({ state, commit, dispatch }, e) => {

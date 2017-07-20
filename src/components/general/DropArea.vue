@@ -54,7 +54,7 @@ export default {
       const children = this.children
       const positions = []
       for (const curr of children) {
-        positions.push({ type: 'left', top: `${area.top}px`, left: `${curr.left}px`, width: 0, height: `${area.bottom - area.top}px` })
+        positions.push({ type: 'left', top: `${area.top}px`, left: `${curr.left - 1}px`, width: 0, height: `${area.bottom - area.top}px` })
         positions.push({ type: 'right', top: `${area.top}px`, left: `${curr.right - 1}px`, width: 0, height: `${area.bottom - area.top}px` })
       }
       return positions
@@ -65,7 +65,7 @@ export default {
       const children = this.children
       const positions = []
       for (const curr of children) {
-        positions.push({ type: 'top', top: `${curr.top}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
+        positions.push({ type: 'top', top: `${curr.top - 1}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
         positions.push({ type: 'bottom', top: `${curr.bottom - 1}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
       }
       return positions

@@ -1,8 +1,18 @@
 import uniqid from 'uniqid'
 
-export const clipBounds = (editor, content) => {
-  const rect1 = editor && editor.getBoundingClientRect() || null
-  const rect2 = content && content.getBoundingClientRect() || null
+export const outerBounds = (editor) => {
+  const rect = editor.getBoundingClientRect()
+  return {
+    top: rect.top,
+    left: rect.left,
+    bottom: rect.bottom,
+    right: rect.right
+  }
+}
+
+export const innerBounds = (editor, content) => {
+  const rect1 = editor.getBoundingClientRect()
+  const rect2 = content.getBoundingClientRect()
   return {
     top: Math.max(rect1.top + 20, rect2.top),
     left: Math.max(rect1.left + 20, rect2.left),

@@ -1,6 +1,6 @@
 <template>
   <section class="root drop-area-stack">
-    <div class="clip" :style="{ clip: clip }">
+    <div class="clip" :style="{ clip: innerClip }">
       <drop-area v-for="item in stack" :mode="item.mode" :area="item.area" :children="item.children" :key="item.id" />
     </div>
   </section>
@@ -15,10 +15,10 @@ export default {
   },
   computed: {
     ...mapState({
-      clip: (state) => {
-        const bounds = state.editor.bounds
-        return bounds
-          ? `rect(${bounds.top}px, ${bounds.right}px, ${bounds.bottom}px, ${bounds.left}px)`
+      innerClip: (state) => {
+        const innerBounds = state.editor.innerBounds
+        return innerBounds
+          ? `rect(${innerBounds.top}px, ${innerBounds.right}px, ${innerBounds.bottom}px, ${innerBounds.left}px)`
           : null
       }
     })
@@ -33,7 +33,7 @@ export default {
   .root.drop-area-stack {
     position: relative;
     overflow: visible;
-    z-index: 200;
+    z-index: 100;
 
     >.clip {
       position: fixed;

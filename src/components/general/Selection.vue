@@ -5,12 +5,6 @@
     width: width,
     height: height
     }">
-    <div class="actions" v-if="index === 0">
-      <i class="material-icons icon-action">zoom_out_map</i>
-      <i class="material-icons icon-action">arrow_upward</i>
-      <i class="material-icons icon-action">content_copy</i>
-      <i class="material-icons icon-action">delete</i>
-    </div>
     <div class="index" v-if="count > 1">{{index + 1}}</div>
   </div>
 </template>
@@ -44,26 +38,8 @@ export default {
   z-index: 2;
   pointer-events: none;
   box-sizing: border-box;
-  border: 2px solid blue;
-
-  >.actions {
-
-    @include with-icons(icon-action, 20px, 12px, 16px);
-
-    pointer-events: auto;
-    background: blue;
-    display: block;
-    position: absolute;
-    top: -24px;
-    left: -2px;
-    color: #FFFFFF;
-    white-space: nowrap;
-    padding: 2px 5px;
-
-    >.title {
-      white-space: nowrap;
-    }
-  }
+  border: 1px solid blue;
+  outline: 1px solid blue;
 
   >.index {
     position: absolute;
