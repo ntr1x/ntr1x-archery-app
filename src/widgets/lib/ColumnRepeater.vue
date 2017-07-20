@@ -19,6 +19,7 @@ import { Drop } from '@/directives'
 export default {
   name: 'column-repeater',
   title: 'Column Repeater',
+  container: true,
   mixins: [AppearanceMixin, FlexMixin],
   props: {
     items: {

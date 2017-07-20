@@ -1,0 +1,26 @@
+@import "~@/styles/partials/variables";
+@import "~@/styles/partials/mixins";
+@import "~@/styles/shell/pane";
+
+.root.actions {
+
+  @include with-icons(icon, 24px, 18px);
+  @include with-highlights();
+  @include with-buttons();
+  @include dock-row();
+
+  background: $background-2;
+
+  .center {
+    display: flex;
+    justify-content: center;
+
+    .table {
+      display: table;
+      >.table-cell {
+        display: table-cell;
+        padding: 4px 2px;
+      }
+    }
+  }
+}

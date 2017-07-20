@@ -6,7 +6,7 @@
     'background': background,
     'margin': margin,
     'padding': padding
-  }">
+  }" @dragstart="handleDragstart"  @dragend="handleDragend">
     <slot></slot>
   </div>
 </template>
@@ -19,12 +19,19 @@
 </style>
 
 <script>
+import { mapActions } from 'vuex'
 import { AppearanceMixin, BoxMixin } from '@/widgets/mixins'
 
 export default {
   name: 'box',
   title: 'Box',
-  mixins: [AppearanceMixin, BoxMixin]
+  mixins: [AppearanceMixin, BoxMixin],
+  methods: {
+    ...mapActions({
+      handleDragstart: 'editor/dragstart',
+      handleDragend: 'editor/dragend'
+    })
+  }
 }
 </script>
 

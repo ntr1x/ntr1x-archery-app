@@ -4,6 +4,7 @@ import ShellHeader from '../Header/Header.vue'
 import ShellFooter from '../Footer/Footer.vue'
 import ShellProperties from '../Properties/Properties.vue'
 import ShellToolbar from '../Toolbar/Toolbar.vue'
+import ShellActions from '../Actions/Actions.vue'
 import ShellStructure from '../Structure/Structure.vue'
 import ShellPalette from '../Palette/Palette.vue'
 import ShellOutline from '../Outline/Outline.vue'
@@ -15,6 +16,7 @@ export default {
     ShellHeader,
     ShellFooter,
     ShellToolbar,
+    ShellActions,
     ShellProperties,
     ShellStructure,
     ShellPalette,

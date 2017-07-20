@@ -1,20 +1,16 @@
 <template>
   <div class="root drop-area" :style="{
-    clip: clip
+    top: top,
+    left: left,
+    width: width,
+    height: height
   }">
-    <div class="drop-shadow" :style="{
-      top: top,
-      left: left,
-      width: width,
-      height: height
+    <div class="drop-position" v-for="position in positions" :style="{
+      top: position.top,
+      left: position.left,
+      width: position.width,
+      height: position.height
     }">
-      <div class="drop-position" v-for="position in positions" :style="{
-        top: position.top,
-        left: position.left,
-        width: position.width,
-        height: position.height
-      }">
-      </div>
     </div>
   </div>
 </template>
@@ -24,19 +20,16 @@ export default {
   props: {
     mode: String,
     area: Object,
-    bounds: Object,
     children: Array
   },
   data () {
     const area = this.area
-    const bounds = this.bounds
 
     return {
       top: `${area.top}px`,
       left: `${area.left}px`,
       width: `${area.right - area.left}px`,
       height: `${area.bottom - area.top}px`,
-      clip: `rect(${bounds.top}px, ${bounds.right}px, ${bounds.bottom}px, ${bounds.left}px)`,
       positions: this.calcPositions()
     }
   },
@@ -85,24 +78,14 @@ export default {
 .root.drop-area {
 
   position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 
-  >.drop-shadow {
+  >.drop-position {
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     pointer-events: none;
-    // background: rgba(100,0,0,0.2);
-    // outline: 1px solid yellow;
-
-    >.drop-position {
-      position: fixed;
-      z-index: 3;
-      pointer-events: none;
-      outline: 1px solid red;
-    }
+    outline: 1px solid red;
   }
 }
 </style>

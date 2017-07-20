@@ -18,6 +18,7 @@ import { Drop } from '@/directives'
 export default {
   name: 'row',
   title: 'Row',
+  container: true,
   mixins: [AppearanceMixin, FlexMixin],
   directives: {
     Drop

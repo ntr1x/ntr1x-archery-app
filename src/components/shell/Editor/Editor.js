@@ -11,29 +11,29 @@ export default {
     scale: state => state.designer.scale
   }),
   mounted () {
-    this.editor(this.$el)
+    this.editor({ editor: this.$el, content: this.$refs.content })
     this.$refs.content.addEventListener('scroll', this.handleScroll)
-    this.$el.addEventListener('dragenter', this.handleDragenter)
-    this.$el.addEventListener('dragleave', this.handleDragleave)
-    this.$el.addEventListener('dragover', this.handleDragover)
-    this.$el.addEventListener('drop', this.handleDrop)
+    this.$refs.content.addEventListener('dragenter', this.handleDragenter)
+    this.$refs.content.addEventListener('dragleave', this.handleDragleave)
+    this.$refs.content.addEventListener('dragover', this.handleDragover)
+    this.$refs.content.addEventListener('drop', this.handleDrop)
   },
   beforeDestroy () {
-    this.$el.removeEventListener('dragenter', this.handleDragenter)
-    this.$el.removeEventListener('dragleave', this.handleDragleave)
-    this.$el.removeEventListener('dragover', this.handleDragover)
-    this.$el.removeEventListener('drop', this.handleDrop)
     this.$refs.content.removeEventListener('scroll', this.handleScroll)
-    this.editor(null)
+    this.$refs.content.removeEventListener('dragenter', this.handleDragenter)
+    this.$refs.content.removeEventListener('dragleave', this.handleDragleave)
+    this.$refs.content.removeEventListener('dragover', this.handleDragover)
+    this.$refs.content.removeEventListener('drop', this.handleDrop)
+    this.editor({ editor: null, content: null })
   },
   methods: {
     ...mapActions({
       editor: 'editor/editor',
       handleScroll: 'editor/scroll',
       handleDragenter: 'editor/dragenter',
-      handleDragleave: 'editor/dragenter',
-      handleDragover: 'editor/dragenter',
-      handleDrop: 'editor/dragenter'
+      handleDragleave: 'editor/dragleave',
+      handleDragover: 'editor/dragover',
+      handleDrop: 'editor/drop'
     })
   }
 }

@@ -31,6 +31,7 @@ import { mapActions } from 'vuex'
 export default {
   name: 'canvas',
   title: 'Canvas',
+  container: true,
   mixins: [AppearanceMixin, BoxMixin, FlexMixin],
   directives: {
     Drop

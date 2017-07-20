@@ -18,6 +18,7 @@ import { Drop } from '@/directives'
 export default {
   name: 'row-repeater',
   title: 'Row Repeater',
+  container: true,
   mixins: [AppearanceMixin, FlexMixin],
   props: {
     items: {

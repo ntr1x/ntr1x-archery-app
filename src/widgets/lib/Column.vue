@@ -19,6 +19,7 @@ import { Drop } from '@/directives'
 export default {
   name: 'column',
   title: 'Column',
+  container: true,
   mixins: [AppearanceMixin, FlexMixin],
   directives: {
     Drop
