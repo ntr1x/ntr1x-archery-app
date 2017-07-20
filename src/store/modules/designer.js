@@ -1,4 +1,4 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import * as pages from './designer-pages.js'
 import * as props from './designer-props.js'
 
@@ -85,7 +85,9 @@ export default () => {
 
       'widgets/property': ({ state, commit, dispatch }, { widget, type, name, value }) => {
         commit('widgets/property', { widget, type, name, value })
-        dispatch('editor/select', widget, { root: true })
+        Vue.nextTick(() => {
+          dispatch('editor/select', widget, { root: true })
+        })
       },
 
       'transfer/put': ({ commit }, data) => {
