@@ -13,6 +13,9 @@ export default () => {
       selectedEntries: []
     },
     mutations: {
+      'lock': (state, lock) => {
+        state.lock = lock
+      },
       'selection': (state, selection) => {
         state.selection = selection
       },
@@ -40,12 +43,15 @@ export default () => {
       }
     },
     actions: {
-      editor: ({ state, commit, dispatch }, { editor, content }) => {
+      editor: ({ state, commit }, { editor, content }) => {
         commit('editor', editor)
         commit('content', content)
         commit('dropAreas', [])
         commit('innerBounds', editor && content && innerBounds(editor, content) || null)
         commit('outerBounds', editor && outerBounds(editor) || null)
+      },
+      lock: ({ state, commit }, lock) => {
+        commit('lock', lock)
       },
       scroll: ({ state, commit }, e) => {
         commit('innerBounds', state.editor && state.content && innerBounds(state.editor(), state.content()) || null)
