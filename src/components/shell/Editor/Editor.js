@@ -22,6 +22,19 @@ export default {
     this.$refs.content.addEventListener('dragleave', this.handleDragleave)
     this.$refs.content.addEventListener('dragover', this.handleDragover)
     this.$refs.content.addEventListener('drop', this.handleDrop)
+
+    this.$store.subscribe((mutation, state) => {
+      switch (mutation.type) {
+        case 'designer/viewport/dimensions':
+        case 'designer/viewport/zoom':
+        case 'designer/panels/toggle':
+        case 'designer/widgets/property':
+          this.$nextTick(() => {
+            this.handleScroll()
+          })
+          break
+      }
+    })
   },
   beforeDestroy () {
     this.$refs.content.removeEventListener('scroll', this.handleScrollDebounced)

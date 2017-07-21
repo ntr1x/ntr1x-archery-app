@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateWidgetProperty: 'designer/widgets/property',
+      updateProperty: 'designer/widgets/property',
       selectWidget: 'editor/select'
     }),
     ...mapMutations({
@@ -31,12 +31,6 @@ export default {
     edit () {
       this.modal({
         factory: () => require('@/modals/Expression/Expression.vue')
-      })
-    },
-    async updateProperty ({ name, value, type }) {
-      await this.updateWidgetProperty({ widget: this.widget, type, name, value })
-      this.$nextTick(() => {
-        this.selectWidget(this.widget)
       })
     },
     handlePropertyChange ({ name, value, type }) {

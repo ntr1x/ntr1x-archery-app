@@ -26,18 +26,6 @@ export default {
       this.modal({
         factory: () => require('@/modals/Page/Page.vue')
       })
-    },
-    handleViewport (viewport) {
-      this.viewport(viewport)
-      this.$nextTick(() => {
-        this.scroll()
-      })
-    },
-    handleZoom (scale) {
-      this.zoom(scale)
-      this.$nextTick(() => {
-        this.scroll()
-      })
     }
   }
 }
