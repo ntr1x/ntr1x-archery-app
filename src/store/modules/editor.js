@@ -4,6 +4,7 @@ export default () => {
   return {
     namespaced: true,
     state: {
+      cursor: null,
       editor: null,
       content: null,
       innerBounds: null,
@@ -13,9 +14,6 @@ export default () => {
       selectedEntries: []
     },
     mutations: {
-      'lock': (state, lock) => {
-        state.lock = lock
-      },
       'selection': (state, selection) => {
         state.selection = selection
       },
@@ -50,10 +48,7 @@ export default () => {
         commit('innerBounds', editor && content && innerBounds(editor, content) || null)
         commit('outerBounds', editor && outerBounds(editor) || null)
       },
-      lock: ({ state, commit }, lock) => {
-        commit('lock', lock)
-      },
-      scroll: ({ state, commit }, e) => {
+      scroll: ({ state, commit }) => {
         commit('innerBounds', state.editor && state.content && innerBounds(state.editor(), state.content()) || null)
         commit('outerBounds', state.editor && outerBounds(state.editor()) || null)
         commit('dropAreas', [])
@@ -72,7 +67,10 @@ export default () => {
         commit('dropAreas', [])
       },
       dragenter: ({ state, commit, dispatch }, e) => {
-        commit('dropAreas', dropAreas(e.target))
+        commit('dropAreas', dropAreas(e.target, {
+          x: e.clientX,
+          y: e.clientY
+        }))
       },
       dragleave: ({ state, commit, dispatch }, e) => {
       },
@@ -81,6 +79,10 @@ export default () => {
       },
       dragover: ({ state, commit, dispatch }, e) => {
         e.preventDefault()
+        commit('dropAreas', dropAreas(e.target, {
+          x: e.clientX,
+          y: e.clientY
+        }))
       },
       drop: ({ state, commit, dispatch }, e) => {
         e.preventDefault()

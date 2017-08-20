@@ -18,41 +18,10 @@
 
     >.left {
       @include scrollable();
+      @include with-pills();
       padding: 0px 5px 0px 0px;
       width: 200px;
-      >ul {
-        padding: 0;
-        list-style: none;
-        margin: 0px;
-        >li {
-          >a {
-            padding: 5px;
-            display: block;
-            border-radius: 2px;
-            cursor: pointer;
-            >.tag-name {
-              display: block;
-            }
-            >.tag-description {
-              display: block;
-              font-size: 0.9em;
-              opacity: 0.7;
-            }
-            &:hover {
-              background: $background-1;
-            }
-          }
 
-          &.active {
-            >a {
-              background: $background-selection-0;
-              &:hover {
-                background: $background-selection-1;
-              }
-            }
-          }
-        }
-      }
     }
 
     >.center {

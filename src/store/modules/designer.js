@@ -20,7 +20,7 @@ export default () => {
         structure: { open: true },
         console: { open: true }
       },
-      dimensions: { name: 'phone', position: 'relative', width: '414px', height: '736px' },
+      dimensions: { name: 'tablet', position: 'relative', width: '768px', height: '1024px' },
       scale: 1,
       portal: portal,
       selected: {

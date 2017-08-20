@@ -1,16 +1,21 @@
 <template>
   <div class="root drop-area" :style="{
-    top: top,
-    left: left,
-    width: width,
-    height: height
+    top: top + 'px',
+    left: left + 'px',
+    width: width + 'px',
+    height: height + 'px'
   }">
-    <div class="drop-position" v-for="position in positions" :style="{
-      top: position.top,
-      left: position.left,
-      width: position.width,
-      height: position.height
-    }">
+    <div
+      class="drop-position"
+      v-for="position in positions"
+      v-if="position.primary"
+      :style="{
+        top: position.top + 'px',
+        left: position.left + 'px',
+        width: position.width + 'px',
+        height: position.height + 'px'
+      }"
+    >
       <div :class="{
         'drop-arrow-top': position.type === 'top',
         'drop-arrow-right': position.type === 'right',
@@ -26,49 +31,15 @@ export default {
   props: {
     mode: String,
     area: Object,
-    children: Array
+    positions: Array
   },
   data () {
     const area = this.area
-
     return {
-      top: `${area.top}px`,
-      left: `${area.left}px`,
-      width: `${area.right - area.left}px`,
-      height: `${area.bottom - area.top}px`,
-      positions: this.calcPositions()
-    }
-  },
-  methods: {
-
-    calcPositions () {
-      switch (this.mode) {
-        case 'row': return this.calcPositionsRow()
-        case 'column': return this.calcPositionsColumn()
-        default: return []
-      }
-    },
-
-    calcPositionsRow () {
-      const area = this.area
-      const children = this.children
-      const positions = []
-      for (const curr of children) {
-        positions.push({ type: 'left', top: `${area.top}px`, left: `${curr.left - 1}px`, width: 0, height: `${area.bottom - area.top}px` })
-        positions.push({ type: 'right', top: `${area.top}px`, left: `${curr.right - 1}px`, width: 0, height: `${area.bottom - area.top}px` })
-      }
-      return positions
-    },
-
-    calcPositionsColumn () {
-      const area = this.area
-      const children = this.children
-      const positions = []
-      for (const curr of children) {
-        positions.push({ type: 'top', top: `${curr.top - 1}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
-        positions.push({ type: 'bottom', top: `${curr.bottom - 1}px`, left: `${area.left}px`, width: `${area.right - area.left}px`, height: 0 })
-      }
-      return positions
+      top: area.top,
+      left: area.left,
+      width: area.right - area.left,
+      height: area.bottom - area.top
     }
   }
 }

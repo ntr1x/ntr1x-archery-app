@@ -15,6 +15,31 @@ export const registry = new Registry({
 export const structure = {
   name: 'portal-a',
   title: 'Demo Portal A',
+  pictures: [
+    {
+      name: 'background',
+      title: 'Background',
+      settings: [
+        { name: 'scale-1920xauto', width: 1920, height: null, type: 'scale', format: 'png', preview: false },
+        { name: 'cover-128x72', width: 128, height: 72, type: 'cover', format: 'png', preview: true }
+      ]
+    },
+    {
+      name: 'picture',
+      title: 'Picture',
+      settings: [
+        { name: 'cover-640x480', width: 640, height: 480, type: 'cover', format: 'png' },
+        { name: 'cover-128x72', width: 128, height: 72, type: 'cover', format: 'png', preview: true }
+      ]
+    },
+    {
+      name: 'icon',
+      title: 'Icon',
+      settings: [
+        { name: 'contain-128x128', width: 128, height: 128, type: 'contain', format: 'png', preview: true }
+      ]
+    }
+  ],
   pages: [
     {
       route: '/',

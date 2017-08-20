@@ -1,7 +1,7 @@
 <template>
   <section class="root drop-area-stack">
     <div class="clip" :style="{ clip: innerClip }">
-      <drop-area v-for="item in stack" :mode="item.mode" :area="item.area" :children="item.children" :key="item.id" />
+      <drop-area v-for="item in stack" :mode="item.mode" :area="item.area" :positions="item.positions" :key="item.id" />
     </div>
   </section>
 </template>

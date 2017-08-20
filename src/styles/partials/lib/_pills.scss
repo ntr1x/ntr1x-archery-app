@@ -1,0 +1,44 @@
+@import '~material-colors-scss/function';
+@import '~@/styles/partials/variables';
+
+@mixin pills($class-item: pills-item) {
+
+  padding: 0;
+  list-style: none;
+  margin: 0px;
+
+  >.pills-item {
+    >a {
+      padding: 5px;
+      display: block;
+      border-radius: 2px;
+      cursor: pointer;
+      >.tag-name {
+        display: block;
+      }
+      >.tag-description {
+        display: block;
+        font-size: 0.9em;
+        opacity: 0.7;
+      }
+      &:hover {
+        background: $background-1;
+      }
+    }
+
+    &.active {
+      >a {
+        background: $background-selection-0;
+        &:hover {
+          background: $background-selection-1;
+        }
+      }
+    }
+  }
+}
+
+@mixin with-pills($class: 'pills', $class-item: 'pills-item') {
+  .#{$class} {
+    @include pills($class-item);
+  }
+}
