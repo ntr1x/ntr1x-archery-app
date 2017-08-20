@@ -96,11 +96,14 @@ function calcPrimaryPosition (areas, cursor) {
       break
     }
   }
-  if (primary.v.p && !primary.h.p) return primary.v.p
-  if (primary.h.p && !primary.v.p) return primary.h.p
-  return (primary.v.d < primary.h.d)
-    ? primary.v.p
-    : primary.h.p
+  if ((primary.v && primary.v.p) && !(primary.h && primary.h.p)) return primary.v.p
+  if ((primary.h && primary.h.p) && !(primary.v && primary.v.p)) return primary.h.p
+  if (primary.v && primary.h) {
+    return (primary.v.d < primary.h.d)
+      ? primary.v.p
+      : primary.h.p
+  }
+  return null
 }
 
 export const dropAreas = (element, cursor) => {
@@ -117,7 +120,7 @@ export const dropAreas = (element, cursor) => {
     element = element.parentElement
   }
 
-  const areas = stack.map(([element, mode]) => {
+  const areas = stack.map(([element, { mode, modifiers }]) => {
     const rect = element.getBoundingClientRect()
     const children = []
     if (element.children) {
@@ -129,6 +132,10 @@ export const dropAreas = (element, cursor) => {
           bottom: child.bottom,
           left: child.left
         })
+        // console.log(modifiers)
+        // if (modifiers.first) {
+        //   break
+        // }
       }
     }
     const area = {
