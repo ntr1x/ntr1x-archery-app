@@ -1,10 +1,11 @@
 <div class="root editor">
   <div class="outer" ref="outer">
-    <div class="scallable">
+    <div class="scallable" :style="{
+      transform: `scale(${scale})`,
+      transformOrigin: 'top left'
+    }">
       <div class="inner" ref="inner" :style="{
         position: dimensions.position,
-        transform: `scale(${scale})`,
-        transformOrigin: 'top left',
         width: dimensions.width || '100%',
         height: dimensions.height || '100%'
       }">
