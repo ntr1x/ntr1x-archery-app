@@ -24,7 +24,7 @@ export default {
     }),
     newPage () {
       this.modal({
-        factory: () => require('@/modals/Page/Page.vue')
+        factory: () => require('src/modals/Page/Page.vue')
       })
     }
   }

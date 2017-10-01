@@ -8,7 +8,7 @@
 export default {
   name: 'overlay-stack',
   props: {
-    stack: Object,
+    stack: Object
   }
 }
 </script>

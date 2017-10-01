@@ -1,4 +1,4 @@
-// import palette from '@/engine/palette'
+// import palette from 'src/engine/palette'
 
 import Box from './lib/Box.vue'
 import Canvas from './lib/Canvas.vue'

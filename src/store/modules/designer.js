@@ -1,14 +1,9 @@
-import * as pages from './designer-pages.js'
-import * as props from './designer-props.js'
-
-import { buildPortal } from '@/engine/runtime'
-import { structure, registry } from '@/mock/portal0.mock'
+import * as pages from './designer-pages'
+import * as props from './designer-props'
 
 import uniqid from 'uniqid'
 
 export default () => {
-
-  const portal = buildPortal(structure, registry, {})
 
   return {
     namespaced: true,
@@ -22,10 +17,10 @@ export default () => {
       },
       dimensions: { name: 'tablet', position: 'relative', width: '768px', height: '1024px' },
       scale: 1,
-      portal: portal,
+      portal: null,
       selected: {
-        page: portal.pages[0],
-        widget: portal.pages[0].root
+        page: null,
+        widget: null
       },
       transfer: null
     },
@@ -40,6 +35,11 @@ export default () => {
         if (scale > 0.2) {
           state.scale = scale
         }
+      },
+      'pages/portal': (state, portal) => {
+        state.portal = portal
+        state.selected.page = portal.pages.length ? portal.pages[0] : null
+        state.selected.widget = state.selected.page && state.selected.page.root
       },
       'pages/update': (state, pages) => {
         state.portal.pages = pages

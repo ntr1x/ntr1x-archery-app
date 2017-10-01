@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { expect } from 'chai'
-import ModalStack from '@/components/general/ModalStack'
-import ModalStub from '@/components/general/ModalStub'
+import ModalStack from 'src/components/general/ModalStack'
+import ModalStub from 'src/components/general/ModalStub'
 
 describe('components/general/ModalStack', () => {
 

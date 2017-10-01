@@ -2,25 +2,18 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
-// import VueMaterial from 'vue-material'
 
-// import ArcheryShell from '@/components'
-// import ArcheryWidgets from '@/widgets'
-import RouterFactory from '@/router'
-import StoreFactory from '@/store'
+import RouterFactory from 'src/router'
+import StoreFactory from 'src/store'
 
-import App from '@/App'
+import App from 'src/App'
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
-// import '@/themes/shell.scss'
-// import 'bootstrap/dist/css/bootstrap-theme.min.css'
+import { buildPortal } from 'src/engine/runtime'
+import { structure, registry } from 'src/mock/portal0.mock'
 
-// import 'vue-material/dist/vue-material.css'
-// import 'roboto-fontface/css/roboto/roboto-fontface.css'
-// import 'font-awesome/css/font-awesome.css'
 import 'material-design-icons/iconfont/material-icons.css'
 import 'source-sans-pro/source-sans-pro.css'
-import '@/styles/themes/default.scss'
+import 'src/styles/themes/default.scss'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
@@ -34,6 +27,10 @@ Vue.config.productionTip = false
 
 let store = StoreFactory()
 let router = RouterFactory()
+
+const portal = buildPortal(structure, registry, {})
+
+store.commit('designer/pages/portal', portal)
 
 // store.dispatch('designer/setup')
 

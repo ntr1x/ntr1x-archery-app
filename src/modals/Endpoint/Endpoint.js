@@ -1,7 +1,7 @@
 import { mapMutations } from 'vuex'
 import { required, url } from 'vuelidate/lib/validators'
-import { Focus } from '@/directives'
-import * as controls from '@/components/controls'
+import { Focus } from 'src/directives'
+import * as controls from 'src/components/controls'
 
 export default {
   props: {

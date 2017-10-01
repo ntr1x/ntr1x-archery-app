@@ -1,10 +1,10 @@
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 import Category from '../Category/Category.vue'
-import PageModal from '@/modals/Page/Page.vue'
-import PropModal from '@/modals/Prop/Prop.vue'
-import EndpointModal from '@/modals/Endpoint/Endpoint.vue'
-import SchemeModal from '@/modals/Scheme/Scheme.vue'
+import PageModal from 'src/modals/Page/Page.vue'
+import PropModal from 'src/modals/Prop/Prop.vue'
+import EndpointModal from 'src/modals/Endpoint/Endpoint.vue'
+import SchemeModal from 'src/modals/Scheme/Scheme.vue'
 
 export default {
   computed: mapState({

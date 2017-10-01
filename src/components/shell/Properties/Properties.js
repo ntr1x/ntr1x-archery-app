@@ -1,5 +1,5 @@
 import { mapState, mapMutations, mapActions } from 'vuex'
-import * as controls from '@/components/controls'
+import * as controls from 'src/components/controls'
 import Property from './Property.vue'
 import Category from '../Category/Category.vue'
 import { debounce } from 'lodash'
@@ -30,7 +30,7 @@ export default {
     }),
     edit () {
       this.modal({
-        factory: () => require('@/modals/Expression/Expression.vue')
+        factory: () => require('src/modals/Expression/Expression.vue')
       })
     },
     handlePropertyChange ({ name, value, type }) {

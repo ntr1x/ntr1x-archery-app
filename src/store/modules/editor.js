@@ -1,4 +1,4 @@
-import { dropAreas, selectedEntries, innerBounds, outerBounds } from '@/engine/editor'
+import { dropAreas, selectedEntries, innerBounds, outerBounds } from 'src/engine/editor'
 
 export default () => {
   return {

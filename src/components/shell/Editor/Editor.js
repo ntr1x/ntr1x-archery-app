@@ -1,5 +1,5 @@
 import { mapState, mapActions } from 'vuex'
-import Widget from '@/components/general/Widget'
+import { Widget } from 'src/components/general'
 
 export default {
   components: {

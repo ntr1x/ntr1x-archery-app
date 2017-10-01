@@ -24,8 +24,8 @@
 </style>
 
 <script>
-import { AppearanceMixin, BoxMixin, FlexMixin } from '@/widgets/mixins'
-import { Drop } from '@/directives'
+import { AppearanceMixin, BoxMixin, FlexMixin } from 'src/widgets/mixins'
+import { Drop } from 'src/directives'
 import { mapActions } from 'vuex'
 
 export default {

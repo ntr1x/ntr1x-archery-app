@@ -1,5 +1,5 @@
-import * as widgets from '@/widgets'
-import { Registry } from '@/engine/registry'
+import * as widgets from 'src/widgets'
+import { Registry } from 'src/engine/registry'
 
 export const registry = new Registry({
   components: {

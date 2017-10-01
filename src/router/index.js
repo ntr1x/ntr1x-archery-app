@@ -5,7 +5,7 @@ export default () => new VueRouter({
   routes: [
     {
       path: '/',
-      component: require('@/components/shell/Shell/Shell.vue')
+      component: require('src/components/shell/Shell/Shell.vue')
     }
   ]
 })

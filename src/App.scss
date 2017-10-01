@@ -1,6 +1,5 @@
-@import "~@/styles/partials/mixins";
-@import "~@/styles/themes/shell";
+@import '~@/styles/partials/mixins';
 
-.frame {
-  @include position(absolute);
+.root.app {
+  @include position(absolute, 0, 0, 0, 0);
 }

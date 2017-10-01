@@ -14,8 +14,8 @@
 </style>
 
 <script>
-import { AppearanceMixin, FlexMixin } from '@/widgets/mixins'
-import { Drop } from '@/directives'
+import { AppearanceMixin, FlexMixin } from 'src/widgets/mixins'
+import { Drop } from 'src/directives'
 
 export default {
   name: 'column-repeater',

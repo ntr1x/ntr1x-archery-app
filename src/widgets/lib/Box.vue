@@ -20,7 +20,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { AppearanceMixin, BoxMixin } from '@/widgets/mixins'
+import { AppearanceMixin, BoxMixin } from 'src/widgets/mixins'
 
 export default {
   name: 'box',

@@ -1,0 +1,6 @@
+<div class="root app">
+  <router-view></router-view>
+  <drop-area-stack :stack="$store.state.editor.dropAreas" />
+  <selection-stack :stack="$store.state.editor.selectedEntries" />
+  <modal-stack :stack="$store.state.modals.stack" />
+</div>

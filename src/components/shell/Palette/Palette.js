@@ -2,7 +2,7 @@ import { mapMutations } from 'vuex'
 
 import PaletteItem from './PaletteItem.vue'
 import Category from '../Category/Category.vue'
-import palette from '@/palette'
+import palette from 'src/palette'
 
 export default {
   components: {

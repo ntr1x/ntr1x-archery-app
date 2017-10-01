@@ -1,6 +1,6 @@
 import { mapMutations } from 'vuex'
-import Expression from '@/modals/Expression/Expression.vue'
-import * as controls from '@/components/controls'
+import Expression from 'src/modals/Expression/Expression.vue'
+import * as controls from 'src/components/controls'
 
 export default {
   components: { ...controls },
