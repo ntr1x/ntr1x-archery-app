@@ -6,7 +6,7 @@ import Vuelidate from 'vuelidate'
 import RouterFactory from 'src/router'
 import StoreFactory from 'src/store'
 
-import App from 'src/App'
+import App from 'src/App.vue'
 
 import { buildPortal } from 'src/engine/runtime'
 import { structure, registry } from 'src/mock/portal0.mock'
